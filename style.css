@@ -1,0 +1,19 @@
+.animated {
+  animation: left-to-right .5s cubic-bezier(0, 0.2, 0, 1.04);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+
+@keyframes left-to-right{
+  0% {
+    transform: translate(-60px, 0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
