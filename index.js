@@ -1,10 +1,9 @@
-var elements = document.querySelectorAll('section');
+var elements = document.querySelectorAll('*[data-motion]');
 
 function initAnimation(element) {
   var io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const { intersectionRatio } = entry;
-      console.log(intersectionRatio);
       if (intersectionRatio > 0) {
         element.classList.remove('hidden')
         element.classList.add('animated');
