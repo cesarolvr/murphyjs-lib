@@ -1,0 +1,30 @@
+{
+  "name": "murphy",
+  "version": "0.0.1",
+  "description": "A simple library to add scroll micro animations in your page",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesarolvr/murphy.git"
+  },
+  "keywords": [
+    "css",
+    "motion",
+    "animation",
+    "intersectionObserver",
+    "scroll",
+    "reveal"
+  ],
+  "author": "Cesar Faber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cesarolvr/murphy/issues"
+  },
+  "homepage": "https://github.com/cesarolvr/murphy#readme",
+  "dependencies": {
+    "gitmoji-cli": "^1.9.2"
+  }
+}
