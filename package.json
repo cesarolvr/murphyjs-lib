@@ -18,7 +18,10 @@
     "scroll",
     "reveal"
   ],
-  "author": "Cesar Faber",
+  "author": {
+    "name": "Cesar Faber",
+    "email": "cesar2012oliveira@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cesarolvr/murphy/issues"
