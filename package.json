@@ -24,7 +24,14 @@
     "url": "https://github.com/cesarolvr/murphy/issues"
   },
   "homepage": "https://github.com/cesarolvr/murphy#readme",
-  "dependencies": {
-    "gitmoji-cli": "^1.9.2"
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "del": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-uglify": "^3.0.2"
   }
 }
