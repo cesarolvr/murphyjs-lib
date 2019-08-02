@@ -1,7 +1,7 @@
 {
   "name": "murphy",
   "version": "0.0.1",
-  "description": "A simple library to add scroll micro animations in your page",
+  "description": "A simple way to implement scroll based animations in your components.",
   "main": "dist/index.js",
   "scripts": {
     "test": "test"
