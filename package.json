@@ -1,5 +1,5 @@
 {
-  "name": "murphy",
+  "name": "murphyjs",
   "version": "0.0.1",
   "description": "A simple way to implement scroll based animations in your components.",
   "main": "dist/index.js",
