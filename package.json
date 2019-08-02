@@ -2,7 +2,7 @@
   "name": "murphy",
   "version": "0.0.1",
   "description": "A simple library to add scroll micro animations in your page",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "test"
   },
@@ -24,7 +24,6 @@
     "url": "https://github.com/cesarolvr/murphy/issues"
   },
   "homepage": "https://github.com/cesarolvr/murphy#readme",
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
