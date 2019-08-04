@@ -24,17 +24,12 @@ Via npm
 ```bash
 $ npm install murphyjs
 ```
-
 or manual [download](https://github.com/juliangarnier/anime/archive/master.zip).
 
 
 ### Usage
 Just do three steps:
-
-<br>
-
 #### Tagging your HTML
-
 
 In your markup, decore your element with attribute `data-murphy`.
 <br>
@@ -42,9 +37,8 @@ In your markup, decore your element with attribute `data-murphy`.
 ```html
 <div data-murphy="left-to-right">Any content here</div>
 ```
-The default effect of murphy is `bottom-to-top`, but it's possible use `bottom-to-top`, `top-to-bottom`, `left-to-right` and `right-to-left` too.
+The default effect of murphy is `bottom-to-top`, but it's possible use `top-to-bottom`, `left-to-right` and `right-to-left` too.
 
-<br>
 
 #### Add to your CSS
 In your CSS, reset all the tagged elements.
@@ -54,7 +48,6 @@ In your CSS, reset all the tagged elements.
   opacity: 0;
 }
 ```
-<br>
 
 #### Initializing murphy
 
@@ -65,8 +58,7 @@ In Javascript side, just import and run playMurphy when your page is completely 
 ```javascript
 import { playMurphy, resetMurphy, othersFunctions... } from "murphy";
 ```
-<br>
-
+##### And run
 ```javascript
 playMurphy()
 ```
@@ -78,5 +70,5 @@ playMurphy()
 
 | Chrome | Safari | IE / Edge | Firefox | Opera |
 | ------ | ------ | --------- | ------- | ----- |
-| 24+    | 8+     | 11+       | 32+     | 15+   |
+| 58+    | 12.1+     | Not supported       | 55+     | 62+   |
 
