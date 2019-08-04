@@ -24,11 +24,11 @@ Via npm
 ```bash
 $ npm install murphyjs
 ```
-or manual [download](https://github.com/juliangarnier/anime/archive/master.zip).
 
 
 ### Usage
 Just do three steps:
+
 #### Tagging your HTML
 
 In your markup, decore your element with attribute `data-murphy`.
@@ -40,7 +40,7 @@ In your markup, decore your element with attribute `data-murphy`.
 The default effect of murphy is `bottom-to-top`, but it's possible use `top-to-bottom`, `left-to-right` and `right-to-left` too.
 
 
-#### Add to your CSS
+#### Reset your CSS
 In your CSS, reset all the tagged elements.
 
 ```css
