@@ -1,5 +1,3 @@
-## Building...
-
 <h1 align="center">
   <a href=""><img src="" width="250"/></a>
   <br>
@@ -31,45 +29,48 @@ or manual [download](https://github.com/juliangarnier/anime/archive/master.zip).
 
 
 ### Usage
+Just do three steps:
 
+<br>
 
-#### Via ES6 modules
+#### Tagging your HTML
 
-```javascript
-import { playMurphy, resetMurphy, othersFunctions... } from "murphy";
-```
-
-#### Via file include
-
-Link `murphy.js` in your HTML:
-
-```html
-<script src="murphy.js"></script>
-```
-
-#### Initializing murphy
-
-
-In Javascript side, just run playMurphy when your page is completely loaded to start monitoring decorated elements.
-
-```javascript
-playMurphy()
-```
 
 In your markup, decore your element with attribute `data-murphy`.
 <br>
-The default effect of murphy is `bottom-to-top`, but it's possible pass the name of animation, like below:
 
 ```html
 <div data-murphy="left-to-right">Any content here</div>
 ```
+The default effect of murphy is `bottom-to-top`, but it's possible use `bottom-to-top`, `top-to-bottom`, `left-to-right` and `right-to-left` too.
 
-Other default animations are: 
 <br>
-* `bottom-to-top` 
-* `top-to-bottom`
-* `left-to-right`
-* `right-to-left`
+
+#### Add to your CSS
+In your CSS, reset all the tagged elements.
+
+```css
+*[data-murphy] {
+  opacity: 0;
+}
+```
+<br>
+
+#### Initializing murphy
+
+In Javascript side, just import and run playMurphy when your page is completely loaded to start monitoring decorated elements.
+
+##### Import
+
+```javascript
+import { playMurphy, resetMurphy, othersFunctions... } from "murphy";
+```
+<br>
+
+```javascript
+playMurphy()
+```
+<br>
 
 
 
