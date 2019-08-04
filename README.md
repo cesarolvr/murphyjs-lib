@@ -12,8 +12,10 @@
 </blockquote>
 
 <p align="center">
-  <a href="#whyusemurphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
+  <a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
+
+<br>
 
 ## Why use murphy
 
@@ -25,9 +27,9 @@
 
 - 🎨 Full customization of time, duration, ease, delay and distance of each element individually.
 
-- 🎁 Some animations implemented by default
+- 🎁 Some animations implemented by default.
 
-- 🏝 Plug and play solution to landing pages and simple projects
+- 🏝 Plug and play solution to landing pages and simple projects.
 
 - ❎ Native fallback to not supported browsers.
 
@@ -47,7 +49,7 @@ $ npm install murphyjs
 ### Usage
 Just do three steps:
 
-#### Tagging your HTML
+#### ⛳  Tag your HTML
 
 In your markup, decore your element with attribute `data-murphy`.
 <br>
@@ -58,7 +60,7 @@ In your markup, decore your element with attribute `data-murphy`.
 The default effect of murphy is `bottom-to-top`, but it's possible use `top-to-bottom`, `left-to-right` and `right-to-left` too.
 
 
-#### Reset your CSS
+#### 🔌  Reset your CSS
 In your CSS, reset all the tagged elements.
 
 ```css
@@ -67,7 +69,7 @@ In your CSS, reset all the tagged elements.
 }
 ```
 
-#### Initializing murphy
+#### 🚀  Start murphy
 
 In Javascript side, just import and run playMurphy when your page is completely loaded to start monitoring decorated elements.
 
@@ -76,7 +78,7 @@ In Javascript side, just import and run playMurphy when your page is completely 
 ```javascript
 import { playMurphy } from "murphy";
 ```
-##### And run
+##### And trigger
 ```javascript
 playMurphy()
 ```
