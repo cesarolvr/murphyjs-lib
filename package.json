@@ -4,7 +4,7 @@
   "description": "A simple way to implement scroll based animations in your components.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "test"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
