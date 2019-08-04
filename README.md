@@ -12,8 +12,26 @@
 </blockquote>
 
 <p align="center">
-  <a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
+  <a href="#whyusemurphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
+
+## Why use murphy
+
+- ⚡️ Lightweight library. Only 1KB gzipped.
+
+- 🍎 Easy and fast implementation.
+
+- 🎮 Total control of IntersectionObserver parameters.
+
+- 🎨 Full customization of time, duration, ease, delay and distance of each element individually.
+
+- 🎁 Some animations implemented by default
+
+- 🏝 Plug and play solution to landing pages and simple projects
+
+- ❎ Native fallback to not supported browsers.
+
+<br>
 
 ## Getting started
 
@@ -63,28 +81,28 @@ import { playMurphy } from "murphy";
 playMurphy()
 ```
 
-#### That is enough to work!
+#### That is enough to work! 🤟🏿
 
 <br>
 
 ## Documentation
+
+### Attributes
 You can configure the animation of each decorated element individually. Beyond the `data-murphy` attribute, other attributes are available:
 <br>
 
-| Attribute | Value type | Default type  |
-| ------ | ------     | ---------     |
-| data-murphy    | String      | 'bottom-to-top' |
-| data-murphy-appearance-distance    | Int      | 50 *(px)* |
-| data-murphy-element-distance    | Int      | 30 *(px)* |
-| data-murphy-ease    | String      | 'ease' *(can be a cubic-bezier)* |
-| data-murphy-delay    | String      | 'bottom-to-top' |
-| data-murphy-element-threshold    | Int      | 1 |
-| data-murphy-animation-duration    | Int      | 300 *(ms)* |
+| Attribute | Value type | Default value  | What controls  |
+| ------ | ------     | --------- | --------- |
+| data-murphy    | String      | 'bottom-to-top' | - |
+| data-murphy-appearance-distance    | Int      | 50 *(px)* | - |
+| data-murphy-element-distance    | Int      | 30 *(px)* | - |
+| data-murphy-ease    | String      | 'ease' *(can be a cubic-bezier)* | - |
+| data-murphy-delay    | String      | 'bottom-to-top' | - |
+| data-murphy-element-threshold    | Int      | 1 | - |
+| data-murphy-animation-duration    | Int      | 300 *(ms)* | - |
 
-<br>
 
 ### Methods
-
 
 | Method | What happens  |
 | ------ | ---------     |
