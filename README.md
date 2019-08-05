@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href=""><img src="" width="250"/></a>
+  <a href=""><img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/murphyjs.png" width="250"/></a>
 </h1>
 
 <h3 align="center">A JavaScript vanilla library to scroll based reveal animations </h3>
