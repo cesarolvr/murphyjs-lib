@@ -1,13 +1,13 @@
-<h1 align="center">
+<h5 align="center">
   <a href=""><img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/murphyjs.png" width="450"/></a>
-</h1>
+</h5>
 
 <h4 align="center">A JavaScript vanilla library to scroll based reveal animations </h4>
 
-<blockquote align="center">
+<p align="center">
   <em>murphy.js</em> is a lightweight JavaScript animation library with a simple implementation way.<br>
   All this works by joining of data-attributes, Web animate API and Intersection Observer API.
-</blockquote>
+</p>
 
 <p align="center">
   <a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
