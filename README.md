@@ -8,12 +8,32 @@
 
 <blockquote align="center">
   <em>murphy.js</em> is a lightweight JavaScript animation library with a simple implementation way.<br>
-  All this works by joining of data-attributes, Web animate API and Intersection Observer.
+  All this works by joining of data-attributes, Web animate API and Intersection Observer API.
 </blockquote>
 
 <p align="center">
-  <a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#demos-and-examples">Demos and examples</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
+  <a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
+
+<br>
+
+## Why use murphy
+
+- ⚡️ Lightweight library. Only 1KB gzipped.
+
+- 🍎 Easy and fast implementation.
+
+- 🎮 Total control of IntersectionObserver parameters.
+
+- 🎨 Full customization of time, duration, ease, delay and distance of each element individually.
+
+- 🎁 Some animations implemented by default.
+
+- 🏝 Plug and play solution to landing pages and simple projects.
+
+- ❎ Native fallback to not supported browsers.
+
+<br>
 
 ## Getting started
 
@@ -29,7 +49,7 @@ $ npm install murphyjs
 ### Usage
 Just do three steps:
 
-#### Tagging your HTML
+#### ⛳ &nbsp; Tag your HTML
 
 In your markup, decore your element with attribute `data-murphy`.
 <br>
@@ -40,7 +60,7 @@ In your markup, decore your element with attribute `data-murphy`.
 The default effect of murphy is `bottom-to-top`, but it's possible use `top-to-bottom`, `left-to-right` and `right-to-left` too.
 
 
-#### Reset your CSS
+#### 🔌 &nbsp; Reset your CSS
 In your CSS, reset all the tagged elements.
 
 ```css
@@ -49,26 +69,52 @@ In your CSS, reset all the tagged elements.
 }
 ```
 
-#### Initializing murphy
+#### 🚀 &nbsp; Start murphy
 
 In Javascript side, just import and run playMurphy when your page is completely loaded to start monitoring decorated elements.
 
 ##### Import
 
 ```javascript
-import { playMurphy, resetMurphy, othersFunctions... } from "murphy";
+import { playMurphy } from "murphy";
 ```
-##### And run
+##### And trigger
 ```javascript
 playMurphy()
 ```
+
+#### That is enough to work! 🤟🏿
+
+
+## Documentation
+
+### Attributes
+You can configure the animation of each decorated element individually. Beyond the `data-murphy` attribute, other attributes are available:
 <br>
 
+| Attribute | Value type | Default value  | What controls  |
+| ------ | ------     | --------- | --------- |
+| data-murphy    | String      | 'bottom-to-top' | - |
+| data-murphy-appearance-distance    | Int      | 50 *(px)* | - |
+| data-murphy-element-distance    | Int      | 30 *(px)* | - |
+| data-murphy-ease    | String      | 'ease' *(can be a cubic-bezier)* | - |
+| data-murphy-delay    | String      | 'bottom-to-top' | - |
+| data-murphy-element-threshold    | Int      | 1 | - |
+| data-murphy-animation-duration    | Int      | 300 *(ms)* | - |
 
+
+### Methods
+
+| Method | What happens  |
+| ------ | ---------     |
+| playMurphy    | Start monitoring on element in DOM tagged with `data-murphy` |
+| resetMurphy    | Resets all data-murphy elements to their initial state. |
+
+<br>
 
 ## Browser support
 
 | Chrome | Safari | IE / Edge | Firefox | Opera |
 | ------ | ------ | --------- | ------- | ----- |
-| 58+    | 12.1+     | Not supported       | 55+     | 62+   |
+| 58+    | 12.1+     | Not *(yet)* supported       | 55+     | 62+   |
 
