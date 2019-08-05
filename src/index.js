@@ -1,14 +1,17 @@
-import {
+import config from "./core/config.js";
+
+const {
   LEFT_TO_RIGHT,
   RIGHT_TO_LEFT,
   TOP_TO_BOTTOM,
   BOTTOM_TO_TOP,
   MURPHY_SELECTOR
-} from "./core/config";
+} = config;
 
 const play = () => {
   if (murphyWillWorks()) {
     var elements = document.querySelectorAll(MURPHY_SELECTOR);
+
     return elements.forEach(element => {
       startAnimation(element);
     });
@@ -113,25 +116,25 @@ const generateAnimate = (elementOptions, animationType) => {
 
 const getAnimationType = (animationType = BOTTOM_TO_TOP, options) => {
   const animations = {
-    BOTTOM_TO_TOP: [
+    [BOTTOM_TO_TOP]: [
       { opacity: "0", transform: `translateY(${options.elementDistance}px)` },
       { opacity: "1", transform: "translateY(0px)" }
     ],
-    TOP_TO_BOTTOM: [
+    [TOP_TO_BOTTOM]: [
       {
         opacity: "0",
         transform: `translateY(-${options.elementDistance}px)`
       },
       { opacity: "1", transform: "translateY(0px)" }
     ],
-    LEFT_TO_RIGHT: [
+    [LEFT_TO_RIGHT]: [
       {
         opacity: "0",
         transform: `translateX(-${options.elementDistance}px)`
       },
       { opacity: "1", transform: "translateX(0px)" }
     ],
-    RIGHT_TO_LEFT: [
+    [RIGHT_TO_LEFT]: [
       { opacity: "0", transform: `translateX(${options.elementDistance}px)` },
       { opacity: "1", transform: "translateX(0px)" }
     ]
@@ -165,4 +168,5 @@ const murphyWillWorks = () => {
   return animationIsSupported() && observerIsSupported();
 };
 
+window.murphy = { play, cancel, reset };
 exports.default = { play, cancel, reset };

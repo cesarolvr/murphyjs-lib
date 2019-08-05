@@ -6,4 +6,4 @@ const config = {
   MURPHY_SELECTOR: "[data-murphy]"
 };
 
-exports.default = config;
+export default config;
