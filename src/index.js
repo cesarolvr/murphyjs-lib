@@ -141,7 +141,7 @@ function getAnimationType(animationType, options) {
 function resetElements(elements) {
   elements.forEach(element => {
     element.style.opacity = 0;
-    if (observerIsSupported()) {
+    if (element.animate) {
       element.animate([{ opacity: "0" }, { opacity: "0" }], {
         duration: 1,
         fill: "forwards"
