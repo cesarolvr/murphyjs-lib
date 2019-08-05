@@ -1,6 +1,6 @@
 {
   "name": "murphyjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple way to implement scroll based animations in your components.",
   "main": "dist/index.js",
   "scripts": {
