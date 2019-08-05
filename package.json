@@ -4,7 +4,7 @@
   "description": "A simple way to implement scroll based animations in your components.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "gulp"
+    "build": "node_modules/.bin/parcel build ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -28,12 +28,7 @@
   },
   "homepage": "https://github.com/cesarolvr/murphy#readme",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/register": "^7.5.5",
-    "del": "^5.0.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-uglify": "^3.0.2"
-  }
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {}
 }

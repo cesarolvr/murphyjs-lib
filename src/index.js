@@ -1,41 +1,49 @@
-var LEFT_TO_RIGHT = "left-to-right";
-var RIGHT_TO_LEFT = "right-to-left";
-var TOP_TO_BOTTOM = "top-to-bottom";
-var BOTTOM_TO_TOP = "bottom-to-top";
+import {
+  LEFT_TO_RIGHT,
+  RIGHT_TO_LEFT,
+  TOP_TO_BOTTOM,
+  BOTTOM_TO_TOP,
+  MURPHY_SELECTOR
+} from "./core/config";
 
-var murphySelector = "[data-murphy]";
-
-function playMurphy() {
-  if (observerIsSupported()) {
-    var elements = document.querySelectorAll(murphySelector);
+const play = () => {
+  if (murphyWillWorks()) {
+    var elements = document.querySelectorAll(MURPHY_SELECTOR);
     return elements.forEach(element => {
       startAnimation(element);
     });
   } else {
-    return cancelMurphy();
+    return cancel();
   }
-}
+};
 
-function cancelMurphy() {
-  var elements = document.querySelectorAll(murphySelector);
+const cancel = () => {
+  var elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
     element.style.opacity = 1;
   });
-}
+};
 
-function resetMurphy() {
-  var elements = document.querySelectorAll(murphySelector);
-  resetElements(elements);
-}
+const reset = () => {
+  var elements = document.querySelectorAll(MURPHY_SELECTOR);
+  elements.forEach(element => {
+    element.style.opacity = 0;
+    if (element.animate) {
+      element.animate([{ opacity: "0" }, { opacity: "0" }], {
+        duration: 1,
+        fill: "forwards"
+      });
+    }
+  });
+};
 
-function startAnimation(element) {
+const startAnimation = element => {
   var animationType = element.dataset.murphy || BOTTOM_TO_TOP;
   var appearanceDistance = element.dataset.murphyAppearanceDistance || 50;
   var elementDistance = element.dataset.murphyElementDistance || 30;
   var ease = element.dataset.murphyEase || "ease";
   var delay = parseInt(element.dataset.murphyAnimationDelay) || 300;
   var elementThreshold = parseInt(element.dataset.murphyElementThreshold) || 1;
-
   var animationDuration =
     parseInt(element.dataset.murphyAnimationDuration) || 300;
 
@@ -55,13 +63,14 @@ function startAnimation(element) {
   };
 
   generateIntersectionObserver({ elementOptions, observerOptions });
-}
+};
 
-function generateIntersectionObserver({ elementOptions, observerOptions }) {
-  var element = elementOptions.element;
-  var animationType = elementOptions.animationType;
-  var threshold = observerOptions.elementThreshold;
-  var observer = new IntersectionObserver(
+const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
+  const element = elementOptions.element;
+  const animationType = elementOptions.animationType;
+  const threshold = observerOptions.elementThreshold;
+
+  const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         var { intersectionRatio } = entry;
@@ -77,16 +86,16 @@ function generateIntersectionObserver({ elementOptions, observerOptions }) {
     }
   );
   observer.observe(element);
-}
+};
 
-function generateAnimate(elementOptions, animationType) {
-  var element = elementOptions.element;
-  var elementDistance = elementOptions.elementDistance;
-  var animationDuration = elementOptions.animationDuration;
-  var ease = elementOptions.ease;
-  var delay = elementOptions.delay;
+const generateAnimate = (elementOptions, animationType) => {
+  const animationDuration = elementOptions.animationDuration;
+  const delay = elementOptions.delay;
+  const element = elementOptions.element;
+  const elementDistance = elementOptions.elementDistance;
+  const ease = elementOptions.ease;
 
-  var options = {
+  const options = {
     elementDistance
   };
 
@@ -98,70 +107,62 @@ function generateAnimate(elementOptions, animationType) {
       delay
     });
   } else {
-    cancelMurphy();
+    cancel();
   }
-}
+};
 
-function getAnimationType(animationType, options) {
-  switch (animationType) {
-    case BOTTOM_TO_TOP:
-      return [
-        { opacity: "0", transform: `translateY(${options.elementDistance}px)` },
-        { opacity: "1", transform: "translateY(0px)" }
-      ];
-    case TOP_TO_BOTTOM:
-      return [
-        {
-          opacity: "0",
-          transform: `translateY(-${options.elementDistance}px)`
-        },
-        { opacity: "1", transform: "translateY(0px)" }
-      ];
-    case LEFT_TO_RIGHT:
-      return [
-        {
-          opacity: "0",
-          transform: `translateX(-${options.elementDistance}px)`
-        },
-        { opacity: "1", transform: "translateX(0px)" }
-      ];
-    case RIGHT_TO_LEFT:
-      return [
-        { opacity: "0", transform: `translateX(${options.elementDistance}px)` },
-        { opacity: "1", transform: "translateX(0px)" }
-      ];
-    default:
-      return [
-        { opacity: "0", transform: `translateY(60px)` },
-        { opacity: "1", transform: "translateY(0px)" }
-      ];
-  }
-}
+const getAnimationType = (animationType = BOTTOM_TO_TOP, options) => {
+  const animations = {
+    BOTTOM_TO_TOP: [
+      { opacity: "0", transform: `translateY(${options.elementDistance}px)` },
+      { opacity: "1", transform: "translateY(0px)" }
+    ],
+    TOP_TO_BOTTOM: [
+      {
+        opacity: "0",
+        transform: `translateY(-${options.elementDistance}px)`
+      },
+      { opacity: "1", transform: "translateY(0px)" }
+    ],
+    LEFT_TO_RIGHT: [
+      {
+        opacity: "0",
+        transform: `translateX(-${options.elementDistance}px)`
+      },
+      { opacity: "1", transform: "translateX(0px)" }
+    ],
+    RIGHT_TO_LEFT: [
+      { opacity: "0", transform: `translateX(${options.elementDistance}px)` },
+      { opacity: "1", transform: "translateX(0px)" }
+    ]
+  };
 
-function resetElements(elements) {
-  elements.forEach(element => {
-    element.style.opacity = 0;
-    if (element.animate) {
-      element.animate([{ opacity: "0" }, { opacity: "0" }], {
-        duration: 1,
-        fill: "forwards"
-      });
-    }
-  });
-}
+  return animations[animationType];
+};
 
-function observerIsSupported() {
+const observerIsSupported = () => {
   if (
     window.IntersectionObserver &&
     "IntersectionObserver" in window &&
     "IntersectionObserverEntry" in window &&
-    "intersectionRatio" in window.IntersectionObserverEntry.prototype &&
-    window.Animation
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
   ) {
     return true;
   } else {
     return false;
   }
-}
+};
 
-export { playMurphy, resetMurphy };
+const animationIsSupported = () => {
+  if (window.Animation) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const murphyWillWorks = () => {
+  return animationIsSupported() && observerIsSupported();
+};
+
+exports.default = { play, cancel, reset };
