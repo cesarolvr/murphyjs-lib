@@ -1,10 +1,8 @@
 <h1 align="center">
   <a href=""><img src="" width="250"/></a>
-  <br>
-  murphy.js
 </h1>
 
-<h4 align="center">JavaScript vanilla library to scroll based animations </h4>
+<h3 align="center">A JavaScript vanilla library to scroll based reveal animations </h3>
 
 <blockquote align="center">
   <em>murphy.js</em> is a lightweight JavaScript animation library with a simple implementation way.<br>
