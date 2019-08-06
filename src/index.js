@@ -169,4 +169,4 @@ const murphyWillWorks = () => {
 };
 
 window.murphy = { play, cancel, reset };
-exports.default = { play, cancel, reset };
+export default { play, cancel, reset };
