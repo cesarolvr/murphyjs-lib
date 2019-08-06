@@ -110,7 +110,7 @@ You can configure the animation of each decorated element individually. Beyond t
 | data-murphy-appearance-distance    | Int      | 50 *(px)* | - |
 | data-murphy-element-distance    | Int      | 30 *(px)* | - |
 | data-murphy-ease    | String      | 'ease' *(can be a cubic-bezier)* | - |
-| data-murphy-delay    | String      | 'bottom-to-top' | - |
+| data-murphy-animation-delay    | Int      | 300 *(ms)* | - |
 | data-murphy-element-threshold    | Int      | 1 | - |
 | data-murphy-animation-duration    | Int      | 300 *(ms)* | - |
 

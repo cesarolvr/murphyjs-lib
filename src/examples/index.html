@@ -5,20 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Simple test</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+    />
     <style>
-      h1 {
+      div {
+        background: #f1a4a4;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      p {
         opacity: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+        font-size: 3rem;
+        margin: 20px;
+      }
+
+      .cover {
+        flex-direction: row;
       }
     </style>
   </head>
   <body>
-    <div data-murphy="left-to-right">Left to right</div>
-    <div data-murphy="right-to-left">Right to left</div>
-    <div data-murphy="bottom-to-top">Bottom to top</div>
-    <div data-murphy="top-to-bottom">Top to bottom</div>
+    <div class="cover">
+      <p data-murphy="bottom-to-top">m</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</p>
+      <p data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</p>
+    </div>
+    <div>
+      <p data-murphy="bottom-to-top">Bottom to top</p>
+      <p data-murphy="top-to-bottom">Top to bottom</p>
+      <p data-murphy="left-to-right">Left to right</p>
+      <p data-murphy="right-to-left">Right to left</p>
+    </div>
+    <div>
+      <p data-murphy="bottom-to-top">Bottom to top</p>
+    </div>
+    <div>
+      <p data-murphy="top-to-bottom">Top to bottom</p>
+    </div>
+    <div>
+      <p data-murphy="left-to-right">Left to right</p>
+    </div>
+    <div>
+      <p data-murphy="right-to-left">Right to left</p>
+    </div>
   </body>
   <script src="../../dist/index.js"></script>
   <script>
-    murphy.play()
+    murphy.play();
   </script>
 </html>
