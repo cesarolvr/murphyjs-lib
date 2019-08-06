@@ -37,10 +37,17 @@
 
 ### Download
 
-Via npm
+Via npm:
 
 ```bash
 $ npm install murphyjs
+```
+
+Via file include:
+
+Download file [here](https://raw.githubusercontent.com/cesarolvr/murphyjs/master/dist/index.js) and link in your HTML.
+```html
+<script src="./murphy/index.js"></script>
 ```
 
 
@@ -74,11 +81,18 @@ In Javascript side, just import and run playMurphy when your page is completely 
 ##### Import
 
 ```javascript
-import { playMurphy } from "murphy";
+import murphy from "murphyjs";
 ```
 ##### And trigger
 ```javascript
-playMurphy()
+murphy.play()
+```
+
+#### Or call from window
+
+If you added murphy via **file include**, just access murphy's functions in window:
+```javascript
+window.play()
 ```
 
 #### That is enough to work! 🤟🏿
@@ -105,8 +119,8 @@ You can configure the animation of each decorated element individually. Beyond t
 
 | Method | What happens  |
 | ------ | ---------     |
-| playMurphy    | Start monitoring on element in DOM tagged with `data-murphy` |
-| resetMurphy    | Resets all data-murphy elements to their initial state. |
+| play    | Start monitoring on element in DOM tagged with `data-murphy` |
+| reset    | Resets all data-murphy elements to their initial state. |
 
 <br>
 
