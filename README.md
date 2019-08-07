@@ -133,7 +133,7 @@ window.play()
 
 #### 🚨 Important
 > These animations are triggered when scrolling the page, but when the tagged elements are already within the bounds of the screen, everything works like appearance animations that React Transition Group already does.
-So if you need animations on the first upload, murphy is for you!
+So if you need animations on the first load of site, murphy is for you!
 
 
 <br>
