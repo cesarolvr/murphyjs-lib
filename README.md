@@ -172,3 +172,8 @@ You can configure the animation of each decorated element individually. Beyond t
 | ------ | ------ | --------- | ------- | ----- |
 | 58+    | 12.1+     | Not *(yet)* supported       | 55+     | 62+   |
 
+
+## License
+
+The code is available under the [MIT License](LICENSE.md).
+
