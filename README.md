@@ -1,5 +1,5 @@
 <h5 align="center">
-  <a href=""><img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/murphyjs-logo.png" width="450"/></a>
+<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/murphyjs-logo.png" width="450"/>
 </h5>
 
 <h4 align="center">A JavaScript vanilla library to scroll based reveal animations </h4>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
+  <a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
 
 <br>
@@ -97,6 +97,46 @@ window.play()
 
 #### That is enough to work! 🤟🏿
 
+<br>
+
+## Examples
+
+#### 1. This `data-attributes`:
+```html
+<p data-murphy="bottom-to-top">Bottom to top</p>
+<p data-murphy="top-to-bottom">Top to bottom</p>
+<p data-murphy="left-to-right">Left to right</p>
+<p data-murphy="right-to-left">Right to left</p>
+```
+
+####    Will result in that:
+
+<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/all.gif" width="450"/>
+
+#### 2. To do the same effect that murphy's logo, use:
+```html
+<p data-murphy="bottom-to-top">m</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</p>
+```
+
+####    Result:
+<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/logo.gif" width="450"/>
+
+<br>
+
+#### 🚨 Important
+> These animations are triggered when scrolling the page, but when the tagged elements are already within the bounds of the screen, everything works like appearance animations that React Transition Group already does.
+So if you need animations on the first upload, murphy is for you!
+
+
+<br>
 
 ## Documentation
 
