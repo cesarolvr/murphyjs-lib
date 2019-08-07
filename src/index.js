@@ -9,7 +9,7 @@ const {
 } = config;
 
 const play = () => {
-  if (murphyWillWorks()) {
+  if (murphyWillWork()) {
     var elements = document.querySelectorAll(MURPHY_SELECTOR);
 
     return elements.forEach(element => {
@@ -164,7 +164,7 @@ const animationIsSupported = () => {
   }
 };
 
-const murphyWillWorks = () => {
+const murphyWillWork = () => {
   return animationIsSupported() && observerIsSupported();
 };
 
