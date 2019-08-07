@@ -5,57 +5,60 @@ const {
   RIGHT_TO_LEFT,
   TOP_TO_BOTTOM,
   BOTTOM_TO_TOP,
-  MURPHY_SELECTOR
+  MURPHY_SELECTOR,
+  APPEARANCE_DISTANCE_DEFAULT,
+  ELEMENT_DISTANCE_DEFAULT,
+  EASE_DEFAULT,
+  ANIMATION_DELAY_DEFAULT,
+  THRESHOLD_DEFAULT,
+  ANIMATION_DURATION_DEFAULT,
 } = config;
 
 const play = () => {
-  if (murphyWillWork()) {
-    var elements = document.querySelectorAll(MURPHY_SELECTOR);
+  if (!murphyWillWork()) return cancel();
+  const elements = document.querySelectorAll(MURPHY_SELECTOR);
 
-    return elements.forEach(element => {
-      startAnimation(element);
-    });
-  } else {
-    return cancel();
-  }
+  return elements.forEach(element => {
+    startAnimation(element);
+  });
 };
 
 const cancel = () => {
-  var elements = document.querySelectorAll(MURPHY_SELECTOR);
+  const elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
     element.style.opacity = 1;
   });
 };
 
 const reset = () => {
-  var elements = document.querySelectorAll(MURPHY_SELECTOR);
+  const elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
     element.style.opacity = 0;
-    if (element.animate) {
+    element.animate &&
       element.animate([{ opacity: "0" }, { opacity: "0" }], {
         duration: 1,
         fill: "forwards"
       });
-    }
   });
 };
 
 const startAnimation = element => {
-  var animationType = element.dataset.murphy || BOTTOM_TO_TOP;
-  var appearanceDistance = element.dataset.murphyAppearanceDistance || 50;
-  var elementDistance = element.dataset.murphyElementDistance || 30;
-  var ease = element.dataset.murphyEase || "ease";
-  var delay = parseInt(element.dataset.murphyAnimationDelay) || 300;
-  var elementThreshold = parseInt(element.dataset.murphyElementThreshold) || 1;
-  var animationDuration =
-    parseInt(element.dataset.murphyAnimationDuration) || 300;
+  const animationType = element.dataset.murphy || BOTTOM_TO_TOP;
+  const appearanceDistance = element.dataset.murphyAppearanceDistance || APPEARANCE_DISTANCE_DEFAULT;
+  const elementDistance = element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT;
+  const ease = element.dataset.murphyEase || EASE_DEFAULT;
+  const delay = parseInt(element.dataset.murphyAnimationDelay) || ANIMATION_DELAY_DEFAULT;
+  const elementThreshold =
+    parseInt(element.dataset.murphyElementThreshold) || THRESHOLD_DEFAULT;
+  const animationDuration =
+    parseInt(element.dataset.murphyAnimationDuration) || ANIMATION_DURATION_DEFAULT;
 
-  var observerOptions = {
-    threshold: 1,
+  const observerOptions = {
+    threshold: elementThreshold,
     rootMargin: `0px 0px ${appearanceDistance * -1}px 0px`
   };
 
-  var elementOptions = {
+  const elementOptions = {
     element,
     animationType,
     animationDuration,
@@ -76,7 +79,7 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
-        var { intersectionRatio } = entry;
+        const { intersectionRatio } = entry;
         if (intersectionRatio > 0) {
           generateAnimate(elementOptions, animationType);
           observer.unobserve(entry.target);
@@ -102,16 +105,13 @@ const generateAnimate = (elementOptions, animationType) => {
     elementDistance
   };
 
-  if (element.animate) {
-    element.animate(getAnimationType(animationType, options), {
-      duration: animationDuration,
-      fill: "forwards",
-      easing: ease,
-      delay
-    });
-  } else {
-    cancel();
-  }
+  if (!element.animate) return cancel();
+  element.animate(getAnimationType(animationType, options), {
+    duration: animationDuration,
+    fill: "forwards",
+    easing: ease,
+    delay
+  });
 };
 
 const getAnimationType = (animationType = BOTTOM_TO_TOP, options) => {
@@ -144,24 +144,16 @@ const getAnimationType = (animationType = BOTTOM_TO_TOP, options) => {
 };
 
 const observerIsSupported = () => {
-  if (
+  return !!(
     window.IntersectionObserver &&
     "IntersectionObserver" in window &&
     "IntersectionObserverEntry" in window &&
     "intersectionRatio" in window.IntersectionObserverEntry.prototype
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+  );
 };
 
 const animationIsSupported = () => {
-  if (window.Animation) {
-    return true;
-  } else {
-    return false;
-  }
+  return !!window.Animation;
 };
 
 const murphyWillWork = () => {
