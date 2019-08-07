@@ -17,7 +17,7 @@
 
 ## Why use murphy
 
-- ⚡️ Lightweight library. Only 1KB gzipped.
+- ⚡️ Lightweight library (only 1.7KB gzipped).
 
 - 🍎 Easy and fast implementation.
 
