@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://cesarolvr.github.io/murphyjs/index.html">Demo</a>&nbsp;|&nbsp;<a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
+  <a href="https://cesarolvr.github.io/murphyjs/index.html" target="_blank">Demo</a>&nbsp;|&nbsp;<a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
 
 <br>
