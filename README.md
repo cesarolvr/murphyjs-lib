@@ -92,7 +92,9 @@ murphy.play()
 
 If you added murphy via **file include**, just access murphy's functions in window:
 ```javascript
-window.play()
+window.murphy.play()
+// or just
+murphy.play()
 ```
 
 #### That is enough to work! 🤟🏿
