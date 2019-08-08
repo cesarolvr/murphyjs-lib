@@ -76,7 +76,7 @@ In your CSS, reset all the tagged elements.
 
 #### 🚀 &nbsp; Start murphy
 
-In Javascript side, just import and run playMurphy when your page is completely loaded to start monitoring decorated elements.
+In Javascript side, just import and run `play` when your page is completely loaded to start monitoring decorated elements.
 
 ##### Import
 
