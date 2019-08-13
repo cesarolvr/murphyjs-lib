@@ -27,6 +27,11 @@ const cancel = () => {
   const elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
     element.style.opacity = 1;
+    element.animate &&
+      element.animate([{ opacity: "1" }, { opacity: "1" }], {
+        duration: 1,
+        fill: "forwards"
+      });
   });
 };
 
@@ -63,7 +68,6 @@ const startAnimation = element => {
     animationType,
     animationDuration,
     elementDistance,
-    elementThreshold,
     ease,
     delay
   };
@@ -72,10 +76,10 @@ const startAnimation = element => {
 };
 
 const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
+  
   const element = elementOptions.element;
   const animationType = elementOptions.animationType;
-  const threshold = observerOptions.elementThreshold;
-
+  
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -87,8 +91,7 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
       });
     },
     {
-      ...observerOptions,
-      threshold
+      observerOptions,
     }
   );
   observer.observe(element);
