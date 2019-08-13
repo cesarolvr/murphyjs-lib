@@ -1,5 +1,5 @@
 <h5 align="center">
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/murphyjs-logo.png" width="450"/>
+<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/murphyjs-logo.png" width="650"/>
 </h5>
 
 <h4 align="center">A JavaScript vanilla library to scroll based reveal animations </h4>
@@ -76,7 +76,7 @@ In your CSS, reset all the tagged elements.
 
 #### 🚀 &nbsp; Start murphy
 
-In Javascript side, just import and run playMurphy when your page is completely loaded to start monitoring decorated elements.
+In Javascript side, just import and run `play` when your page is completely loaded to start monitoring decorated elements.
 
 ##### Import
 
