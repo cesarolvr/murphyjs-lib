@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/cesarolvr/murphy#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "^1.12.4"
   },
   "dependencies": {}
 }
