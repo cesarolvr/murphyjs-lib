@@ -1,0 +1,5 @@
+{
+  "buildCommand": "yarn build:docs",
+  "outputDirectory": ".next",
+  "framework": "nextjs"
+} 
