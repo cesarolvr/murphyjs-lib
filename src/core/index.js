@@ -14,6 +14,14 @@ const {
   ANIMATION_DURATION_DEFAULT,
 } = config;
 
+const debounce = (fn, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+};
+
 const play = () => {
   if (!murphyWillWork()) return cancel();
   const elements = document.querySelectorAll(MURPHY_SELECTOR);
@@ -47,6 +55,17 @@ const reset = () => {
   });
 };
 
+// Cleanup function to disconnect observers
+const cleanup = () => {
+  const elements = document.querySelectorAll(MURPHY_SELECTOR);
+  elements.forEach(element => {
+    if (element._observer) {
+      element._observer.disconnect();
+      delete element._observer;
+    }
+  });
+};
+
 const startAnimation = element => {
   const animationType = element.dataset.murphy || BOTTOM_TO_TOP;
   const appearanceDistance = element.dataset.murphyAppearanceDistance || APPEARANCE_DISTANCE_DEFAULT;
@@ -54,13 +73,17 @@ const startAnimation = element => {
   const ease = element.dataset.murphyEase || EASE_DEFAULT;
   const delay = parseInt(element.dataset.murphyAnimationDelay) || ANIMATION_DELAY_DEFAULT;
   const elementThreshold =
-    parseInt(element.dataset.murphyElementThreshold) || THRESHOLD_DEFAULT;
+    parseFloat(element.dataset.murphyElementThreshold) || THRESHOLD_DEFAULT;
   const animationDuration =
     parseInt(element.dataset.murphyAnimationDuration) || ANIMATION_DURATION_DEFAULT;
 
+  // Configurable root margin for all sides
+  const rootMargin = element.dataset.murphyRootMargin || 
+    `0px 0px ${appearanceDistance * -1}px 0px`;
+
   const observerOptions = {
     threshold: elementThreshold,
-    rootMargin: `0px 0px ${appearanceDistance * -1}px 0px`
+    rootMargin
   };
 
   const elementOptions = {
@@ -76,25 +99,31 @@ const startAnimation = element => {
 };
 
 const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
-  
-  const element = elementOptions.element;
-  const animationType = elementOptions.animationType;
-  
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        const { intersectionRatio } = entry;
-        if (intersectionRatio > 0) {
-          generateAnimate(elementOptions, animationType);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      observerOptions,
-    }
-  );
-  observer.observe(element);
+  try {
+    const element = elementOptions.element;
+    const animationType = elementOptions.animationType;
+    
+    const observer = new IntersectionObserver(
+      debounce(entries => {
+        entries.forEach(entry => {
+          const { intersectionRatio } = entry;
+          if (intersectionRatio > 0) {
+            generateAnimate(elementOptions, animationType);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, 100),
+      observerOptions
+    );
+
+    // Store observer reference for cleanup
+    element._observer = observer;
+    observer.observe(element);
+  } catch (error) {
+    console.warn('IntersectionObserver not supported:', error);
+    // Fallback to immediate animation
+    generateAnimate(elementOptions, animationType);
+  }
 };
 
 const generateAnimate = (elementOptions, animationType) => {
@@ -163,5 +192,5 @@ const murphyWillWork = () => {
   return animationIsSupported() && observerIsSupported();
 };
 
-window.murphy = { play, cancel, reset };
-export default { play, cancel, reset };
+window.murphy = { play, cancel, reset, cleanup };
+export default { play, cancel, reset, cleanup };

@@ -1,5 +1,5 @@
 <h5 align="center">
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/murphyjs-logo.png" width="650"/>
+<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/murphyjs-logo.png" width="650"/>
 </h5>
 
 <h4 align="center">A JavaScript vanilla library to scroll based reveal animations </h4>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://cesarolvr.github.io/murphyjs/index.html" target="_blank">Demo</a>&nbsp;|&nbsp;<a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
+  <a href="https://cesarolvr.github.io/murphyjs-lib/index.html" target="_blank">Demo</a>&nbsp;|&nbsp;<a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
 
 <br>
@@ -40,12 +40,12 @@
 Via npm:
 
 ```bash
-$ npm install murphyjs
+$ npm install murphyjs-lib
 ```
 
 Via file include:
 
-Download file [here](https://raw.githubusercontent.com/cesarolvr/murphyjs/master/dist/index.js) and link in your HTML.
+Download file [here](https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/dist/index.js) and link in your HTML.
 ```html
 <script src="./murphy/index.js"></script>
 ```
@@ -81,7 +81,7 @@ In Javascript side, just import and run `play` when your page is completely load
 ##### Import
 
 ```javascript
-import murphy from "murphyjs";
+import murphy from "murphyjs-lib";
 ```
 ##### And trigger
 ```javascript
@@ -113,7 +113,7 @@ murphy.play()
 
 ####    Will result in that:
 
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/all.gif" width="450"/>
+<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/all.gif" width="450"/>
 
 #### 2. To do the same effect that murphy's logo, use:
 ```html
@@ -129,7 +129,7 @@ murphy.play()
 ```
 
 ####    Result:
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs/master/logo.gif" width="450"/>
+<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/logo.gif" width="450"/>
 
 <br>
 
@@ -148,13 +148,14 @@ You can configure the animation of each decorated element individually. Beyond t
 
 | Attribute | Value type | Default value  | What controls  |
 | ------ | ------     | --------- | --------- |
-| data-murphy    | String      | 'bottom-to-top' | - |
-| data-murphy-appearance-distance    | Int      | 50 *(px)* | - |
-| data-murphy-element-distance    | Int      | 30 *(px)* | - |
-| data-murphy-ease    | String      | 'ease' *(can be a cubic-bezier)* | - |
-| data-murphy-animation-delay    | Int      | 300 *(ms)* | - |
-| data-murphy-element-threshold    | Int      | 1 | - |
-| data-murphy-animation-duration    | Int      | 300 *(ms)* | - |
+| data-murphy    | String      | 'bottom-to-top' | Animation direction |
+| data-murphy-appearance-distance    | Int      | 50 *(px)* | Distance from viewport edge to trigger animation |
+| data-murphy-element-distance    | Int      | 30 *(px)* | Distance the element moves during animation |
+| data-murphy-ease    | String      | 'ease' *(can be a cubic-bezier)* | Animation easing function |
+| data-murphy-animation-delay    | Int      | 300 *(ms)* | Delay before animation starts |
+| data-murphy-element-threshold    | Float      | 1.0 | How much of the element needs to be visible to trigger (0-1, where 1 means 100% visible) |
+| data-murphy-animation-duration    | Int      | 300 *(ms)* | Duration of the animation |
+| data-murphy-root-margin    | String      | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
 
 
 ### Methods
@@ -162,7 +163,8 @@ You can configure the animation of each decorated element individually. Beyond t
 | Method | What happens  |
 | ------ | ---------     |
 | play    | Start monitoring on element in DOM tagged with `data-murphy` |
-| reset    | Resets all data-murphy elements to their initial state. |
+| reset    | Resets all data-murphy elements to their initial state |
+| cleanup  | Disconnects all Intersection Observers and cleans up resources |
 
 <br>
 
