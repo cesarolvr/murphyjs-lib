@@ -1,4 +1,4 @@
-import config from "./core/config.js";
+import config from "./config.js";
 
 const {
   LEFT_TO_RIGHT,

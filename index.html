@@ -4,68 +4,95 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Murphy examples</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
-    />
+    <title>Murphy.js Test</title>
     <style>
-      div {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
       }
-
-      p {
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .box {
+        background: #f0f0f0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 4px;
         opacity: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: #f1a4a4;
-        font-size: 3rem;
-        margin: 20px;
       }
-
-      .cover {
-        flex-direction: row;
+      .controls {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      button {
+        margin: 5px;
+        padding: 8px 16px;
+        border: none;
+        background: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0056b3;
       }
     </style>
   </head>
   <body>
-    <div class="cover">
-      <p data-murphy="bottom-to-top">m</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</p>
-      <p data-murphy="bottom-to-top" data-murphy-animation-delay="1100" data-stay="">s</p>
+    <div class="controls">
+      <button onclick="murphy.play()">Play</button>
+      <button onclick="murphy.reset()">Reset</button>
+      <button onclick="murphy.cancel()">Cancel</button>
+      <button onclick="murphy.cleanup()">Cleanup</button>
     </div>
-    <div>
-      <p data-murphy="bottom-to-top">Bottom to top</p>
-      <p data-murphy="top-to-bottom">Top to bottom</p>
-      <p data-murphy="left-to-right">Left to right</p>
-      <p data-murphy="right-to-left">Right to left</p>
+
+    <div class="container">
+      <h1>Murphy.js Test Page</h1>
+      
+      <div class="box" data-murphy="bottom-to-top">
+        Bottom to Top Animation
+      </div>
+
+      <div class="box" data-murphy="top-to-bottom">
+        Top to Bottom Animation
+      </div>
+
+      <div class="box" data-murphy="left-to-right">
+        Left to Right Animation
+      </div>
+
+      <div class="box" data-murphy="right-to-left">
+        Right to Left Animation
+      </div>
+
+      <div class="box" data-murphy="bottom-to-top" data-murphy-animation-delay="500">
+        Delayed Animation (500ms)
+      </div>
+
+      <div class="box" data-murphy="bottom-to-top" data-murphy-element-distance="100">
+        Custom Distance (100px)
+      </div>
     </div>
-    <div>
-      <p data-murphy="bottom-to-top">Bottom to top</p>
-    </div>
-    <div>
-      <p data-murphy="top-to-bottom">Top to bottom</p>
-    </div>
-    <div>
-      <p data-murphy="left-to-right">Left to right</p>
-    </div>
-    <div>
-      <p data-murphy="right-to-left">Right to left</p>
-    </div>
+
+    <script src="dist/index.js"></script>
+    <script>
+      // Wait for the library to be loaded
+      window.addEventListener('load', function() {
+        // Initialize animations
+        if (window.murphy) {
+          window.murphy.play();
+        } else {
+          console.error('Murphy library not loaded properly');
+        }
+      });
+    </script>
   </body>
-  <script src="./dist/index.js"></script>
-  <script>
-    murphy.reset();
-    murphy.play();
-  </script>
 </html>
