@@ -1,0 +1,59 @@
+# MurphyJS
+
+A JavaScript vanilla library to scroll based reveal animations.
+
+MurphyJS is a lightweight JavaScript animation library with a simple implementation way. All this works by joining of data-attributes, Web animate API and Intersection Observer API.
+
+## Why use MurphyJS
+
+- ⚡️ Lightweight library (only 1.7KB gzipped)
+- 🍎 Easy and fast implementation
+- 🎮 Total control of IntersectionObserver parameters
+- 🎨 Full customization of time, duration, ease, delay and distance of each element individually
+- 🎁 Some animations implemented by default
+- 🏝 Plug and play solution to landing pages and simple projects
+- ❎ Native fallback to not supported browsers
+
+## Quick Start
+
+### Installation
+
+```bash
+npm install murphyjs-lib
+```
+
+### Basic Usage
+
+Just do three steps:
+
+1. Tag your HTML with `data-murphy`:
+```html
+<div data-murphy="left-to-right">Any content here</div>
+```
+
+2. Reset your CSS:
+```css
+*[data-murphy] {
+  opacity: 0;
+}
+```
+
+3. Start MurphyJS:
+```javascript
+import murphy from "murphyjs-lib";
+murphy.play()
+```
+
+That's it! 🤟🏿
+
+## Features
+
+- 🚀 Simple and lightweight
+- 🎨 Customizable animations
+- 📱 Responsive design
+- 🔍 Intersection Observer based
+- 🛠️ Easy to use API
+
+## Documentation
+
+Check out our [Getting Started](/getting-started) guide to learn more about MurphyJS. 

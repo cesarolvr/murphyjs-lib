@@ -1,0 +1,130 @@
+# Getting Started
+
+Learn how to get started with MurphyJS in your project.
+
+## Installation
+
+### Via npm
+
+```bash
+npm install murphyjs-lib
+```
+
+### Via file include
+
+Download file [here](https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/dist/index.js) and link in your HTML:
+
+```html
+<script src="./murphy/index.js"></script>
+```
+
+## Basic Setup
+
+### 1. Tag your HTML
+
+In your markup, decorate your element with attribute `data-murphy`:
+
+```html
+<div data-murphy="left-to-right">Any content here</div>
+```
+
+The default effect of MurphyJS is `bottom-to-top`, but it's possible to use:
+- `top-to-bottom`
+- `left-to-right`
+- `right-to-left`
+
+### 2. Reset your CSS
+
+In your CSS, reset all the tagged elements:
+
+```css
+*[data-murphy] {
+  opacity: 0;
+}
+```
+
+### 3. Start MurphyJS
+
+#### Import
+
+```javascript
+import murphy from "murphyjs-lib";
+```
+
+#### And trigger
+
+```javascript
+murphy.play()
+```
+
+#### Or call from window
+
+If you added MurphyJS via **file include**, just access MurphyJS's functions in window:
+
+```javascript
+window.murphy.play()
+// or just
+murphy.play()
+```
+
+## Available Animations
+
+### Basic Animations
+
+```html
+<p data-murphy="bottom-to-top">Bottom to top</p>
+<p data-murphy="top-to-bottom">Top to bottom</p>
+<p data-murphy="left-to-right">Left to right</p>
+<p data-murphy="right-to-left">Right to left</p>
+```
+
+### Sequential Animations
+
+To create sequential animations like MurphyJS's logo:
+
+```html
+<p data-murphy="bottom-to-top">m</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</p>
+<p data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</p>
+```
+
+## Configuration Options
+
+You can configure the animation of each decorated element individually using these attributes:
+
+| Attribute | Value type | Default value | What controls |
+|-----------|------------|---------------|---------------|
+| data-murphy | String | 'bottom-to-top' | Animation direction |
+| data-murphy-appearance-distance | Int | 50 *(px)* | Distance from viewport edge to trigger animation |
+| data-murphy-element-distance | Int | 30 *(px)* | Distance the element moves during animation |
+| data-murphy-ease | String | 'ease' | Animation easing function |
+| data-murphy-animation-delay | Int | 300 *(ms)* | Delay before animation starts |
+| data-murphy-element-threshold | Float | 1.0 | How much of the element needs to be visible to trigger (0-1) |
+| data-murphy-animation-duration | Int | 300 *(ms)* | Duration of the animation |
+| data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
+
+## API Reference
+
+### Methods
+
+| Method | What happens |
+|--------|--------------|
+| play | Start monitoring elements in DOM tagged with `data-murphy` |
+| reset | Resets all data-murphy elements to their initial state |
+| cleanup | Disconnects all Intersection Observers and cleans up resources |
+
+## Browser Support
+
+| Chrome | Safari | IE / Edge | Firefox | Opera |
+|--------|--------|-----------|---------|-------|
+| 58+ | 12.1+ | Not *(yet)* supported | 55+ | 62+ |
+
+## Important Note
+
+These animations are triggered when scrolling the page, but when the tagged elements are already within the bounds of the screen, everything works like appearance animations that React Transition Group already does. So if you need animations on the first load of site, MurphyJS is for you! 

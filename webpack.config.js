@@ -20,6 +20,10 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            configFile: path.resolve(__dirname, 'babel.librc')
+          }
         },
       },
     ],
@@ -27,7 +31,10 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
   },
-  mode: 'development',
+  mode: 'production',
+  optimization: {
+    minimize: true
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, '/'),

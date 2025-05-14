@@ -1,0 +1,10 @@
+{
+  "index": {
+    "title": "Introduction",
+    "display": "hidden"
+  },
+  "getting-started": "Getting Started",
+  "api-reference": "API Reference",
+  "examples": "Examples",
+  "custom-animations": "Custom Animations"
+} 
