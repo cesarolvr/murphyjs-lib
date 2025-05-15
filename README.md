@@ -1,12 +1,16 @@
 # MurphyJS
 
 <div align="center">
+  
+  <img src="logo.png" alt="MurphyJS Logo" width="600"/>
+  <br/><br/>
   <img src="https://img.shields.io/npm/v/murphyjs.svg" alt="npm version" />
-  <img src="https://img.shields.io/bundlephobia/minzip/murphyjs" alt="bundle size" />
+  <!-- <img src="https://img.shields.io/bundlephobia/minzip/murphyjs" alt="bundle size" /> -->
   <img src="https://img.shields.io/npm/dm/murphyjs" alt="npm downloads" />
   <img src="https://img.shields.io/github/license/cesarolvr/murphyjs" alt="license" />
-  <br/><br/>
-  <img src="logo.png" alt="MurphyJS Logo" width="800"/>
+  <br />
+  <br />
+
   A lightweight JavaScript library for creating smooth animations with a simple API.
 </div>
 
