@@ -2,6 +2,7 @@
   "name": "murphyjs",
   "version": "2.0.1",
   "main": "dist/index.js",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
