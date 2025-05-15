@@ -2,6 +2,7 @@ interface Murphy {
   play: () => void;
   pause: () => void;
   stop: () => void;
+  reset: () => void;
 }
 
 declare global {
