@@ -22,7 +22,7 @@ murphy.js uses data attributes to configure animations. Here's a complete list o
 ### `play()`
 Starts monitoring elements in DOM tagged with `data-murphy` attribute.
 
-```javascript
+```javascript copy
 import murphy from 'murphyjs';
 
 // Start monitoring
@@ -32,7 +32,7 @@ murphy.play();
 ### `reset()`
 Resets all data-murphy elements to their initial state.
 
-```javascript
+```javascript copy
 // Reset all animations
 murphy.reset();
 ```
@@ -40,7 +40,7 @@ murphy.reset();
 ### `cleanup()`
 Disconnects all Intersection Observers and cleans up resources.
 
-```javascript
+```javascript copy
 // Clean up resources
 murphy.cleanup();
 ```
@@ -48,14 +48,14 @@ murphy.cleanup();
 ## Usage Examples
 
 ### Basic Animation
-```html
+```html copy
 <div data-murphy="bottom-to-top">
   This element will animate from bottom to top
 </div>
 ```
 
 ### Custom Distance and Duration
-```html
+```html copy
 <div 
   data-murphy="left-to-right"
   data-murphy-element-distance="100"
@@ -66,7 +66,7 @@ murphy.cleanup();
 ```
 
 ### Custom Easing
-```html
+```html copy
 <div 
   data-murphy="top-to-bottom"
   data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)"
@@ -76,7 +76,7 @@ murphy.cleanup();
 ```
 
 ### Sequential Animations
-```html
+```html copy
 <div data-murphy="bottom-to-top">First</div>
 <div data-murphy="bottom-to-top" data-murphy-animation-delay="200">Second</div>
 <div data-murphy="bottom-to-top" data-murphy-animation-delay="400">Third</div>

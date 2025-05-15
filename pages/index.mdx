@@ -1,8 +1,8 @@
 ---
-title: 'Home'
+title: 'Murphy.js'
 ---
 
-# Murphy.js
+# <p class="pink">murphy.js</p>
 
 A JavaScript vanilla library to scroll based reveal animations.
 The <strong>murphy.js</strong> is a lightweight JavaScript animation library with a simple implementation way. All this works by joining of data-attributes, Web animate API and Intersection Observer API.
@@ -21,7 +21,7 @@ The <strong>murphy.js</strong> is a lightweight JavaScript animation library wit
 
 ### Installation
 
-```bash
+```bash copy copy
 npm install murphyjs
 ```
 
@@ -30,19 +30,19 @@ npm install murphyjs
 Just do three steps:
 
 1. Tag your HTML with `data-murphy`:
-```html
+```html copy copy
 <div data-murphy="left-to-right">Any content here</div>
 ```
 
 2. Reset your CSS:
-```css
+```css copy copy
 *[data-murphy] {
   opacity: 0;
 }
 ```
 
 3. Start murphy.js:
-```javascript
+```javascript copy copy
 import murphy from "murphyjs";
 murphy.play()
 ```

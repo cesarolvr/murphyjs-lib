@@ -1,16 +1,16 @@
-# Let's Roll! 🎯
+# Let's roll 🎯
 
 ## Installation
 
 ### Via npm
 
-```bash
+```bash copy
 npm install murphyjs
 ```
 
 ### Via yarn
 
-```bash
+```bash copy
 yarn add murphyjs
 ```
 
@@ -18,7 +18,7 @@ yarn add murphyjs
 
 Download file [here](https://cesarolvr.github.io/murphyjs/dist/index.js) and link in your HTML:
 
-```html
+```html copy
 <script src="./murphy/index.js"></script>
 ```
 
@@ -28,7 +28,7 @@ Download file [here](https://cesarolvr.github.io/murphyjs/dist/index.js) and lin
 
 In your markup, decorate your element with attribute `data-murphy`:
 
-```html
+```html copy
 <div data-murphy="left-to-right">Any content here</div>
 ```
 
@@ -41,7 +41,7 @@ The default effect of murphy.js is `bottom-to-top`, but it's possible to use:
 
 In your CSS, reset all the tagged elements:
 
-```css
+```css copy
 *[data-murphy] {
   opacity: 0;
 }
@@ -51,13 +51,13 @@ In your CSS, reset all the tagged elements:
 
 #### Import
 
-```javascript
+```javascript copy
 import murphy from "murphyjs";
 ```
 
 #### And trigger
 
-```javascript
+```javascript copy
 murphy.play()
 ```
 
@@ -65,7 +65,7 @@ murphy.play()
 
 If you added murphy.js via **file include**, just access murphy.js's functions in window:
 
-```javascript
+```javascript copy
 window.murphy.play()
 // or just
 murphy.play()
@@ -75,7 +75,7 @@ murphy.play()
 
 ### Basic Animations
 
-```html
+```html copy
 <p data-murphy="bottom-to-top">Bottom to top</p>
 <p data-murphy="top-to-bottom">Top to bottom</p>
 <p data-murphy="left-to-right">Left to right</p>
@@ -86,7 +86,7 @@ murphy.play()
 
 To create sequential animations like murphy.js's logo:
 
-```html
+```html copy
 <p data-murphy="bottom-to-top">m</p>
 <p data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</p>
 <p data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</p>

@@ -1,8 +1,8 @@
-import type { AppProps } from 'next/app'
-import React from 'react'
-import Script from 'next/script'
-import Head from 'next/head'
-import '../styles/globals.css'
+import type { AppProps } from "next/app";
+import React from "react";
+import Script from "next/script";
+import Head from "next/head";
+import "../styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,8 +13,11 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Script src="https://unpkg.com/murphyjs@2.0.1/dist/index.js" strategy="beforeInteractive" />
+      <Script
+        src="https://unpkg.com/murphyjs@2.0.1/dist/index.js"
+        strategy="beforeInteractive"
+      />
       <Component {...pageProps} />
     </>
-  )
-} 
+  );
+}
