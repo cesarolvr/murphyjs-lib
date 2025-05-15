@@ -18,10 +18,10 @@ These examples show the four basic animation directions available in murphy.js:
 
 <div id="basic-demo">
   <DemoContainer>
-    <div className="demo-box" data-murphy="bottom-to-top">Bottom to top</div>
-    <div className="demo-box" data-murphy="top-to-bottom">Top to bottom</div>
-    <div className="demo-box" data-murphy="left-to-right">Left to right</div>
-    <div className="demo-box" data-murphy="right-to-left">Right to left</div>
+    <div className="demo-box" data-murphy="bottom-to-top">Bottom to <strong>top</strong></div>
+    <div className="demo-box" data-murphy="top-to-bottom">Top to <strong>bottom</strong></div>
+    <div className="demo-box" data-murphy="left-to-right">Left to <strong>right</strong></div>
+    <div className="demo-box" data-murphy="right-to-left">Right to <strong>left</strong></div>
   </DemoContainer>
   <DemoControls containerId="basic-demo" />
 </div>
@@ -86,16 +86,16 @@ You can customize each animation with different attributes:
 <div id="custom-demo">
   <DemoContainer>
     <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="100">
-      Moves 100px during animation
+      Moves <strong>100px</strong> during animation
     </div>
     <div className="demo-box" data-murphy="left-to-right" data-murphy-animation-duration="1000">
-      Takes 1 second to animate
+      Takes <strong>1 second</strong> to animate
     </div>
     <div className="demo-box" data-murphy="top-to-bottom" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)">
-      Custom easing function
+      Custom easing function. Ex: <strong>cubic-bezier(0.4, 0, 0.2, 1)</strong>
     </div>
     <div className="demo-box" data-murphy="right-to-left" data-murphy-element-threshold="0.5">
-      Triggers when 50% visible
+      Triggers when <strong>50% visible</strong>
     </div>
   </DemoContainer>
   <DemoControls containerId="custom-demo" />

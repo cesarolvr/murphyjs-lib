@@ -18,7 +18,7 @@ const config: DocsThemeConfig = {
   head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="Murphy.js" />
+      <meta property="og:title" content="murphy.js" />
       <meta property="og:description" content="A lightweight JavaScript animation library for scroll-based reveal animations" />
     </>
   ),

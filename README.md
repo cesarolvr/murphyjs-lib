@@ -1,72 +1,59 @@
-<h5 align="center">
-<img src="https://cesarolvr.github.io/murphyjs/murphyjs-logo.png" width="650"/>
-</h5>
+# MurphyJS
 
-<h4 align="center">A JavaScript vanilla library to scroll based reveal animations </h4>
+A lightweight JavaScript library for creating smooth animations with a simple API.
 
-<p align="center">
-  <em>murphy.js</em> is a lightweight JavaScript animation library with a simple implementation way.<br>
-  All this works by joining of data-attributes, Web animate API and Intersection Observer API.
-</p>
+## Features
 
-<p align="center">
-  <a href="https://cesarolvr.github.io/murphyjs/index.html" target="_blank">Demo</a>&nbsp;|&nbsp;<a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
-</p>
+- 🚀 Lightweight and fast (only 1.7KB gzipped)
+- 🎨 Simple and intuitive API
+- 🌈 Beautiful animations
+- 📱 Mobile-friendly
+- 🎯 No dependencies
+- 🎮 Total control of IntersectionObserver parameters
+- 🎁 Some animations implemented by default
+- 🏝 Plug and play solution to landing pages and simple projects
+- ❎ Native fallback to not supported browsers
 
-<br>
-
-## Why use murphy
-
-- ⚡️ Lightweight library (only 1.7KB gzipped).
-
-- 🍎 Easy and fast implementation.
-
-- 🎮 Total control of IntersectionObserver parameters.
-
-- 🎨 Full customization of time, duration, ease, delay and distance of each element individually.
-
-- 🎁 Some animations implemented by default.
-
-- 🏝 Plug and play solution to landing pages and simple projects.
-
-- ❎ Native fallback to not supported browsers.
-
-<br>
-
-## Getting started
-
-### Download
-
-Via npm:
+## Installation
 
 ```bash
-$ npm install murphyjs
+npm install murphyjs
 ```
 
-Via file include:
+## Quick Start
 
-Download file [here](https://cesarolvr.github.io/murphyjs/dist/index.js) and link in your HTML.
-```html
-<script src="./murphy/index.js"></script>
+```javascript
+import { Murphy } from 'murphyjs';
+
+// Create a new instance
+const murphy = new Murphy();
+
+// Animate elements
+murphy.animate('.box', {
+  opacity: [0, 1],
+  y: [20, 0],
+  duration: 1000
+});
 ```
 
+## Usage
 
-### Usage
-Just do three steps:
+### 1. Tag your HTML
 
-#### ⛳ &nbsp; Tag your HTML
-
-In your markup, decore your element with attribute `data-murphy`.
-<br>
+In your markup, decorate your element with attribute `data-murphy`:
 
 ```html
 <div data-murphy="left-to-right">Any content here</div>
 ```
-The default effect of murphy is `bottom-to-top`, but it's possible use `top-to-bottom`, `left-to-right` and `right-to-left` too.
 
+The default effect of murphy is `bottom-to-top`, but you can also use:
+- `top-to-bottom`
+- `left-to-right`
+- `right-to-left`
 
-#### 🔌 &nbsp; Reset your CSS
-In your CSS, reset all the tagged elements.
+### 2. Reset your CSS
+
+In your CSS, reset all the tagged elements:
 
 ```css
 *[data-murphy] {
@@ -74,108 +61,58 @@ In your CSS, reset all the tagged elements.
 }
 ```
 
-#### 🚀 &nbsp; Start murphy
+### 3. Start murphy
 
-In Javascript side, just import and run `play` when your page is completely loaded to start monitoring decorated elements.
-
-##### Import
+In JavaScript, import and run `play` when your page is completely loaded:
 
 ```javascript
 import murphy from "murphyjs";
-```
-##### And trigger
-```javascript
-murphy.play()
+murphy.play();
 ```
 
-#### Or call from window
+Or if you're using the script tag:
 
-If you added murphy via **file include**, just access murphy's functions in window:
-```javascript
-window.murphy.play()
-// or just
-murphy.play()
-```
-
-#### That is enough to work! 🤟🏿
-
-<br>
-
-## Examples
-
-#### 1. This `data-attributes`:
 ```html
-<p data-murphy="bottom-to-top">Bottom to top</p>
-<p data-murphy="top-to-bottom">Top to bottom</p>
-<p data-murphy="left-to-right">Left to right</p>
-<p data-murphy="right-to-left">Right to left</p>
+<script src="./murphy/index.js"></script>
+<script>
+  murphy.play();
+</script>
 ```
 
-####    Will result in that:
+## Configuration
 
-<img src="https://cesarolvr.github.io/murphyjs/all.gif" width="450"/>
+You can configure the animation of each decorated element individually using these attributes:
 
-#### 2. To do the same effect that murphy's logo, use:
-```html
-<p data-murphy="bottom-to-top">m</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</p>
-```
+| Attribute | Type | Default | Description |
+|-----------|------|---------|-------------|
+| data-murphy | String | 'bottom-to-top' | Animation direction |
+| data-murphy-appearance-distance | Int | 50px | Distance from viewport edge to trigger animation |
+| data-murphy-element-distance | Int | 30px | Distance the element moves during animation |
+| data-murphy-ease | String | 'ease' | Animation easing function (can be a cubic-bezier) |
+| data-murphy-animation-delay | Int | 300ms | Delay before animation starts |
+| data-murphy-element-threshold | Float | 1.0 | How much of the element needs to be visible to trigger (0-1) |
+| data-murphy-animation-duration | Int | 300ms | Duration of the animation |
+| data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
 
-####    Result:
-<img src="https://cesarolvr.github.io/murphyjs/logo.gif" width="450"/>
+## API
 
-<br>
+| Method | Description |
+|--------|-------------|
+| play() | Start monitoring elements in DOM tagged with `data-murphy` |
+| reset() | Resets all data-murphy elements to their initial state |
+| cleanup() | Disconnects all Intersection Observers and cleans up resources |
 
-#### 🚨 Important
-> These animations are triggered when scrolling the page, but when the tagged elements are already within the bounds of the screen, everything works like appearance animations that React Transition Group already does.
-So if you need animations on the first load of site, murphy is for you!
+## Browser Support
 
-
-<br>
+| Chrome | Safari | Firefox | Opera | Edge |
+|--------|--------|---------|-------|------|
+| 58+ | 12.1+ | 55+ | 62+ | 79+ |
 
 ## Documentation
 
-### Attributes
-You can configure the animation of each decorated element individually. Beyond the `data-murphy` attribute, other attributes are available:
-<br>
-
-| Attribute | Value type | Default value  | What controls  |
-| ------ | ------     | --------- | --------- |
-| data-murphy    | String      | 'bottom-to-top' | Animation direction |
-| data-murphy-appearance-distance    | Int      | 50 *(px)* | Distance from viewport edge to trigger animation |
-| data-murphy-element-distance    | Int      | 30 *(px)* | Distance the element moves during animation |
-| data-murphy-ease    | String      | 'ease' *(can be a cubic-bezier)* | Animation easing function |
-| data-murphy-animation-delay    | Int      | 300 *(ms)* | Delay before animation starts |
-| data-murphy-element-threshold    | Float      | 1.0 | How much of the element needs to be visible to trigger (0-1, where 1 means 100% visible) |
-| data-murphy-animation-duration    | Int      | 300 *(ms)* | Duration of the animation |
-| data-murphy-root-margin    | String      | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
-
-
-### Methods
-
-| Method | What happens  |
-| ------ | ---------     |
-| play    | Start monitoring on element in DOM tagged with `data-murphy` |
-| reset    | Resets all data-murphy elements to their initial state |
-| cleanup  | Disconnects all Intersection Observers and cleans up resources |
-
-<br>
-
-## Browser support
-
-| Chrome | Safari | IE / Edge | Firefox | Opera |
-| ------ | ------ | --------- | ------- | ----- |
-| 58+    | 12.1+     | Not *(yet)* supported       | 55+     | 62+   |
-
+For detailed documentation and examples, visit our [documentation site](https://cesarolvr.github.io/murphyjs/).
 
 ## License
 
-The code is available under the [MIT License](LICENSE.md).
+MIT © [Cesar Oliveira](https://github.com/cesarolvr)
 
