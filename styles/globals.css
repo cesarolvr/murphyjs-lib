@@ -34,6 +34,36 @@ button[id^="headlessui-listbox-button-"],
 /* Header Title */
 :root {
   --header-font: "Jersey 15", sans-serif;
+  --shiki-token-function: #ff9696 !important;
+  --shiki-token-string: var(--pink-400) !important;
+  --shiki-token-property: var(--pink-400) !important;
+  --shiki-token-keyword: var(--pink-400) !important;
+  --shiki-token-comment: var(--pink-400) !important;
+  --shiki-token-punctuation: var(--pink-400) !important;
+  --shiki-token-number: var(--pink-400) !important;
+  
+  /* Pink shades */
+  --pink-50: #fff5f5;
+  --pink-100: #ffe8e8;
+  --pink-200: #ffd6d6;
+  --pink-300: #ffb8b8;
+  --pink-400: #ff9696;  /* Our main pink */
+  --pink-500: #ff7a7a;
+  --pink-600: #ff5e5e;
+  --pink-700: #ff4242;
+  --pink-800: #ff2626;
+  --pink-900: #ff0a0a;
+
+  /* Pink with opacity */
+  --pink-10: rgba(255, 150, 150, 0.1);
+  --pink-20: rgba(255, 150, 150, 0.2);
+  --pink-30: rgba(255, 150, 150, 0.3);
+  --pink-40: rgba(255, 150, 150, 0.4);
+  --pink-50-opacity: rgba(255, 150, 150, 0.5);
+  --pink-60: rgba(255, 150, 150, 0.6);
+  --pink-70: rgba(255, 150, 150, 0.7);
+  --pink-80: rgba(255, 150, 150, 0.8);
+  --pink-90: rgba(255, 150, 150, 0.9);
 }
 
 /* Overrides */
@@ -300,8 +330,8 @@ body {
 }
 
 .note {
-  background: rgba(255, 150, 150, 0.1);
-  border-left: 4px solid #ff9696;
+  background: var(--pink-10);
+  border-left: 4px solid var(--pink-400);
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 0 8px 8px 0;
@@ -311,6 +341,33 @@ body {
 }
 
 .note strong {
-  color: #ff9696;
+  color: var(--pink-400);
   font-weight: 600;
+}
+
+/* Update code syntax highlighting */
+:root {
+  --shiki-token-string: var(--pink-400) !important;
+  --shiki-token-property: var(--pink-400) !important;
+  --shiki-token-keyword: var(--pink-400) !important;
+  --shiki-token-comment: var(--pink-400) !important;
+  --shiki-token-punctuation: var(--pink-400) !important;
+  --shiki-token-number: var(--pink-400) !important;
+}
+
+/* Add hover effects */
+a:hover {
+  color: var(--pink-300);
+}
+
+/* Add focus styles */
+:focus {
+  outline: 2px solid var(--pink-400);
+  outline-offset: 2px;
+}
+
+/* Add selection color */
+::selection {
+  background: var(--pink-20);
+  color: var(--pink-400);
 }
