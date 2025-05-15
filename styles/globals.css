@@ -41,6 +41,11 @@ button[id^="headlessui-listbox-button-"],
   color: #ff9696 !important;
 }
 
+input:focus-visible {
+  /* border-color: #ff9696 !important; */
+  box-shadow: 0 0 0 2px #ff9696 !important;
+}
+
 :is(html[class~=dark] .dark\:nx-bg-primary-400\/10), :is(html[class~=dark] .dark\:nx-bg-primary-300\/10) {
   background-color: #ffffff17 !important;
 }
@@ -292,4 +297,20 @@ body {
 .nextra-footer a[href="/"]:hover {
   transform: translateY(-2px);
   text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.note {
+  background: rgba(255, 150, 150, 0.1);
+  border-left: 4px solid #ff9696;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.note strong {
+  color: #ff9696;
+  font-weight: 600;
 }
