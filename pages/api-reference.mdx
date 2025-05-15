@@ -1,0 +1,144 @@
+# API Reference
+
+A complete reference of MurphyJS's API, including attributes, methods, and configuration options.
+
+## Data Attributes
+
+MurphyJS uses data attributes to configure animations. Here's a complete list of available attributes:
+
+| Attribute | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `data-murphy` | String | `'bottom-to-top'` | Animation direction. Available values: `'bottom-to-top'`, `'top-to-bottom'`, `'left-to-right'`, `'right-to-left'` |
+| `data-murphy-appearance-distance` | Number | `50` | Distance in pixels from viewport edge to trigger animation |
+| `data-murphy-element-distance` | Number | `30` | Distance in pixels the element moves during animation |
+| `data-murphy-ease` | String | `'ease'` | Animation easing function. Can be any valid CSS easing function or cubic-bezier |
+| `data-murphy-animation-delay` | Number | `300` | Delay in milliseconds before animation starts |
+| `data-murphy-element-threshold` | Number | `1.0` | How much of the element needs to be visible to trigger (0-1, where 1 means 100% visible) |
+| `data-murphy-animation-duration` | Number | `300` | Duration of the animation in milliseconds |
+| `data-murphy-root-margin` | String | `'0px 0px -50px 0px'` | Custom root margin for the Intersection Observer |
+
+## Methods
+
+### `play()`
+Starts monitoring elements in DOM tagged with `data-murphy` attribute.
+
+```javascript
+import murphy from 'murphyjs';
+
+// Start monitoring
+murphy.play();
+```
+
+### `reset()`
+Resets all data-murphy elements to their initial state.
+
+```javascript
+// Reset all animations
+murphy.reset();
+```
+
+### `cleanup()`
+Disconnects all Intersection Observers and cleans up resources.
+
+```javascript
+// Clean up resources
+murphy.cleanup();
+```
+
+## Usage Examples
+
+### Basic Animation
+```html
+<div data-murphy="bottom-to-top">
+  This element will animate from bottom to top
+</div>
+```
+
+### Custom Distance and Duration
+```html
+<div 
+  data-murphy="left-to-right"
+  data-murphy-element-distance="100"
+  data-murphy-animation-duration="1000"
+>
+  This element will move 100px over 1 second
+</div>
+```
+
+### Custom Easing
+```html
+<div 
+  data-murphy="top-to-bottom"
+  data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)"
+>
+  This element uses a custom easing function
+</div>
+```
+
+### Sequential Animations
+```html
+<div data-murphy="bottom-to-top">First</div>
+<div data-murphy="bottom-to-top" data-murphy-animation-delay="200">Second</div>
+<div data-murphy="bottom-to-top" data-murphy-animation-delay="400">Third</div>
+```
+
+## Browser Support
+
+MurphyJS uses modern web APIs and has the following browser support:
+
+| Browser | Version | Notes |
+|---------|---------|-------|
+| Chrome | 58+ | Full support |
+| Firefox | 55+ | Full support |
+| Safari | 12.1+ | Full support |
+| Opera | 62+ | Full support |
+| Edge | 79+ | Full support |
+| Edge (Legacy) | < 79 | Limited support |
+
+### Edge Support Details
+
+- **Edge 79+ (Chromium-based)**: Full support for all features
+  - Intersection Observer API
+  - Web Animations API
+  - Data Attributes
+
+- **Edge Legacy (pre-Chromium)**: Limited support
+  - Basic opacity transitions
+  - Immediate animations (no scroll-based triggers)
+  - No hardware acceleration
+
+### Fallback Behavior
+
+For browsers with limited support (like Edge Legacy), MurphyJS provides graceful degradation:
+
+1. If Intersection Observer is not supported:
+   - Animations trigger immediately on page load
+   - No scroll-based triggering
+
+2. If Web Animations API is not supported:
+   - Uses CSS transitions for basic animations
+   - Limited animation capabilities
+
+## Technical Details
+
+MurphyJS combines three modern web technologies:
+
+1. **Data Attributes**: For easy configuration
+2. **Web Animations API**: For smooth animations
+3. **Intersection Observer API**: For scroll-based triggers
+
+The library is lightweight (1.7KB gzipped) and has no dependencies.
+
+## Error Handling
+
+MurphyJS includes fallbacks for browsers that don't support the required APIs:
+
+- If Intersection Observer is not supported, animations will trigger immediately
+- If Web Animations API is not supported, basic opacity transitions will be used
+
+## Performance Considerations
+
+- Animations are triggered only when elements enter the viewport
+- Resources are cleaned up when `cleanup()` is called
+- Intersection Observer is used efficiently with debouncing
+- Animations are hardware-accelerated when possible 

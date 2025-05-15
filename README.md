@@ -1,5 +1,5 @@
 <h5 align="center">
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/murphyjs-logo.png" width="650"/>
+<img src="https://cesarolvr.github.io/murphyjs/murphyjs-logo.png" width="650"/>
 </h5>
 
 <h4 align="center">A JavaScript vanilla library to scroll based reveal animations </h4>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://cesarolvr.github.io/murphyjs-lib/index.html" target="_blank">Demo</a>&nbsp;|&nbsp;<a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
+  <a href="https://cesarolvr.github.io/murphyjs/index.html" target="_blank">Demo</a>&nbsp;|&nbsp;<a href="#why-use-murphy">Why use murphy</a>&nbsp;|&nbsp;<a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#examples">Examples</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
 
 <br>
@@ -40,12 +40,12 @@
 Via npm:
 
 ```bash
-$ npm install murphyjs-lib
+$ npm install murphyjs
 ```
 
 Via file include:
 
-Download file [here](https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/dist/index.js) and link in your HTML.
+Download file [here](https://cesarolvr.github.io/murphyjs/dist/index.js) and link in your HTML.
 ```html
 <script src="./murphy/index.js"></script>
 ```
@@ -81,7 +81,7 @@ In Javascript side, just import and run `play` when your page is completely load
 ##### Import
 
 ```javascript
-import murphy from "murphyjs-lib";
+import murphy from "murphyjs";
 ```
 ##### And trigger
 ```javascript
@@ -113,7 +113,7 @@ murphy.play()
 
 ####    Will result in that:
 
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/all.gif" width="450"/>
+<img src="https://cesarolvr.github.io/murphyjs/all.gif" width="450"/>
 
 #### 2. To do the same effect that murphy's logo, use:
 ```html
@@ -129,7 +129,7 @@ murphy.play()
 ```
 
 ####    Result:
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/logo.gif" width="450"/>
+<img src="https://cesarolvr.github.io/murphyjs/logo.gif" width="450"/>
 
 <br>
 

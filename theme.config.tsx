@@ -4,9 +4,9 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 const config: DocsThemeConfig = {
   logo: <span>MurphyJS</span>,
   project: {
-    link: 'https://github.com/cesarolvr/murphyjs-lib',
+    link: 'https://github.com/cesarolvr/murphyjs',
   },
-  docsRepositoryBase: 'https://github.com/cesarolvr/murphyjs-lib',
+  docsRepositoryBase: 'https://github.com/cesarolvr/murphyjs',
   footer: {
     text: 'MurphyJS Documentation',
   },

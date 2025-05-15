@@ -15,7 +15,7 @@ These examples show the four basic animation directions available in MurphyJS:
 
 Result:
 
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/all.gif" width="450"/>
+<img src="https://cesarolvr.github.io/murphyjs/all.gif" width="450"/>
 
 ## Sequential Animations
 
@@ -35,34 +35,10 @@ This example shows how to create sequential animations, like the MurphyJS logo:
 
 Result:
 
-<img src="https://raw.githubusercontent.com/cesarolvr/murphyjs-lib/master/logo.gif" width="450"/>
+<img src="https://cesarolvr.github.io/murphyjs/logo.gif" width="450"/>
 
 ## Custom Configuration
 
 You can customize each animation with different attributes:
 
-```html
-<!-- Custom distance -->
-<div data-murphy="bottom-to-top" data-murphy-element-distance="100">
-  Moves 100px during animation
-</div>
-
-<!-- Custom duration -->
-<div data-murphy="left-to-right" data-murphy-animation-duration="1000">
-  Takes 1 second to animate
-</div>
-
-<!-- Custom easing -->
-<div data-murphy="top-to-bottom" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)">
-  Custom easing function
-</div>
-
-<!-- Custom threshold -->
-<div data-murphy="right-to-left" data-murphy-element-threshold="0.5">
-  Triggers when 50% visible
-</div>
 ```
-
-## Important Note
-
-These animations are triggered when scrolling the page, but when the tagged elements are already within the bounds of the screen, everything works like appearance animations that React Transition Group already does. So if you need animations on the first load of site, MurphyJS is for you! 
