@@ -34,6 +34,7 @@ button[id^="headlessui-listbox-button-"],
 /* Header Title */
 :root {
   --header-font: "Jersey 15", sans-serif;
+  --murphy-ease: ease;
 }
 
 /* Overrides */

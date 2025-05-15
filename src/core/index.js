@@ -12,6 +12,7 @@ const {
   ANIMATION_DELAY_DEFAULT,
   THRESHOLD_DEFAULT,
   ANIMATION_DURATION_DEFAULT,
+  EASINGS
 } = config;
 
 // Event system
@@ -81,12 +82,15 @@ const startAnimation = element => {
   const animationType = element.dataset.murphy || BOTTOM_TO_TOP;
   const appearanceDistance = element.dataset.murphyAppearanceDistance || APPEARANCE_DISTANCE_DEFAULT;
   const elementDistance = element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT;
-  const ease = element.dataset.murphyEase || EASE_DEFAULT;
+  const ease = element.dataset.murphyEase ? EASINGS[element.dataset.murphyEase] || element.dataset.murphyEase : EASE_DEFAULT;
   const delay = parseInt(element.dataset.murphyAnimationDelay) || ANIMATION_DELAY_DEFAULT;
   const elementThreshold =
     parseFloat(element.dataset.murphyElementThreshold) || THRESHOLD_DEFAULT;
   const animationDuration =
     parseInt(element.dataset.murphyAnimationDuration) || ANIMATION_DURATION_DEFAULT;
+
+  // Apply easing function directly to the element's style
+  element.style.transitionTimingFunction = ease;
 
   // Configurable root margin for all sides
   const rootMargin = element.dataset.murphyRootMargin || 
