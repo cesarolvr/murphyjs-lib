@@ -29,8 +29,14 @@
 
 ## Installation
 
+Using npm:
 ```bash
 npm install murphyjs
+```
+
+Using yarn:
+```bash
+yarn add murphyjs
 ```
 
 ## Quick Start
