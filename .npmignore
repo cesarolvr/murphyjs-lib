@@ -1,0 +1,53 @@
+# Development files
+.git
+.github
+.gitignore
+.editorconfig
+.prettierrc
+.eslintrc
+.eslintignore
+.prettierignore
+.vscode
+node_modules
+coverage
+.DS_Store
+
+# Source files
+src
+tests
+docs
+examples
+*.test.js
+*.spec.js
+
+# Build files
+dist/*.map
+*.map
+
+# Documentation
+*.md
+!README.md
+LICENSE
+
+# Assets
+logo.png
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+
+# Config files
+*.config.js
+*.config.json
+tsconfig.json
+babel.config.js
+jest.config.js
+webpack.config.js
+rollup.config.js
+
+# Misc
+.env
+.env.*
+*.log 
