@@ -1,5 +1,9 @@
 # MurphyJS
 
+<div align="center">
+  <img src="murphyjs-logo.png" alt="MurphyJS Logo" width="200"/>
+</div>
+
 A lightweight JavaScript library for creating smooth animations with a simple API.
 
 ## Features
