@@ -17,12 +17,12 @@ const config: DocsThemeConfig = {
   },
   head: (
     <>
-      <link rel="icon" href="/static/favicon.ico" />
+      <link rel="icon" href="/favicon.ico" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="Murphy.js" />
       <meta property="og:description" content="A JavaScript vanilla library to scroll based reveal animations" />
     </>
-  ),
+  )
 }
 
 export default config 

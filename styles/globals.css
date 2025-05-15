@@ -34,7 +34,6 @@ button[id^="headlessui-listbox-button-"],
 /* Header Title */
 :root {
   --header-font: "Jersey 15", sans-serif;
-  /* --shiki-token-function: #ff9696 !important; */
 }
 
 /* Overrides */

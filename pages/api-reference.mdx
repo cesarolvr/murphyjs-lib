@@ -45,6 +45,68 @@ Disconnects all Intersection Observers and cleans up resources.
 murphy.cleanup();
 ```
 
+## Events
+
+murphy.js provides a set of events that you can listen to for better control and integration:
+
+| Event | Description |
+|-------|-------------|
+| `murphy:in` | Fired when an element enters the viewport |
+| `murphy:out` | Fired when an element leaves the viewport |
+| `murphy:finish` | Fired when an animation completes |
+| `murphy:cancel` | Fired when an animation is cancelled |
+| `murphy:reset` | Fired when an element is reset |
+| `murphy:cleanup` | Fired when observers are cleaned up |
+
+### Event Example
+
+```javascript copy
+// Listen for elements entering the viewport
+document.addEventListener('murphy:in', ({ detail }) => {
+  console.log('Element entered viewport:', detail.element);
+  console.log('Intersection ratio:', detail.intersectionRatio);
+});
+
+// Listen for animation completion
+document.addEventListener('murphy:finish', ({ detail }) => {
+  console.log('Animation finished:', detail.element);
+});
+
+// Listen for elements leaving the viewport
+document.addEventListener('murphy:out', ({ detail }) => {
+  console.log('Element left viewport:', detail.element);
+  console.log('Intersection ratio:', detail.intersectionRatio);
+});
+```
+
+### Practical Example
+
+Here's a practical example of using events to add custom behavior:
+
+```javascript copy
+// Add a class when element enters viewport
+document.addEventListener('murphy:in', ({ detail }) => {
+  detail.element.classList.add('is-visible');
+});
+
+// Remove class when element leaves viewport
+document.addEventListener('murphy:out', ({ detail }) => {
+  detail.element.classList.remove('is-visible');
+});
+
+// Log animation progress
+document.addEventListener('murphy:finish', ({ detail }) => {
+  console.log(`Animation completed for ${detail.element.id || 'unnamed element'}`);
+});
+
+// Track animation errors
+document.addEventListener('murphy:in', ({ detail }) => {
+  if (detail.error) {
+    console.warn('Animation error:', detail.error);
+  }
+});
+```
+
 ## Usage Examples
 
 ### Basic Animation

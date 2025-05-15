@@ -14,6 +14,14 @@ const {
   ANIMATION_DURATION_DEFAULT,
 } = config;
 
+// Event system
+const dispatchEvent = (element, eventName, detail = {}) => {
+  const event = new CustomEvent(`murphy:${eventName}`, {
+    detail: { element, ...detail }
+  });
+  document.dispatchEvent(event);
+};
+
 const debounce = (fn, delay) => {
   let timeoutId;
   return (...args) => {
@@ -40,6 +48,7 @@ const cancel = () => {
         duration: 1,
         fill: "forwards"
       });
+    dispatchEvent(element, 'cancel');
   });
 };
 
@@ -52,6 +61,7 @@ const reset = () => {
         duration: 1,
         fill: "forwards"
       });
+    dispatchEvent(element, 'reset');
   });
 };
 
@@ -63,6 +73,7 @@ const cleanup = () => {
       element._observer.disconnect();
       delete element._observer;
     }
+    dispatchEvent(element, 'cleanup');
   });
 };
 
@@ -110,6 +121,9 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
           if (intersectionRatio > 0) {
             generateAnimate(elementOptions, animationType);
             observer.unobserve(entry.target);
+            dispatchEvent(element, 'in', { intersectionRatio });
+          } else {
+            dispatchEvent(element, 'out', { intersectionRatio });
           }
         });
       }, 100),
@@ -123,6 +137,7 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
     console.warn('IntersectionObserver not supported:', error);
     // Fallback to immediate animation
     generateAnimate(elementOptions, animationType);
+    dispatchEvent(element, 'in', { error: 'IntersectionObserver not supported' });
   }
 };
 
@@ -137,13 +152,21 @@ const generateAnimate = (elementOptions, animationType) => {
     elementDistance
   };
 
-  if (!element.animate) return cancel();
-  element.animate(getAnimationType(animationType, options), {
+  if (!element.animate) {
+    cancel();
+    return;
+  }
+
+  const animation = element.animate(getAnimationType(animationType, options), {
     duration: animationDuration,
     fill: "forwards",
     easing: ease,
     delay
   });
+
+  animation.onfinish = () => {
+    dispatchEvent(element, 'finish');
+  };
 };
 
 const getAnimationType = (animationType = BOTTOM_TO_TOP, options) => {
