@@ -26,6 +26,7 @@
 - 🎁 Some animations implemented by default
 - 🏝 Plug and play solution to landing pages and simple projects
 - ❎ Native fallback to not supported browsers
+- 🛎️ Built-in event system for animation lifecycle (in, out, finish, cancel, reset, cleanup)
 
 ## Installation
 
@@ -122,6 +123,30 @@ You can configure the animation of each decorated element individually using the
 | play() | Start monitoring elements in DOM tagged with `data-murphy` |
 | reset() | Resets all data-murphy elements to their initial state |
 | cleanup() | Disconnects all Intersection Observers and cleans up resources |
+
+## Events
+
+murphy.js provides a set of events for better control and integration:
+
+| Event           | Description                                 |
+|-----------------|---------------------------------------------|
+| murphy:in       | Fired when an element enters the viewport    |
+| murphy:out      | Fired when an element leaves the viewport    |
+| murphy:finish   | Fired when an animation completes            |
+| murphy:cancel   | Fired when an animation is cancelled         |
+| murphy:reset    | Fired when an element is reset               |
+| murphy:cleanup  | Fired when observers are cleaned up          |
+
+**Example:**
+
+```javascript
+document.addEventListener('murphy:in', ({ detail }) => {
+  console.log('Element entered viewport:', detail.element);
+});
+document.addEventListener('murphy:finish', ({ detail }) => {
+  console.log('Animation finished:', detail.element);
+});
+```
 
 ## Browser Support
 

@@ -134,3 +134,27 @@ You can configure the animation of each decorated element individually using the
 <div className="note">
   Hey there! 👋 Just a quick tip: While these animations are triggered by scrolling, they also work great for elements that are already visible on the page. Think of it like having those cool entrance animations from React Transition Group, but without the extra setup! Perfect for spicing up your landing pages and first-time visits. Give it a try! ✨
 </div> 
+
+## Advanced: Listening to Animation Events
+
+murphy.js emits custom events for each animation lifecycle. You can listen to these events for advanced integrations:
+
+| Event           | Description                                 |
+|-----------------|---------------------------------------------|
+| murphy:in       | Fired when an element enters the viewport    |
+| murphy:out      | Fired when an element leaves the viewport    |
+| murphy:finish   | Fired when an animation completes            |
+| murphy:cancel   | Fired when an animation is cancelled         |
+| murphy:reset    | Fired when an element is reset               |
+| murphy:cleanup  | Fired when observers are cleaned up          |
+
+**Example:**
+
+```javascript copy
+document.addEventListener('murphy:in', ({ detail }) => {
+  console.log('Element entered viewport:', detail.element);
+});
+document.addEventListener('murphy:finish', ({ detail }) => {
+  console.log('Animation finished:', detail.element);
+});
+``` 

@@ -100,3 +100,18 @@ You can customize each animation with different attributes:
   </DemoContainer>
   <DemoControls containerId="custom-demo" />
 </div>
+
+## Using Events for Custom Effects
+
+You can use murphy.js events to add custom behaviors. For example, add a class when an element enters the viewport and remove it when it leaves:
+
+```javascript copy
+document.addEventListener('murphy:in', ({ detail }) => {
+  detail.element.classList.add('is-visible');
+});
+document.addEventListener('murphy:out', ({ detail }) => {
+  detail.element.classList.remove('is-visible');
+});
+```
+
+This allows you to trigger any effect you want based on the animation lifecycle!
