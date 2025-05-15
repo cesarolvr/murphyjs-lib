@@ -39,6 +39,8 @@ Using yarn:
 yarn add murphyjs
 ```
 
+For detailed documentation and examples, visit our [documentation site](https://cesarolvr.github.io/murphyjs/).
+
 ## Quick Start
 
 ```javascript
