@@ -1,10 +1,13 @@
+import { DemoContainer } from '../components/DemoContainer'
+import { DemoControls } from '../components/DemoControls'
+
 # Examples
 
-Here are some examples of how to use MurphyJS in your projects.
+Here are some examples of how to use murphy.js in your projects.
 
 ## Basic Animations
 
-These examples show the four basic animation directions available in MurphyJS:
+These examples show the four basic animation directions available in murphy.js:
 
 ```html
 <p data-murphy="bottom-to-top">Bottom to top</p>
@@ -13,13 +16,19 @@ These examples show the four basic animation directions available in MurphyJS:
 <p data-murphy="right-to-left">Right to left</p>
 ```
 
-Result:
-
-<img src="https://cesarolvr.github.io/murphyjs/all.gif" width="450"/>
+<div id="basic-demo">
+  <DemoContainer>
+    <div className="demo-box" data-murphy="bottom-to-top">Bottom to top</div>
+    <div className="demo-box" data-murphy="top-to-bottom">Top to bottom</div>
+    <div className="demo-box" data-murphy="left-to-right">Left to right</div>
+    <div className="demo-box" data-murphy="right-to-left">Right to left</div>
+  </DemoContainer>
+  <DemoControls containerId="basic-demo" />
+</div>
 
 ## Sequential Animations
 
-This example shows how to create sequential animations, like the MurphyJS logo:
+This example shows how to create sequential animations, like the murphy.js logo:
 
 ```html
 <p data-murphy="bottom-to-top">m</p>
@@ -33,12 +42,61 @@ This example shows how to create sequential animations, like the MurphyJS logo:
 <p data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</p>
 ```
 
-Result:
-
-<img src="https://cesarolvr.github.io/murphyjs/logo.gif" width="450"/>
+<div id="sequential-demo">
+  <DemoContainer className="logo-demo">
+    <span className="demo-letter" data-murphy="bottom-to-top">m</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</span>
+  </DemoContainer>
+  <DemoControls containerId="sequential-demo" />
+</div>
 
 ## Custom Configuration
 
 You can customize each animation with different attributes:
 
+```html
+<!-- Custom distance -->
+<div data-murphy="bottom-to-top" data-murphy-element-distance="100">
+  Moves 100px during animation
+</div>
+
+<!-- Custom duration -->
+<div data-murphy="left-to-right" data-murphy-animation-duration="1000">
+  Takes 1 second to animate
+</div>
+
+<!-- Custom easing -->
+<div data-murphy="top-to-bottom" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)">
+  Custom easing function
+</div>
+
+<!-- Custom threshold -->
+<div data-murphy="right-to-left" data-murphy-element-threshold="0.5">
+  Triggers when 50% visible
+</div>
 ```
+
+<div id="custom-demo">
+  <DemoContainer>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="100">
+      Moves 100px during animation
+    </div>
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-animation-duration="1000">
+      Takes 1 second to animate
+    </div>
+    <div className="demo-box" data-murphy="top-to-bottom" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)">
+      Custom easing function
+    </div>
+    <div className="demo-box" data-murphy="right-to-left" data-murphy-element-threshold="0.5">
+      Triggers when 50% visible
+    </div>
+  </DemoContainer>
+  <DemoControls containerId="custom-demo" />
+</div>

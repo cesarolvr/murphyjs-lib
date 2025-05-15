@@ -1,6 +1,6 @@
 # Getting Started
 
-Learn how to get started with MurphyJS in your project.
+Learn how to get started with murphy.js in your project.
 
 ## Installation
 
@@ -28,7 +28,7 @@ In your markup, decorate your element with attribute `data-murphy`:
 <div data-murphy="left-to-right">Any content here</div>
 ```
 
-The default effect of MurphyJS is `bottom-to-top`, but it's possible to use:
+The default effect of murphy.js is `bottom-to-top`, but it's possible to use:
 - `top-to-bottom`
 - `left-to-right`
 - `right-to-left`
@@ -43,7 +43,7 @@ In your CSS, reset all the tagged elements:
 }
 ```
 
-### 3. Start MurphyJS
+### 3. Start murphy.js
 
 #### Import
 
@@ -59,7 +59,7 @@ murphy.play()
 
 #### Or call from window
 
-If you added MurphyJS via **file include**, just access MurphyJS's functions in window:
+If you added murphy.js via **file include**, just access murphy.js's functions in window:
 
 ```javascript
 window.murphy.play()
@@ -80,7 +80,7 @@ murphy.play()
 
 ### Sequential Animations
 
-To create sequential animations like MurphyJS's logo:
+To create sequential animations like murphy.js's logo:
 
 ```html
 <p data-murphy="bottom-to-top">m</p>
@@ -127,4 +127,4 @@ You can configure the animation of each decorated element individually using the
 
 ## Important Note
 
-These animations are triggered when scrolling the page, but when the tagged elements are already within the bounds of the screen, everything works like appearance animations that React Transition Group already does. So if you need animations on the first load of site, MurphyJS is for you! 
+These animations are triggered when scrolling the page, but when the tagged elements are already within the bounds of the screen, everything works like appearance animations that React Transition Group already does. So if you need animations on the first load of site, murphy.js is for you! 

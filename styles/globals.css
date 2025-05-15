@@ -1,0 +1,239 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
+
+/* Force Dark Mode */
+html {
+  color-scheme: dark !important;
+}
+
+html[class~="dark"] {
+  color-scheme: dark !important;
+}
+
+/* Hide Theme Toggle */
+button[aria-label="Toggle Dark Mode"],
+button[aria-label="Toggle Light Mode"],
+button[aria-label="Change theme"],
+.nextra-nav-container button[aria-label="Change theme"],
+.nextra-nav-container button[aria-label="Toggle Dark Mode"],
+.nextra-nav-container button[aria-label="Toggle Light Mode"],
+button[id^="headlessui-listbox-button-"],
+[role="listbox"],
+[role="option"] {
+  display: none !important;
+}
+
+/* Hide Theme Menu */
+.nextra-nav-container [role="menu"],
+.nextra-nav-container [role="menuitem"],
+.nextra-nav-container [role="listbox"],
+.nextra-nav-container [role="option"] {
+  display: none !important;
+}
+
+/* Header Title */
+:root {
+  --header-font: "Jersey 15", sans-serif;
+}
+
+/* Overrides */
+.nx-text-primary-600 {
+  color: #ff9696 !important;
+}
+
+:is(html[class~=dark] .dark\:nx-bg-primary-400\/10), :is(html[class~=dark] .dark\:nx-bg-primary-300\/10) {
+  background-color: #ffffff17 !important;
+}
+
+:is(html[class~=dark] .dark\:nx-text-primary-600) {
+  color: #ffffff !important;
+}
+
+.footer {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 max(env(safe-area-inset-right),1.5rem) 40px;
+  font-family: var(--header-font) !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, #f97b7b, #ffbbbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Code Blocks and Syntax Highlighting */
+.nx-bg-neutral-100 {
+  background-color: #2d1f1f !important;
+}
+
+.dark .nx-bg-neutral-800 {
+  background-color: #2d1f1f !important;
+}
+
+/* Bash/Shell specific colors */
+.language-bash .nx-text-primary-600,
+.language-shell .nx-text-primary-600 {
+  color: #ff9696 !important;
+}
+
+.language-bash .nx-text-yellow-600,
+.language-shell .nx-text-yellow-600 {
+  color: #ff6b6b !important;
+}
+
+.language-bash .nx-text-green-600,
+.language-shell .nx-text-green-600 {
+  color: #f97b7b !important;
+}
+
+.language-bash .nx-text-blue-600,
+.language-shell .nx-text-blue-600 {
+  color: #ffbbbb !important;
+}
+
+/* Code block border and shadow */
+.nx-border-neutral-200 {
+  border-color: #3d2f2f !important;
+}
+
+.dark .nx-border-neutral-800 {
+  border-color: #3d2f2f !important;
+}
+
+.nx-shadow-sm {
+  box-shadow: 0 2px 4px rgba(255, 150, 150, 0.1) !important;
+}
+
+/* Force dark background */
+body {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+/* Demo container dark mode */
+.demo-container {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px solid #ffffff17 !important;
+  border-radius: 12px;
+  background: #ffffff17 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.demo-box {
+  background: #1a1a1a !important;
+  color: #fff !important;
+}
+
+/* Sobrescrever o estilo do título no header do Nextra */
+.nextra-nav-container .nextra-nav-container-blur {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(8px);
+}
+
+.nextra-nav-container
+  .nextra-nav-container-blur
+  .dark\:nextra-nav-container-blur {
+  background: rgba(17, 17, 17, 0.8) !important;
+}
+
+.nextra-nav-container a[href="/"],
+.nextra-footer a[href="/"] {
+  font-family: var(--header-font) !important;
+  font-size: 2rem !important;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, #f97b7b, #ffbbbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-transform: lowercase;
+}
+
+.nextra-nav-container a[href="/"]:hover,
+.nextra-footer a[href="/"]:hover {
+  transform: translateY(-2px);
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.demo-container {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px solid #ffffff17 !important;
+  border-radius: 12px;
+  background: #ffffff17 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.demo-container:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.demo-box {
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  font-size: 1.1rem;
+  color: #333;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.demo-box:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.logo-demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0070f3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.demo-letter {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.demo-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.demo-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #0070f3;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.demo-button:hover {
+  background: #0051a8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.demo-button:active {
+  background: #004080;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

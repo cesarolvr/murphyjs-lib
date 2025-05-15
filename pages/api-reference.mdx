@@ -1,10 +1,10 @@
 # API Reference
 
-A complete reference of MurphyJS's API, including attributes, methods, and configuration options.
+A complete reference of murphy.js's API, including attributes, methods, and configuration options.
 
 ## Data Attributes
 
-MurphyJS uses data attributes to configure animations. Here's a complete list of available attributes:
+murphy.js uses data attributes to configure animations. Here's a complete list of available attributes:
 
 | Attribute | Type | Default | Description |
 |-----------|------|---------|-------------|
@@ -84,7 +84,7 @@ murphy.cleanup();
 
 ## Browser Support
 
-MurphyJS uses modern web APIs and has the following browser support:
+murphy.js uses modern web APIs and has the following browser support:
 
 | Browser | Version | Notes |
 |---------|---------|-------|
@@ -109,7 +109,7 @@ MurphyJS uses modern web APIs and has the following browser support:
 
 ### Fallback Behavior
 
-For browsers with limited support (like Edge Legacy), MurphyJS provides graceful degradation:
+For browsers with limited support (like Edge Legacy), murphy.js provides graceful degradation:
 
 1. If Intersection Observer is not supported:
    - Animations trigger immediately on page load
@@ -121,7 +121,7 @@ For browsers with limited support (like Edge Legacy), MurphyJS provides graceful
 
 ## Technical Details
 
-MurphyJS combines three modern web technologies:
+murphy.js combines three modern web technologies:
 
 1. **Data Attributes**: For easy configuration
 2. **Web Animations API**: For smooth animations
@@ -131,7 +131,7 @@ The library is lightweight (1.7KB gzipped) and has no dependencies.
 
 ## Error Handling
 
-MurphyJS includes fallbacks for browsers that don't support the required APIs:
+murphy.js includes fallbacks for browsers that don't support the required APIs:
 
 - If Intersection Observer is not supported, animations will trigger immediately
 - If Web Animations API is not supported, basic opacity transitions will be used

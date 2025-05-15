@@ -2,17 +2,17 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
-  logo: <span>MurphyJS</span>,
+  logo: <span>murphy.js</span>,
   project: {
     link: 'https://github.com/cesarolvr/murphyjs',
   },
   docsRepositoryBase: 'https://github.com/cesarolvr/murphyjs',
   footer: {
-    text: 'MurphyJS Documentation',
+    component: <div className='footer'>murphy.js</div>
   },
   useNextSeoProps() {
     return {
-      titleTemplate: '%s – MurphyJS'
+      titleTemplate: '%s – murphy.js'
     }
   },
   head: (
