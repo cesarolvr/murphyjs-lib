@@ -40,7 +40,7 @@ Using yarn:
 yarn add murphyjs
 ```
 
-For detailed documentation and examples, visit our [documentation site](https://cesarolvr.github.io/murphyjs/).
+For detailed documentation and examples, visit our [documentation site](https://www.murphyjs.org/).
 
 ## Quick Start
 
@@ -156,7 +156,7 @@ document.addEventListener('murphy:finish', ({ detail }) => {
 
 ## Documentation
 
-For detailed documentation and examples, visit our [documentation site](https://cesarolvr.github.io/murphyjs/).
+For detailed documentation and examples, visit our [documentation site](https://www.murphyjs.org/).
 
 ## License
 

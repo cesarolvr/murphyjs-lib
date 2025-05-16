@@ -1,4 +1,5 @@
 import config from "./config.js";
+import BezierEasing from 'bezier-easing';
 
 const {
   LEFT_TO_RIGHT,
@@ -8,11 +9,10 @@ const {
   MURPHY_SELECTOR,
   APPEARANCE_DISTANCE_DEFAULT,
   ELEMENT_DISTANCE_DEFAULT,
-  EASE_DEFAULT,
   ANIMATION_DELAY_DEFAULT,
   THRESHOLD_DEFAULT,
   ANIMATION_DURATION_DEFAULT,
-  EASINGS
+  BEZIER_EASINGS
 } = config;
 
 // Event system
@@ -43,12 +43,9 @@ const play = () => {
 const cancel = () => {
   const elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
-    element.style.opacity = 1;
-    element.animate &&
-      element.animate([{ opacity: "1" }, { opacity: "1" }], {
-        duration: 1,
-        fill: "forwards"
-      });
+    element.style.opacity = '1';
+    element.style.transform = 'translate(0)';
+    element.classList.add('murphy-animated');
     dispatchEvent(element, 'cancel');
   });
 };
@@ -56,12 +53,9 @@ const cancel = () => {
 const reset = () => {
   const elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
-    element.style.opacity = 0;
-    element.animate &&
-      element.animate([{ opacity: "0" }, { opacity: "0" }], {
-        duration: 1,
-        fill: "forwards"
-      });
+    element.style.opacity = '0';
+    element.style.transform = getInitialTransform(element.dataset.murphy || BOTTOM_TO_TOP, ELEMENT_DISTANCE_DEFAULT);
+    element.classList.remove('murphy-animated');
     dispatchEvent(element, 'reset');
   });
 };
@@ -82,15 +76,19 @@ const startAnimation = element => {
   const animationType = element.dataset.murphy || BOTTOM_TO_TOP;
   const appearanceDistance = element.dataset.murphyAppearanceDistance || APPEARANCE_DISTANCE_DEFAULT;
   const elementDistance = element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT;
-  const ease = element.dataset.murphyEase ? EASINGS[element.dataset.murphyEase] || element.dataset.murphyEase : EASE_DEFAULT;
+  const easeName = element.dataset.murphyEase || 'ease';
   const delay = parseInt(element.dataset.murphyAnimationDelay) || ANIMATION_DELAY_DEFAULT;
-  const elementThreshold =
-    parseFloat(element.dataset.murphyElementThreshold) || THRESHOLD_DEFAULT;
-  const animationDuration =
-    parseInt(element.dataset.murphyAnimationDuration) || ANIMATION_DURATION_DEFAULT;
+  const elementThreshold = parseFloat(element.dataset.murphyElementThreshold) || THRESHOLD_DEFAULT;
+  const animationDuration = parseInt(element.dataset.murphyAnimationDuration) || ANIMATION_DURATION_DEFAULT;
 
-  // Apply easing function directly to the element's style
-  element.style.transitionTimingFunction = ease;
+  console.log('Animation config:', {
+    type: animationType,
+    easeName,
+  });
+
+  // Set initial state
+  element.style.opacity = '0';
+  element.style.transform = getInitialTransform(animationType, elementDistance);
 
   // Configurable root margin for all sides
   const rootMargin = element.dataset.murphyRootMargin || 
@@ -106,11 +104,21 @@ const startAnimation = element => {
     animationType,
     animationDuration,
     elementDistance,
-    ease,
+    ease: easeName,
     delay
   };
 
   generateIntersectionObserver({ elementOptions, observerOptions });
+};
+
+const getInitialTransform = (animationType, distance) => {
+  const transforms = {
+    [BOTTOM_TO_TOP]: `translateY(${distance}px)`,
+    [TOP_TO_BOTTOM]: `translateY(-${distance}px)`,
+    [LEFT_TO_RIGHT]: `translateX(-${distance}px)`,
+    [RIGHT_TO_LEFT]: `translateX(${distance}px)`
+  };
+  return transforms[animationType] || transforms[BOTTOM_TO_TOP];
 };
 
 const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
@@ -152,54 +160,48 @@ const generateAnimate = (elementOptions, animationType) => {
   const elementDistance = elementOptions.elementDistance;
   const ease = elementOptions.ease;
 
-  const options = {
-    elementDistance
-  };
-
-  if (!element.animate) {
-    cancel();
-    return;
-  }
-
-  const animation = element.animate(getAnimationType(animationType, options), {
-    duration: animationDuration,
-    fill: "forwards",
-    easing: ease,
-    delay
+  console.log('Generating animation with ease:', {
+    ease,
+    bezierEasing: BEZIER_EASINGS[ease],
+    availableBezierEasings: Object.keys(BEZIER_EASINGS)
   });
 
-  animation.onfinish = () => {
-    dispatchEvent(element, 'finish');
-  };
-};
+  // Add delay using setTimeout
+  setTimeout(() => {
+    // Get the bezier easing function
+    const bezierEasing = BEZIER_EASINGS[ease] || BezierEasing(0.4, 0.0, 0.2, 1);
+    const startTime = performance.now();
+    
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / animationDuration, 1);
+      const easedProgress = bezierEasing(progress);
+      
+      // Use the same eased progress for both opacity and transform
+      element.style.opacity = easedProgress;
 
-const getAnimationType = (animationType = BOTTOM_TO_TOP, options) => {
-  const animations = {
-    [BOTTOM_TO_TOP]: [
-      { opacity: "0", transform: `translateY(${options.elementDistance}px)` },
-      { opacity: "1", transform: "translateY(0px)" }
-    ],
-    [TOP_TO_BOTTOM]: [
-      {
-        opacity: "0",
-        transform: `translateY(-${options.elementDistance}px)`
-      },
-      { opacity: "1", transform: "translateY(0px)" }
-    ],
-    [LEFT_TO_RIGHT]: [
-      {
-        opacity: "0",
-        transform: `translateX(-${options.elementDistance}px)`
-      },
-      { opacity: "1", transform: "translateX(0px)" }
-    ],
-    [RIGHT_TO_LEFT]: [
-      { opacity: "0", transform: `translateX(${options.elementDistance}px)` },
-      { opacity: "1", transform: "translateX(0px)" }
-    ]
-  };
+      // Apply transform based on animation type with the same easing
+      const transforms = {
+        [BOTTOM_TO_TOP]: `translateY(${elementDistance * (1 - easedProgress)}px)`,
+        [TOP_TO_BOTTOM]: `translateY(-${elementDistance * (1 - easedProgress)}px)`,
+        [LEFT_TO_RIGHT]: `translateX(-${elementDistance * (1 - easedProgress)}px)`,
+        [RIGHT_TO_LEFT]: `translateX(${elementDistance * (1 - easedProgress)}px)`
+      };
 
-  return animations[animationType];
+      element.style.transform = transforms[animationType] || transforms[BOTTOM_TO_TOP];
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        element.style.opacity = '1';
+        element.style.transform = 'translate(0)';
+        element.classList.add('murphy-animated');
+        dispatchEvent(element, 'finish');
+      }
+    };
+    
+    requestAnimationFrame(animate);
+  }, delay);
 };
 
 const observerIsSupported = () => {
@@ -219,5 +221,9 @@ const murphyWillWork = () => {
   return animationIsSupported() && observerIsSupported();
 };
 
-window.murphy = { play, cancel, reset, cleanup };
+// Only attach to window if we're in a browser environment
+if (typeof window !== 'undefined') {
+  window.murphy = { play, cancel, reset, cleanup };
+}
+
 export default { play, cancel, reset, cleanup };

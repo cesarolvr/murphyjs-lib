@@ -5,25 +5,136 @@ import { DemoControls } from '../components/DemoControls'
 
 Here are some examples of murphy.js in action. Each example demonstrates different animation configurations and use cases.
 
+# Examples
+
 ## Basic Animations
 
-These examples show the four basic animation directions available in murphy.js:
+<div id="basic-animations">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top">
+      <strong>Bottom to Top</strong>
+    </div>
+    <div className="demo-box" data-murphy="top-to-bottom">
+      <strong>Top to Bottom</strong>
+    </div>
+    <div className="demo-box" data-murphy="left-to-right">
+      <strong>Left to Right</strong>
+    </div>
+    <div className="demo-box" data-murphy="right-to-left">
+      <strong>Right to Left</strong>
+    </div>
+  </div>
+</div>
 
-```html copy
-<p data-murphy="bottom-to-top">Bottom to top</p>
-<p data-murphy="top-to-bottom">Top to bottom</p>
-<p data-murphy="left-to-right">Left to right</p>
-<p data-murphy="right-to-left">Right to left</p>
-```
+## Standard Easing Functions
 
-<div id="basic-demo">
-  <DemoContainer>
-    <div className="demo-box" data-murphy="bottom-to-top">Bottom to <strong>top</strong></div>
-    <div className="demo-box" data-murphy="top-to-bottom">Top to <strong>bottom</strong></div>
-    <div className="demo-box" data-murphy="left-to-right">Left to <strong>right</strong></div>
-    <div className="demo-box" data-murphy="right-to-left">Right to <strong>left</strong></div>
-  </DemoContainer>
-  <DemoControls containerId="basic-demo" />
+<div id="standard-easing">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease">
+      <strong>Ease</strong> (Default)
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="linear">
+      <strong>Linear</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in">
+      <strong>Ease In</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-out">
+      <strong>Ease Out</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in-out">
+      <strong>Ease In Out</strong>
+    </div>
+  </div>
+</div>
+
+## Material Design Easing
+
+<div id="material-easing">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-standard">
+      <strong>Material Standard</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-decelerate">
+      <strong>Material Decelerate</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-accelerate">
+      <strong>Material Accelerate</strong>
+    </div>
+  </div>
+</div>
+
+## Custom Easing Functions
+
+<div id="custom-easing">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="bounce">
+      <strong>Bounce</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="elastic">
+      <strong>Elastic</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="smooth">
+      <strong>Smooth</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="sharp">
+      <strong>Sharp</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="swift">
+      <strong>Swift</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="spring">
+      <strong>Spring</strong>
+    </div>
+  </div>
+</div>
+
+## Custom Duration and Delay
+
+<div id="custom-duration">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-duration="500">
+      <strong>500ms Duration</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-delay="200">
+      <strong>200ms Delay</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-duration="800" data-murphy-ease="bounce">
+      <strong>800ms + Bounce</strong>
+    </div>
+  </div>
+</div>
+
+## Custom Distance
+
+<div id="custom-distance">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="50">
+      <strong>50px Distance</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="100">
+      <strong>100px Distance</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="150" data-murphy-ease="elastic">
+      <strong>150px + Elastic</strong>
+    </div>
+  </div>
+</div>
+
+## Combined Examples
+
+<div id="combined-examples">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="bounce" data-murphy-animation-duration="1000">
+      <strong>Bounce + 1s</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="elastic" data-murphy-element-distance="80">
+      <strong>Elastic + 80px</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="spring" data-murphy-animation-delay="300">
+      <strong>Spring + 300ms Delay</strong>
+    </div>
+  </div>
 </div>
 
 ## Sequential Animations
@@ -31,15 +142,15 @@ These examples show the four basic animation directions available in murphy.js:
 This example shows how to create sequential animations, like the murphy.js logo:
 
 ```html copy
-<p data-murphy="bottom-to-top">m</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</p>
-<p data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear">m</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="400">u</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="500">r</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="600">p</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="700">h</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="800">y</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="900">.</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="1000">j</p>
+<p data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-animation-delay="1100">s</p>
 ```
 
 <div id="sequential-demo">
@@ -54,7 +165,6 @@ This example shows how to create sequential animations, like the murphy.js logo:
     <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</span>
     <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</span>
   </DemoContainer>
-  <DemoControls containerId="sequential-demo" />
 </div>
 
 ## Custom Configuration
@@ -98,7 +208,41 @@ You can customize each animation with different attributes:
       Triggers when <strong>50% visible</strong>
     </div>
   </DemoContainer>
-  <DemoControls containerId="custom-demo" />
+</div>
+
+## Easing Functions
+
+Try different easing functions to change how your animations feel:
+
+```html copy
+<!-- Basic easings -->
+<div data-murphy="bottom-to-top" data-murphy-ease="ease-in">Ease In</div>
+<div data-murphy="bottom-to-top" data-murphy-ease="ease-out">Ease Out</div>
+<div data-murphy="bottom-to-top" data-murphy-ease="ease-in-out">Ease In Out</div>
+
+<!-- Cubic easings -->
+<div data-murphy="bottom-to-top" data-murphy-ease="cubic-in">Cubic In</div>
+<div data-murphy="bottom-to-top" data-murphy-ease="cubic-out">Cubic Out</div>
+<div data-murphy="bottom-to-top" data-murphy-ease="cubic-in-out">Cubic In Out</div>
+
+<!-- Quad easings -->
+<div data-murphy="bottom-to-top" data-murphy-ease="quad-in">Quad In</div>
+<div data-murphy="bottom-to-top" data-murphy-ease="quad-out">Quad Out</div>
+<div data-murphy="bottom-to-top" data-murphy-ease="quad-in-out">Quad In Out</div>
+```
+
+<div id="easing-demo">
+  <DemoContainer>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in">Ease In</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-out">Ease Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in-out">Ease In Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-in">Cubic In</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-out">Cubic Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-in-out">Cubic In Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-in">Quad In</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-out">Quad Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-in-out">Quad In Out</div>
+  </DemoContainer>
 </div>
 
 ## Using Events for Custom Effects
@@ -115,3 +259,5 @@ document.addEventListener('murphy:out', ({ detail }) => {
 ```
 
 This allows you to trigger any effect you want based on the animation lifecycle!
+
+<DemoControls containerId="sequential-demo" isFixed={true} />

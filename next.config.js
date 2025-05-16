@@ -170,4 +170,22 @@ module.exports = withNextra({
   images: {
     unoptimized: true,
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Copy the built Murphy.js files to the public directory
+      const CopyPlugin = require('copy-webpack-plugin');
+      config.plugins.push(
+        new CopyPlugin({
+          patterns: [
+            {
+              from: 'dist',
+              to: 'dist',
+              noErrorOnMissing: true
+            }
+          ]
+        })
+      );
+    }
+    return config;
+  }
 });

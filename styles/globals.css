@@ -135,11 +135,9 @@ body {
 }
 
 /* Initial state for demo elements */
-[data-murphy]:not(.murphy-animated) {
+/* [data-murphy]:not(.murphy-animated) {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
+} */
 
 /* Demo box styles */
 .demo-box {
@@ -150,7 +148,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   text-align: center;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,6 +217,24 @@ body {
   justify-content: end;
   gap: 1rem;
   margin-top: 1.5rem;
+}
+
+.demo-controls-fixed {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(26, 26, 26, 0.9);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  min-width: 200px;
 }
 
 .demo-button {
