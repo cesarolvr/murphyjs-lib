@@ -71,6 +71,33 @@ window.murphy.play()
 murphy.play()
 ```
 
+### Class-based Usage
+
+You can also use MurphyJS with a class-based approach for more programmatic control:
+
+```javascript copy
+// Create a new instance
+const murphy = new Murphy();
+
+// Animate elements
+murphy.animate('.box', {
+  opacity: [0, 1],
+  y: [20, 0],
+  duration: 1000
+});
+```
+
+The `animate` method accepts the following options:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| opacity | Array | [0, 1] | Start and end opacity values |
+| x | Array | [0, 0] | Start and end x translation in pixels |
+| y | Array | [0, 0] | Start and end y translation in pixels |
+| duration | Number | 1000 | Animation duration in milliseconds |
+| delay | Number | 0 | Delay before animation starts in milliseconds |
+| ease | String | 'ease' | Easing function name |
+
 ## Available Animations
 
 ### Basic Animations
@@ -113,7 +140,6 @@ You can configure the animation of each decorated element individually using the
 | data-murphy-animation-duration | Int | 300 *(ms)* | Duration of the animation |
 | data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
 
-## The Cool Stuff 🛠️
 
 ### Methods
 

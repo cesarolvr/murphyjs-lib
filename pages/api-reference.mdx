@@ -45,6 +45,74 @@ Disconnects all Intersection Observers and cleans up resources.
 murphy.cleanup();
 ```
 
+## Murphy Class
+
+The `Murphy` class provides a programmatic way to create animations:
+
+```javascript copy
+// Create a new instance
+const murphy = new Murphy();
+
+// Animate elements
+murphy.animate('.box', {
+  opacity: [0, 1],
+  y: [20, 0],
+  duration: 1000
+});
+```
+
+### `animate(selector, options)`
+
+Animates elements matching the selector with the specified options.
+
+#### Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `selector` | String | CSS selector for target elements |
+| `options` | Object | Animation configuration |
+
+#### Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `opacity` | Array | [0, 1] | Start and end opacity values |
+| `x` | Array | [0, 0] | Start and end x translation in pixels |
+| `y` | Array | [0, 0] | Start and end y translation in pixels |
+| `duration` | Number | 1000 | Animation duration in milliseconds |
+| `delay` | Number | 0 | Delay before animation starts in milliseconds |
+| `ease` | String | 'ease' | Easing function name |
+
+#### Example
+
+```javascript copy
+const murphy = new Murphy();
+
+// Fade in and slide up
+murphy.animate('.fade-in', {
+  opacity: [0, 1],
+  y: [20, 0],
+  duration: 1000
+});
+
+// Slide in from left
+murphy.animate('.slide-in', {
+  x: [-100, 0],
+  duration: 800,
+  ease: 'ease-out'
+});
+
+// Complex animation
+murphy.animate('.complex', {
+  opacity: [0, 1],
+  x: [-50, 0],
+  y: [30, 0],
+  duration: 1200,
+  delay: 200,
+  ease: 'cubic-bezier(0.4, 0, 0.2, 1)'
+});
+```
+
 ## Events
 
 murphy.js provides a set of events that you can listen to for better control and integration:

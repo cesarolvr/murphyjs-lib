@@ -26,6 +26,55 @@ Here are some examples of murphy.js in action. Each example demonstrates differe
   </div>
 </div>
 
+## Class-based Animations
+
+You can also create animations programmatically using the `Murphy` class:
+
+```javascript copy
+// Create a new instance
+const murphy = new Murphy();
+
+// Fade in and slide up
+murphy.animate('.fade-in', {
+  opacity: [0, 1],
+  y: [20, 0],
+  duration: 1000
+});
+
+// Slide in from left
+murphy.animate('.slide-in', {
+  x: [-100, 0],
+  duration: 800,
+  ease: 'ease-out'
+});
+
+// Complex animation
+murphy.animate('.complex', {
+  opacity: [0, 1],
+  x: [-50, 0],
+  y: [30, 0],
+  duration: 1200,
+  delay: 200,
+  ease: 'cubic-bezier(0.4, 0, 0.2, 1)'
+});
+```
+
+Fired on `animate()` execution. In this case, when page loads:
+
+<div id="class-based-demo">
+  <DemoContainer>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="20" data-murphy-animation-duration="1000">
+      <strong>Fade In + Slide Up</strong>
+    </div>
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-element-distance="100" data-murphy-animation-duration="800" data-murphy-ease="ease-out">
+      <strong>Slide In from Left</strong>
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="30" data-murphy-animation-duration="1200" data-murphy-animation-delay="200" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)">
+      <strong>Complex Animation</strong>
+    </div>
+  </DemoContainer>
+</div>
+
 ## Standard Easing Functions
 
 <div id="standard-easing">
