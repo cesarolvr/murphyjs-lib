@@ -145,13 +145,27 @@ const config = {
     
     // Bounce animations
     'bounce-in': {
-      transform: 'scale(0.3)',
+      transform: 'scale(0.3) translateY(100px)',
       opacity: 0
     },
     'bounce-out': {
-      transform: 'scale(1.2)',
+      transform: 'scale(1.2) translateY(-50px)',
       opacity: 0
-    }
+    },
+    'elastic': {
+      transform: 'scale(0.5) translateY(80px)',
+      opacity: 0
+    },
+    'spring': {
+      transform: 'scale(0.8) translateY(60px)',
+      opacity: 0
+    },
+    'smooth': [0.4, 0, 0.2, 1],
+    'sharp': [0.4, 0, 0.6, 1],
+    'swift': [0.4, 0, 0.2, 1],
+    'material-standard': [0.4, 0, 0.2, 1],
+    'material-decelerate': [0, 0, 0.2, 1],
+    'material-accelerate': [0.4, 0, 1, 1]
   },
   
   // Bezier easing functions for JavaScript animations
@@ -169,11 +183,11 @@ const config = {
     'material-accelerate': [0.4, 0.0, 1, 1],
     
     // Custom easings
-    'bounce': [0.68, -0.55, 0.265, 1.55],
+    'bounce': [0.68, -0.6, 0.32, 1.6],
     'elastic': [0.68, -0.6, 0.32, 1.6],
-    'smooth': [0.25, 0.1, 0.25, 1],
+    'smooth': [0.4, 0, 0.2, 1],
     'sharp': [0.4, 0, 0.6, 1],
-    'swift': [0.25, 0.1, 0.25, 1],
+    'swift': [0.4, 0, 0.2, 1],
     'spring': [0.68, -0.6, 0.32, 1.6]
   }
 };

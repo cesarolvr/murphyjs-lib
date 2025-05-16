@@ -50,30 +50,68 @@ const cancel = () => {
   });
 };
 
+const isElementInViewport = (element) => {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
+
 const reset = () => {
   const elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
-    // Reset styles to initial state
-    element.style.opacity = '0';
-    element.style.transform = getInitialTransform(
-      element.dataset.murphy || BOTTOM_TO_TOP,
-      element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT
+    // Get the current animation configuration
+    const animationType = element.dataset.murphy || BOTTOM_TO_TOP;
+    const elementDistance = element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT;
+    const duration = parseInt(element.dataset.murphyAnimationDuration) || ANIMATION_DURATION_DEFAULT;
+    const ease = element.dataset.murphyEase || config.EASE_DEFAULT;
+
+    // Create reverse animation
+    const cubicBezierValue = getEasingValue(ease);
+    const initialTransform = getInitialTransform(animationType, elementDistance);
+    
+    const animation = element.animate(
+      [
+        {
+          transform: 'none',
+          opacity: 1
+        },
+        {
+          transform: initialTransform,
+          opacity: 0
+        }
+      ],
+      {
+        duration,
+        easing: cubicBezierValue,
+        fill: 'forwards'
+      }
     );
-    element.classList.remove('murphy-animated');
-    
-    // Reset animation if it exists
-    if (element._animation) {
-      element._animation.cancel();
+
+    // Store animation reference
+    element._animation = animation;
+
+    // Handle animation completion
+    animation.onfinish = () => {
+      // Remove all murphy-related classes
+      element.classList.remove('murphy-animated');
+      element.classList.remove('murphy-in');
+      element.classList.remove('murphy-out');
+      
+      // Reset animation reference
       delete element._animation;
-    }
-    
-    // Re-observe the element
-    if (element._observer) {
-      element._observer.disconnect();
-      delete element._observer;
-    }
-    
-    dispatchEvent(element, 'reset');
+      
+      // Re-observe the element
+      if (element._observer) {
+        element._observer.disconnect();
+        delete element._observer;
+      }
+      
+      dispatchEvent(element, 'reset');
+    };
   });
 };
 
@@ -187,13 +225,18 @@ function generateAnimate(element, options) {
     direction = config.LEFT_TO_RIGHT
   } = options;
 
+  // Validate animation parameters
+  const validDuration = Math.max(0, Number(duration) || config.ANIMATION_DURATION_DEFAULT);
+  const validDelay = Math.max(0, Number(delay) || config.ANIMATION_DELAY_DEFAULT);
+  const validDistance = Math.max(0, Number(distance) || config.ELEMENT_DISTANCE_DEFAULT);
+
   return () => {
     setTimeout(() => {
       const cubicBezierValue = getEasingValue(easing);
       
       // Get animation configuration based on direction
       const animationConfig = config.ANIMATION_CONFIGS[direction] || {
-        transform: getTransformValue(direction, distance),
+        transform: getTransformValue(direction, validDistance),
         opacity: 0
       };
 
@@ -207,7 +250,7 @@ function generateAnimate(element, options) {
           }
         ],
         {
-          duration,
+          duration: validDuration,
           easing: cubicBezierValue,
           fill: 'forwards'
         }
@@ -220,7 +263,7 @@ function generateAnimate(element, options) {
         element.classList.add('murphy-animated');
         dispatchEvent(element, 'finish');
       };
-    }, delay);
+    }, validDelay);
   };
 }
 
