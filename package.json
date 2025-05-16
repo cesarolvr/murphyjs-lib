@@ -44,5 +44,19 @@
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
-  }
+  },
+  "keywords": [
+    "animation",
+    "scroll",
+    "intersection-observer",
+    "web-animations",
+    "reveal",
+    "fade",
+    "transition",
+    "javascript",
+    "library",
+    "frontend",
+    "effects",
+    "murphyjs"
+  ]
 }
