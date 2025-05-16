@@ -10,6 +10,29 @@ html[class~="dark"] {
   color-scheme: dark !important;
 }
 
+/* Global Outline */
+*:focus {
+  outline: 1px solid #ff9696 !important;
+  outline-offset: 1px !important;
+  box-shadow: none !important;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+*:focus-visible {
+  outline: 1px solid #ff9696 !important;
+  outline-offset: 1px !important;
+  box-shadow: none !important;
+}
+
+/* Remove default focus styles */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
 /* Hide Theme Toggle */
 button[aria-label="Toggle Dark Mode"],
 button[aria-label="Toggle Light Mode"],
@@ -226,8 +249,8 @@ body {
   transform: translateX(-50%);
   z-index: 1000;
   background: rgba(26, 26, 26, 0.9);
-  padding: 1rem 2rem;
-  border-radius: 12px;
+  padding: 1rem 1rem;
+  border-radius: 14px;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -240,7 +263,7 @@ body {
 .demo-button {
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   color: white;
   font-size: 1rem;
   font-weight: 500;
@@ -250,7 +273,7 @@ body {
 }
 
 .demo-button {
-  background: linear-gradient(45deg, #f97b7b, #ffbbbb);
+  background: linear-gradient(45deg, #ff6d6d, #ff9595);
   font-family: var(--header-font);
   font-size: 1.4rem;
   letter-spacing: 1px;
@@ -274,13 +297,13 @@ body {
 }
 
 .demo-button:not(.reset-button):hover {
-  background: linear-gradient(45deg, #ff6b6b, #ff9696);
+  background: linear-gradient(45deg, #ff5757, #ff8383);
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .demo-button:not(.reset-button):active {
-  background: linear-gradient(45deg, #f97b7b, #ffbbbb);
+  background: linear-gradient(45deg, #ff5757, #ff8383);
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
