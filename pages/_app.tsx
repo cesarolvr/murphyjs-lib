@@ -23,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/static/favicon.ico" />
       </Head>
       {process.env.NODE_ENV === 'production' && (
         <Script
