@@ -221,9 +221,75 @@ const murphyWillWork = () => {
   return animationIsSupported() && observerIsSupported();
 };
 
+class Murphy {
+  constructor() {
+    if (!murphyWillWork()) {
+      console.warn('MurphyJS: Your browser does not support required features');
+    }
+  }
+
+  animate(selector, options) {
+    const elements = document.querySelectorAll(selector);
+    const {
+      opacity = [0, 1],
+      x = [0, 0],
+      y = [0, 0],
+      duration = 1000,
+      delay = 0,
+      ease = 'ease'
+    } = options;
+
+    elements.forEach(element => {
+      const elementOptions = {
+        element,
+        animationDuration: duration,
+        delay,
+        ease,
+        elementDistance: Math.max(Math.abs(y[1] - y[0]), Math.abs(x[1] - x[0]))
+      };
+
+      // Set initial state
+      element.style.opacity = opacity[0];
+      element.style.transform = `translate(${x[0]}px, ${y[0]}px)`;
+
+      // Add delay using setTimeout
+      setTimeout(() => {
+        const bezierEasing = BEZIER_EASINGS[ease] || BezierEasing(0.4, 0.0, 0.2, 1);
+        const startTime = performance.now();
+        
+        const animate = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = bezierEasing(progress);
+          
+          // Interpolate values
+          const currentOpacity = opacity[0] + (opacity[1] - opacity[0]) * easedProgress;
+          const currentX = x[0] + (x[1] - x[0]) * easedProgress;
+          const currentY = y[0] + (y[1] - y[0]) * easedProgress;
+          
+          element.style.opacity = currentOpacity;
+          element.style.transform = `translate(${currentX}px, ${currentY}px)`;
+          
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            element.style.opacity = opacity[1];
+            element.style.transform = `translate(${x[1]}px, ${y[1]}px)`;
+            dispatchEvent(element, 'finish');
+          }
+        };
+        
+        requestAnimationFrame(animate);
+      }, delay);
+    });
+  }
+}
+
 // Only attach to window if we're in a browser environment
 if (typeof window !== 'undefined') {
   window.murphy = { play, cancel, reset, cleanup };
+  window.Murphy = Murphy;
 }
 
-export default { play, cancel, reset, cleanup };
+export { play, cancel, reset, cleanup, Murphy };
+export default { play, cancel, reset, cleanup, Murphy };
