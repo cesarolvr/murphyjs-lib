@@ -53,9 +53,26 @@ const cancel = () => {
 const reset = () => {
   const elements = document.querySelectorAll(MURPHY_SELECTOR);
   elements.forEach(element => {
+    // Reset styles to initial state
     element.style.opacity = '0';
-    element.style.transform = getInitialTransform(element.dataset.murphy || BOTTOM_TO_TOP, ELEMENT_DISTANCE_DEFAULT);
+    element.style.transform = getInitialTransform(
+      element.dataset.murphy || BOTTOM_TO_TOP,
+      element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT
+    );
     element.classList.remove('murphy-animated');
+    
+    // Reset animation if it exists
+    if (element._animation) {
+      element._animation.cancel();
+      delete element._animation;
+    }
+    
+    // Re-observe the element
+    if (element._observer) {
+      element._observer.disconnect();
+      delete element._observer;
+    }
+    
     dispatchEvent(element, 'reset');
   });
 };
@@ -80,11 +97,6 @@ const startAnimation = element => {
   const delay = parseInt(element.dataset.murphyAnimationDelay) || ANIMATION_DELAY_DEFAULT;
   const elementThreshold = parseFloat(element.dataset.murphyElementThreshold) || THRESHOLD_DEFAULT;
   const animationDuration = parseInt(element.dataset.murphyAnimationDuration) || ANIMATION_DURATION_DEFAULT;
-
-  console.log('Animation config:', {
-    type: animationType,
-    easeName,
-  });
 
   // Set initial state
   element.style.opacity = '0';
@@ -131,7 +143,14 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
         entries.forEach(entry => {
           const { intersectionRatio } = entry;
           if (intersectionRatio > 0) {
-            generateAnimate(elementOptions, animationType);
+            const animate = generateAnimate(element, {
+              delay: elementOptions.delay,
+              duration: elementOptions.animationDuration,
+              easing: elementOptions.ease,
+              distance: elementOptions.elementDistance,
+              direction: animationType
+            });
+            animate();
             observer.unobserve(entry.target);
             dispatchEvent(element, 'in', { intersectionRatio });
           } else {
@@ -146,63 +165,94 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
     element._observer = observer;
     observer.observe(element);
   } catch (error) {
-    console.warn('IntersectionObserver not supported:', error);
     // Fallback to immediate animation
-    generateAnimate(elementOptions, animationType);
+    const animate = generateAnimate(element, {
+      delay: elementOptions.delay,
+      duration: elementOptions.animationDuration,
+      easing: elementOptions.ease,
+      distance: elementOptions.elementDistance,
+      direction: animationType
+    });
+    animate();
     dispatchEvent(element, 'in', { error: 'IntersectionObserver not supported' });
   }
 };
 
-const generateAnimate = (elementOptions, animationType) => {
-  const animationDuration = elementOptions.animationDuration;
-  const delay = elementOptions.delay;
-  const element = elementOptions.element;
-  const elementDistance = elementOptions.elementDistance;
-  const ease = elementOptions.ease;
+function generateAnimate(element, options) {
+  const {
+    delay = config.ANIMATION_DELAY_DEFAULT,
+    duration = config.ANIMATION_DURATION_DEFAULT,
+    easing = config.EASE_DEFAULT,
+    distance = config.ELEMENT_DISTANCE_DEFAULT,
+    direction = config.LEFT_TO_RIGHT
+  } = options;
 
-  console.log('Generating animation with ease:', {
-    ease,
-    bezierEasing: BEZIER_EASINGS[ease],
-    availableBezierEasings: Object.keys(BEZIER_EASINGS)
-  });
-
-  // Add delay using setTimeout
-  setTimeout(() => {
-    // Get the bezier easing function
-    const bezierEasing = BEZIER_EASINGS[ease] || BezierEasing(0.4, 0.0, 0.2, 1);
-    const startTime = performance.now();
-    
-    const animate = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / animationDuration, 1);
-      const easedProgress = bezierEasing(progress);
+  return () => {
+    setTimeout(() => {
+      const cubicBezierValue = getEasingValue(easing);
       
-      // Use the same eased progress for both opacity and transform
-      element.style.opacity = easedProgress;
-
-      // Apply transform based on animation type with the same easing
-      const transforms = {
-        [BOTTOM_TO_TOP]: `translateY(${elementDistance * (1 - easedProgress)}px)`,
-        [TOP_TO_BOTTOM]: `translateY(-${elementDistance * (1 - easedProgress)}px)`,
-        [LEFT_TO_RIGHT]: `translateX(-${elementDistance * (1 - easedProgress)}px)`,
-        [RIGHT_TO_LEFT]: `translateX(${elementDistance * (1 - easedProgress)}px)`
+      // Get animation configuration based on direction
+      const animationConfig = config.ANIMATION_CONFIGS[direction] || {
+        transform: getTransformValue(direction, distance),
+        opacity: 0
       };
 
-      element.style.transform = transforms[animationType] || transforms[BOTTOM_TO_TOP];
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        element.style.opacity = '1';
-        element.style.transform = 'translate(0)';
+      // Create animation
+      const animation = element.animate(
+        [
+          animationConfig,
+          {
+            transform: 'none',
+            opacity: 1
+          }
+        ],
+        {
+          duration,
+          easing: cubicBezierValue,
+          fill: 'forwards'
+        }
+      );
+
+      // Store animation reference for reset
+      element._animation = animation;
+
+      animation.onfinish = () => {
         element.classList.add('murphy-animated');
         dispatchEvent(element, 'finish');
-      }
-    };
-    
-    requestAnimationFrame(animate);
-  }, delay);
-};
+      };
+    }, delay);
+  };
+}
+
+function getTransformValue(direction, distance) {
+  switch (direction) {
+    case config.LEFT_TO_RIGHT:
+      return `translateX(-${distance}px)`;
+    case config.RIGHT_TO_LEFT:
+      return `translateX(${distance}px)`;
+    case config.TOP_TO_BOTTOM:
+      return `translateY(-${distance}px)`;
+    case config.BOTTOM_TO_TOP:
+      return `translateY(${distance}px)`;
+    default:
+      return 'none';
+  }
+}
+
+function getEasingValue(easing) {
+  if (typeof easing === 'string') {
+    // Check if it's a cubic-bezier value
+    if (easing.startsWith('cubic-bezier')) {
+      return easing;
+    }
+    // Check if it's a predefined easing
+    const bezierPoints = config.BEZIER_EASINGS[easing];
+    if (bezierPoints && Array.isArray(bezierPoints) && bezierPoints.length === 4) {
+      return `cubic-bezier(${bezierPoints.join(', ')})`;
+    }
+  }
+  return config.EASE_DEFAULT;
+}
 
 const observerIsSupported = () => {
   return !!(
