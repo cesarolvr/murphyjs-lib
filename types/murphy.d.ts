@@ -1,8 +1,8 @@
 interface Murphy {
-  play: () => void;
+  play: (group?: string) => void;
   pause: () => void;
   stop: () => void;
-  reset: () => void;
+  reset: (group?: string) => void;
 }
 
 declare global {

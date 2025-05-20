@@ -31,10 +31,11 @@ const debounce = (fn, delay) => {
   };
 };
 
-const play = () => {
+const play = (group) => {
   if (!murphyWillWork()) return cancel();
-  const elements = document.querySelectorAll(MURPHY_SELECTOR);
-
+  let selector = MURPHY_SELECTOR;
+  if (group) selector += `[data-murphy-group="${group}"]`;
+  const elements = document.querySelectorAll(selector);
   return elements.forEach(element => {
     startAnimation(element);
   });
@@ -50,18 +51,10 @@ const cancel = () => {
   });
 };
 
-const isElementInViewport = (element) => {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-};
-
-const reset = () => {
-  const elements = document.querySelectorAll(MURPHY_SELECTOR);
+const reset = (group) => {
+  let selector = MURPHY_SELECTOR;
+  if (group) selector += `[data-murphy-group="${group}"]`;
+  const elements = document.querySelectorAll(selector);
   elements.forEach(element => {
     // Get the current animation configuration
     const animationType = element.dataset.murphy || BOTTOM_TO_TOP;

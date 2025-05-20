@@ -1,12 +1,7 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
 
-/* Force Dark Mode */
-html {
-  color-scheme: dark !important;
-}
-
-html[class~="dark"] {
+html, html[class~="dark"], .dark {
   color-scheme: dark !important;
 }
 
