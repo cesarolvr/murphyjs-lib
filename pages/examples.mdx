@@ -11,19 +11,20 @@ Here are some examples of murphy.js in action. Each example demonstrates differe
 
 <div id="basic-animations">
   <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-group="basic-animations">
       <strong>Bottom to Top</strong>
     </div>
-    <div className="demo-box" data-murphy="top-to-bottom">
+    <div className="demo-box" data-murphy="top-to-bottom" data-murphy-group="basic-animations">
       <strong>Top to Bottom</strong>
     </div>
-    <div className="demo-box" data-murphy="left-to-right">
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-group="basic-animations">
       <strong>Left to Right</strong>
     </div>
-    <div className="demo-box" data-murphy="right-to-left">
+    <div className="demo-box" data-murphy="right-to-left" data-murphy-group="basic-animations">
       <strong>Right to Left</strong>
     </div>
   </div>
+  <DemoControls containerId="basic-animations" group="basic-animations" />
 </div>
 
 ## Class-based Animations
@@ -63,127 +64,134 @@ Fired on `animate()` execution. In this case, when page loads:
 
 <div id="class-based-demo">
   <DemoContainer>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="20" data-murphy-animation-duration="1000">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="20" data-murphy-animation-duration="1000" data-murphy-group="class-based-demo">
       <strong>Fade In + Slide Up</strong>
     </div>
-    <div className="demo-box" data-murphy="left-to-right" data-murphy-element-distance="100" data-murphy-animation-duration="800" data-murphy-ease="ease-out">
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-element-distance="100" data-murphy-animation-duration="800" data-murphy-ease="ease-out" data-murphy-group="class-based-demo">
       <strong>Slide In from Left</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="30" data-murphy-animation-duration="1200" data-murphy-animation-delay="200" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="30" data-murphy-animation-duration="1200" data-murphy-animation-delay="200" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)" data-murphy-group="class-based-demo">
       <strong>Complex Animation</strong>
     </div>
   </DemoContainer>
+  <DemoControls containerId="class-based-demo" group="class-based-demo" />
 </div>
 
 ## Standard Easing Functions
 
 <div id="standard-easing">
   <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease" data-murphy-group="standard-easing">
       <strong>Ease</strong> (Default)
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="linear">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="linear" data-murphy-group="standard-easing">
       <strong>Linear</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in" data-murphy-group="standard-easing">
       <strong>Ease In</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-out">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-out" data-murphy-group="standard-easing">
       <strong>Ease Out</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in-out">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in-out" data-murphy-group="standard-easing">
       <strong>Ease In Out</strong>
     </div>
   </div>
+  <DemoControls containerId="standard-easing" group="standard-easing" />
 </div>
 
 ## Material Design Easing
 
 <div id="material-easing">
   <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-standard">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-standard" data-murphy-group="material-easing">
       <strong>Material Standard</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-decelerate">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-decelerate" data-murphy-group="material-easing">
       <strong>Material Decelerate</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-accelerate">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="material-accelerate" data-murphy-group="material-easing">
       <strong>Material Accelerate</strong>
     </div>
   </div>
+  <DemoControls containerId="material-easing" group="material-easing" />
 </div>
 
 ## Custom Easing Functions
 
 <div id="custom-easing">
   <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="bounce">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="bounce" data-murphy-group="custom-easing">
       <strong>Bounce</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="elastic">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="elastic" data-murphy-group="custom-easing">
       <strong>Elastic</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="smooth">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="smooth" data-murphy-group="custom-easing">
       <strong>Smooth</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="sharp">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="sharp" data-murphy-group="custom-easing">
       <strong>Sharp</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="swift">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="swift" data-murphy-group="custom-easing">
       <strong>Swift</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="spring">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="spring" data-murphy-group="custom-easing">
       <strong>Spring</strong>
     </div>
   </div>
+  <DemoControls containerId="custom-easing" group="custom-easing" />
 </div>
 
 ## Custom Duration and Delay
 
 <div id="custom-duration">
   <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-duration="500">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-duration="500" data-murphy-group="custom-duration">
       <strong>500ms Duration</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-delay="200">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-delay="200" data-murphy-group="custom-duration">
       <strong>200ms Delay</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-duration="800" data-murphy-ease="bounce">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-animation-duration="800" data-murphy-ease="bounce" data-murphy-group="custom-duration">
       <strong>800ms + Bounce</strong>
     </div>
   </div>
+  <DemoControls containerId="custom-duration" group="custom-duration" />
 </div>
 
 ## Custom Distance
 
 <div id="custom-distance">
   <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="50">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="50" data-murphy-group="custom-distance">
       <strong>50px Distance</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="100">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="100" data-murphy-group="custom-distance">
       <strong>100px Distance</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="150" data-murphy-ease="elastic">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="150" data-murphy-ease="elastic" data-murphy-group="custom-distance">
       <strong>150px + Elastic</strong>
     </div>
   </div>
+  <DemoControls containerId="custom-distance" group="custom-distance" />
 </div>
 
 ## Combined Examples
 
 <div id="combined-examples">
   <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="bounce" data-murphy-animation-duration="1000">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="bounce" data-murphy-animation-duration="1000" data-murphy-group="combined-examples">
       <strong>Bounce + 1s</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="elastic" data-murphy-element-distance="80">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="elastic" data-murphy-element-distance="80" data-murphy-group="combined-examples">
       <strong>Elastic + 80px</strong>
     </div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="spring" data-murphy-animation-delay="300">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="spring" data-murphy-animation-delay="300" data-murphy-group="combined-examples">
       <strong>Spring + 300ms Delay</strong>
     </div>
   </div>
+  <DemoControls containerId="combined-examples" group="combined-examples" />
 </div>
 
 ## Sequential Animations
@@ -204,16 +212,17 @@ This example shows how to create sequential animations, like the murphy.js logo:
 
 <div id="sequential-demo">
   <DemoContainer className="logo-demo">
-    <span className="demo-letter" data-murphy="bottom-to-top">m</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="400">u</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="500">r</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="600">p</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="700">h</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="800">y</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="900">.</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1000">j</span>
-    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-group="sequential-demo">m</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="400" data-murphy-group="sequential-demo">u</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="500" data-murphy-group="sequential-demo">r</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="600" data-murphy-group="sequential-demo">p</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="700" data-murphy-group="sequential-demo">h</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="800" data-murphy-group="sequential-demo">y</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="900" data-murphy-group="sequential-demo">.</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1000" data-murphy-group="sequential-demo">j</span>
+    <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1100" data-murphy-group="sequential-demo">s</span>
   </DemoContainer>
+  <DemoControls containerId="sequential-demo" group="sequential-demo" />
 </div>
 
 ## Custom Configuration
@@ -244,19 +253,20 @@ You can customize each animation with different attributes:
 
 <div id="custom-demo">
   <DemoContainer>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="100">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-element-distance="100" data-murphy-group="custom-demo">
       Moves <strong>100px</strong> during animation
     </div>
-    <div className="demo-box" data-murphy="left-to-right" data-murphy-animation-duration="1000">
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-animation-duration="1000" data-murphy-group="custom-demo">
       Takes <strong>1 second</strong> to animate
     </div>
-    <div className="demo-box" data-murphy="top-to-bottom" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)">
+    <div className="demo-box" data-murphy="top-to-bottom" data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)" data-murphy-group="custom-demo">
       Custom easing function. Ex: <strong>cubic-bezier(0.4, 0, 0.2, 1)</strong>
     </div>
-    <div className="demo-box" data-murphy="right-to-left" data-murphy-element-threshold="0.5">
+    <div className="demo-box" data-murphy="right-to-left" data-murphy-element-threshold="0.5" data-murphy-group="custom-demo">
       Triggers when <strong>50% visible</strong>
     </div>
   </DemoContainer>
+  <DemoControls containerId="custom-demo" group="custom-demo" />
 </div>
 
 ## Easing Functions
@@ -282,16 +292,17 @@ Try different easing functions to change how your animations feel:
 
 <div id="easing-demo">
   <DemoContainer>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in">Ease In</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-out">Ease Out</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in-out">Ease In Out</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-in">Cubic In</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-out">Cubic Out</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-in-out">Cubic In Out</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-in">Quad In</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-out">Quad Out</div>
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-in-out">Quad In Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in" data-murphy-group="easing-demo">Ease In</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-out" data-murphy-group="easing-demo">Ease Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="ease-in-out" data-murphy-group="easing-demo">Ease In Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-in" data-murphy-group="easing-demo">Cubic In</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-out" data-murphy-group="easing-demo">Cubic Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="cubic-in-out" data-murphy-group="easing-demo">Cubic In Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-in" data-murphy-group="easing-demo">Quad In</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-out" data-murphy-group="easing-demo">Quad Out</div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-ease="quad-in-out" data-murphy-group="easing-demo">Quad In Out</div>
   </DemoContainer>
+  <DemoControls containerId="easing-demo" group="easing-demo" />
 </div>
 
 ## Using Events for Custom Effects
@@ -309,102 +320,107 @@ document.addEventListener('murphy:out', ({ detail }) => {
 
 This allows you to trigger any effect you want based on the animation lifecycle!
 
-<DemoControls containerId="sequential-demo" isFixed={true} />
-
 ## Flip Animations
 
 <div className="demo-container">
-  <div className="demo-box" data-murphy="flip-left">
+  <div className="demo-box" data-murphy="flip-left" data-murphy-group="flip-animations">
     Flip Left
   </div>
-  <div className="demo-box" data-murphy="flip-right">
+  <div className="demo-box" data-murphy="flip-right" data-murphy-group="flip-animations">
     Flip Right
   </div>
-  <div className="demo-box" data-murphy="flip-up">
+  <div className="demo-box" data-murphy="flip-up" data-murphy-group="flip-animations">
     Flip Up
   </div>
-  <div className="demo-box" data-murphy="flip-down">
+  <div className="demo-box" data-murphy="flip-down" data-murphy-group="flip-animations">
     Flip Down
   </div>
 </div>
+<DemoControls containerId="flip-animations" group="flip-animations" />
 
 ## Zoom Animations
 
 <div className="demo-container">
-  <div className="demo-box" data-murphy="zoom-in">
+  <div className="demo-box" data-murphy="zoom-in" data-murphy-group="zoom-animations">
     Zoom In
   </div>
-  <div className="demo-box" data-murphy="zoom-out">
+  <div className="demo-box" data-murphy="zoom-out" data-murphy-group="zoom-animations">
     Zoom Out
   </div>
 </div>
+<DemoControls containerId="zoom-animations" group="zoom-animations" />
 
 ## Fade Animations
 
 <div className="demo-container">
-  <div className="demo-box" data-murphy="fade">
+  <div className="demo-box" data-murphy="fade" data-murphy-group="fade-animations">
     Fade
   </div>
-  <div className="demo-box" data-murphy="fade-up">
+  <div className="demo-box" data-murphy="fade-up" data-murphy-group="fade-animations">
     Fade Up
   </div>
-  <div className="demo-box" data-murphy="fade-down">
+  <div className="demo-box" data-murphy="fade-down" data-murphy-group="fade-animations">
     Fade Down
   </div>
-  <div className="demo-box" data-murphy="fade-left">
+  <div className="demo-box" data-murphy="fade-left" data-murphy-group="fade-animations">
     Fade Left
   </div>
-  <div className="demo-box" data-murphy="fade-right">
+  <div className="demo-box" data-murphy="fade-right" data-murphy-group="fade-animations">
     Fade Right
   </div>
 </div>
+<DemoControls containerId="fade-animations" group="fade-animations" />
 
 ## Rotate Animations
 
 <div className="demo-container">
-  <div className="demo-box" data-murphy="rotate-left">
+  <div className="demo-box" data-murphy="rotate-left" data-murphy-group="rotate-animations">
     Rotate Left
   </div>
-  <div className="demo-box" data-murphy="rotate-right">
+  <div className="demo-box" data-murphy="rotate-right" data-murphy-group="rotate-animations">
     Rotate Right
   </div>
 </div>
+<DemoControls containerId="rotate-animations" group="rotate-animations" />
 
 ## Scale Animations
 
 <div className="demo-container">
-  <div className="demo-box" data-murphy="scale-up">
+  <div className="demo-box" data-murphy="scale-up" data-murphy-group="scale-animations">
     Scale Up
   </div>
-  <div className="demo-box" data-murphy="scale-down">
+  <div className="demo-box" data-murphy="scale-down" data-murphy-group="scale-animations">
     Scale Down
   </div>
 </div>
+<DemoControls containerId="scale-animations" group="scale-animations" />
 
 ## Slide Animations
 
 <div className="demo-container">
-  <div className="demo-box" data-murphy="slide-up">
+  <div className="demo-box" data-murphy="slide-up" data-murphy-group="slide-animations">
     Slide Up
   </div>
-  <div className="demo-box" data-murphy="slide-down">
+  <div className="demo-box" data-murphy="slide-down" data-murphy-group="slide-animations">
     Slide Down
   </div>
-  <div className="demo-box" data-murphy="slide-left">
+  <div className="demo-box" data-murphy="slide-left" data-murphy-group="slide-animations">
     Slide Left
   </div>
-  <div className="demo-box" data-murphy="slide-right">
+  <div className="demo-box" data-murphy="slide-right" data-murphy-group="slide-animations">
     Slide Right
   </div>
 </div>
+<DemoControls containerId="slide-animations" group="slide-animations" />
 
 ## Bounce Animations
 
 <div className="demo-container">
-  <div className="demo-box" data-murphy="bounce-in">
+  <div className="demo-box" data-murphy="bounce-in" data-murphy-group="bounce-animations">
     Bounce In
   </div>
-  <div className="demo-box" data-murphy="bounce-out">
+  <div className="demo-box" data-murphy="bounce-out" data-murphy-group="bounce-animations">
     Bounce Out
   </div>
 </div>
+<DemoControls containerId="bounce-animations" group="bounce-animations" />
