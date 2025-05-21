@@ -27,29 +27,6 @@ Here are some examples of murphy.js in action. Each example demonstrates differe
   <DemoControls containerId="basic-animations" group="basic-animations" />
 </div>
 
-## Group-based Animations
-
-You can group elements using the `data-murphy-group` attribute. This allows you to control animations for specific groups of elements.
-
-<div id="group-animations">
-  <div className="demo-container">
-    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-group="group1">
-      <strong>Group 1</strong>
-    </div>
-    <div className="demo-box" data-murphy="top-to-bottom" data-murphy-group="group1">
-      <strong>Group 1</strong>
-    </div>
-    <div className="demo-box" data-murphy="left-to-right" data-murphy-group="group2">
-      <strong>Group 2</strong>
-    </div>
-    <div className="demo-box" data-murphy="right-to-left" data-murphy-group="group2">
-      <strong>Group 2</strong>
-    </div>
-  </div>
-  <DemoControls containerId="group-animations" group="group1" controlLabels={{ reset: 'Reset Group 1', play: 'Play Group 1' }} />
-  <DemoControls containerId="group-animations" group="group2" controlLabels={{ reset: 'Reset Group 2', play: 'Play Group 2' }} />
-</div>
-
 ## Class-based Animations
 
 You can also create animations programmatically using the `Murphy` class:
@@ -246,6 +223,29 @@ This example shows how to create sequential animations, like the murphy.js logo:
     <span className="demo-letter" data-murphy="bottom-to-top" data-murphy-animation-delay="1100" data-murphy-group="sequential-demo">s</span>
   </DemoContainer>
   <DemoControls containerId="sequential-demo" group="sequential-demo" />
+</div>
+
+## Group-based Animations
+
+You can group elements using the `data-murphy-group` attribute. This allows you to control animations for specific groups of elements.
+
+<div id="group-animations">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-group="group1">
+      <strong>Group 1</strong>
+    </div>
+    <div className="demo-box" data-murphy="top-to-bottom" data-murphy-group="group1">
+      <strong>Group 1</strong>
+    </div>
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-group="group2">
+      <strong>Group 2</strong>
+    </div>
+    <div className="demo-box" data-murphy="right-to-left" data-murphy-group="group2">
+      <strong>Group 2</strong>
+    </div>
+  </div>
+  <DemoControls containerId="group-animations" group="group1" controlLabels={{ reset: 'Reset Group 1', play: 'Play Group 1' }} />
+  <DemoControls containerId="group-animations" group="group2" controlLabels={{ reset: 'Reset Group 2', play: 'Play Group 2' }} />
 </div>
 
 ## Custom Configuration

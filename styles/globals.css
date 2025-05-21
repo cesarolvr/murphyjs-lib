@@ -74,7 +74,8 @@ input:focus-visible {
 
 :is(html[class~="dark"] .dark\:nx-text-primary-600),
 .nextra-content,
-:is(html[class~="dark"] .dark\:nx-text-slate-100) {
+:is(html[class~="dark"] .dark\:nx-text-slate-100),
+.nx-text-slate-900 {
   color: #ffffff !important;
 }
 

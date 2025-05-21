@@ -22,7 +22,8 @@ const config: DocsThemeConfig = {
       <meta property="og:title" content="Murphy.js" />
       <meta property="og:description" content="A JavaScript vanilla library to scroll based reveal animations" />
     </>
-  )
+  ),
+  darkMode: true
 }
 
 export default config 

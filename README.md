@@ -17,7 +17,7 @@
 
 ## Features
 
-- 🚀 Lightweight and fast (only 1.7KB gzipped)
+- 🚀 Lightweight and fast (only 3.7KB)
 - 🎨 Simple and intuitive API
 - 🌈 Beautiful animations
 - 📱 Mobile-friendly
