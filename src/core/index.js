@@ -126,7 +126,22 @@ const cleanup = () => {
   });
 };
 
+const isMobile = () => {
+  return (
+    window.innerWidth <= config.MOBILE_BREAKPOINT ||
+    config.MOBILE_REGEX.test(navigator.userAgent)
+  );
+};
+
 const startAnimation = element => {
+  // Check if animations should be disabled on mobile
+  if (element.dataset.murphyDisableMobile === 'true' && isMobile()) {
+    // Set element to final state without animation
+    element.style.opacity = '1';
+    element.style.transform = 'none';
+    return;
+  }
+
   const animationType = element.dataset.murphy || BOTTOM_TO_TOP;
   const appearanceDistance = element.dataset.murphyAppearanceDistance || APPEARANCE_DISTANCE_DEFAULT;
   const elementDistance = element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT;

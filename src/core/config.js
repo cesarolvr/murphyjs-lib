@@ -7,6 +7,10 @@ const config = {
   TOP_TO_BOTTOM: "top-to-bottom",
   BOTTOM_TO_TOP: "bottom-to-top",
   
+  // Mobile detection
+  MOBILE_BREAKPOINT: 768, // Standard mobile breakpoint
+  MOBILE_REGEX: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i,
+  
   // Flip animations
   FLIP_LEFT: "flip-left",
   FLIP_RIGHT: "flip-right",

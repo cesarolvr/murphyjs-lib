@@ -29,6 +29,7 @@
 - 🛎️ Built-in event system for animation lifecycle (in, out, finish, cancel, reset, cleanup)
 - 🔄 Mirror animations for smooth scroll transitions
 - 📏 Viewport position control with predefined aliases
+- 📱 Mobile optimization with device detection
 
 ## Installation
 
@@ -119,6 +120,7 @@ You can configure the animation of each decorated element individually using the
 | data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer. Use this to control when animations trigger based on viewport position. You can use predefined aliases: 'top', 'middle', 'bottom', 'quarter', 'three-quarters' |
 | data-murphy-group | String | undefined | Group identifier for controlling animations for specific groups of elements |
 | data-murphy-mirror | Boolean | false | Whether to play the animation in reverse when the element leaves the viewport |
+| data-murphy-disable-mobile | Boolean | false | Whether to disable animations on mobile devices (screen width <= 768px or mobile user agent) |
 
 ## Advanced Features
 

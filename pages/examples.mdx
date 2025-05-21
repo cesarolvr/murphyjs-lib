@@ -537,3 +537,30 @@ Mirror animations play in reverse when elements leave the viewport. This creates
     </div>
   </DemoContainer>
 </div>
+
+## Mobile Optimization
+
+You can disable animations on mobile devices to improve performance:
+
+```html
+<!-- This element will not animate on mobile devices -->
+<div data-murphy="bottom-to-top" data-murphy-disable-mobile="true">
+  This animation is disabled on mobile devices
+</div>
+
+<!-- This element will always animate -->
+<div data-murphy="bottom-to-top">
+  This animation works on all devices
+</div>
+```
+
+<div id="mobile-demo">
+  <DemoContainer>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-disable-mobile="true" data-murphy-group="mobile-demo">
+      Disabled on Mobile
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-group="mobile-demo">
+      Always Animated
+    </div>
+  </DemoContainer>
+</div>
