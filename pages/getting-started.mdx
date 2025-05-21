@@ -149,8 +149,44 @@ You can configure the animation of each decorated element individually using the
 | data-murphy-animation-delay | Int | 300 *(ms)* | Delay before animation starts |
 | data-murphy-element-threshold | Float | 1.0 | How much of the element needs to be visible to trigger (0-1) |
 | data-murphy-animation-duration | Int | 300 *(ms)* | Duration of the animation |
-| data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
+| data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer. Use this to control when animations trigger based on viewport position. You can use predefined aliases: 'top', 'middle', 'bottom', 'quarter', 'three-quarters' |
 | data-murphy-mirror | Boolean | false | Whether to play the animation in reverse when the element leaves the viewport |
+
+### Viewport Position Control
+
+You can control when animations trigger based on the element's position in the viewport using the `data-murphy-root-margin` attribute. For convenience, we provide several aliases:
+
+```html
+<!-- Animate when element reaches middle of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="middle">
+  This will animate when it reaches the middle of the viewport
+</div>
+
+<!-- Animate when element reaches bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="bottom">
+  This will animate when it reaches the bottom of the viewport
+</div>
+
+<!-- Animate when element is 25% from bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="quarter">
+  This will animate when it's 25% from the bottom of the viewport
+</div>
+
+<!-- Animate when element is 75% from bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="three-quarters">
+  This will animate when it's 75% from the bottom of the viewport
+</div>
+```
+
+You can also use raw CSS margin values if you need more precise control:
+
+```html
+<div data-murphy="bottom-to-top" data-murphy-root-margin="0px 0px -50% 0px">
+  This will animate when it reaches the middle of the viewport
+</div>
+```
+
+The root margin follows the CSS margin syntax: `top right bottom left`. Negative values create an inset margin, which means the animation will trigger when the element reaches that point in the viewport.
 
 ### Methods
 

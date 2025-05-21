@@ -50,6 +50,15 @@ const config = {
   THRESHOLD_DEFAULT: 0.1,
   ANIMATION_DURATION_DEFAULT: 300,
   
+  // Viewport position aliases
+  VIEWPORT_POSITIONS: {
+    TOP: '0px 0px 0px 0px',           // Triggers at top of viewport
+    MIDDLE: '0px 0px -50% 0px',       // Triggers at middle of viewport
+    BOTTOM: '0px 0px 0px 0px',        // Triggers at bottom of viewport
+    QUARTER: '0px 0px -25% 0px',      // Triggers at 25% from bottom
+    THREE_QUARTERS: '0px 0px -75% 0px' // Triggers at 75% from bottom
+  },
+  
   // Animation configurations
   ANIMATION_CONFIGS: {
     // Flip animations

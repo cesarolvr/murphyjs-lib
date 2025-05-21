@@ -139,9 +139,17 @@ const startAnimation = element => {
   element.style.opacity = '0';
   element.style.transform = getInitialTransform(animationType, elementDistance);
 
-  // Configurable root margin for all sides
-  const rootMargin = element.dataset.murphyRootMargin || 
-    `0px 0px ${appearanceDistance * -1}px 0px`;
+  // Handle viewport position aliases
+  let rootMargin = element.dataset.murphyRootMargin;
+  if (rootMargin) {
+    // Check if the value is an alias
+    const alias = rootMargin.toUpperCase();
+    if (config.VIEWPORT_POSITIONS[alias]) {
+      rootMargin = config.VIEWPORT_POSITIONS[alias];
+    }
+  } else {
+    rootMargin = `0px 0px ${appearanceDistance * -1}px 0px`;
+  }
 
   const observerOptions = {
     threshold: elementThreshold,

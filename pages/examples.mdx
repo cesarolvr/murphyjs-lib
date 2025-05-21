@@ -448,6 +448,69 @@ This allows you to trigger any effect you want based on the animation lifecycle!
 </div>
 <DemoControls containerId="bounce-animations" group="bounce-animations" />
 
+## Viewport Position Examples
+
+You can control when animations trigger based on the element's position in the viewport using the `data-murphy-root-margin` attribute. For convenience, we provide several aliases:
+
+```html
+<!-- Animate when element reaches middle of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="middle">
+  This will animate when it reaches the middle of the viewport
+</div>
+
+<!-- Animate when element reaches bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="bottom">
+  This will animate when it reaches the bottom of the viewport
+</div>
+
+<!-- Animate when element is 25% from bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="quarter">
+  This will animate when it's 25% from the bottom of the viewport
+</div>
+
+<!-- Animate when element is 75% from bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="three-quarters">
+  This will animate when it's 75% from the bottom of the viewport
+</div>
+```
+
+You can also use raw CSS margin values if you need more precise control:
+
+```html
+<div data-murphy="bottom-to-top" data-murphy-root-margin="0px 0px -50% 0px">
+  This will animate when it reaches the middle of the viewport
+</div>
+```
+
+The root margin follows the CSS margin syntax: `top right bottom left`. Negative values create an inset margin, which means the animation will trigger when the element reaches that point in the viewport.
+
+### Available Viewport Position Aliases
+
+| Alias | Description | Raw Value |
+|-------|-------------|-----------|
+| `top` | Triggers at top of viewport | `'0px 0px 0px 0px'` |
+| `middle` | Triggers at middle of viewport | `'0px 0px -50% 0px'` |
+| `bottom` | Triggers at bottom of viewport | `'0px 0px 0px 0px'` |
+| `quarter` | Triggers at 25% from bottom | `'0px 0px -25% 0px'` |
+| `three-quarters` | Triggers at 75% from bottom | `'0px 0px -75% 0px'` |
+
+<div id="viewport-position">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-root-margin="0px 0px -50% 0px" data-murphy-group="viewport-position">
+      <strong>Middle</strong> of viewport
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-root-margin="0px 0px 0px 0px" data-murphy-group="viewport-position">
+      <strong>Bottom</strong> of viewport
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-root-margin="0px 0px -25% 0px" data-murphy-group="viewport-position">
+      <strong>25%</strong> from bottom
+    </div>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-root-margin="0px 0px -75% 0px" data-murphy-group="viewport-position">
+      <strong>75%</strong> from bottom
+    </div>
+  </div>
+</div>
+
 ## Mirror Animations
 
 Mirror animations play in reverse when elements leave the viewport. This creates a smooth effect when scrolling up and down:
