@@ -23,7 +23,9 @@ const config: DocsThemeConfig = {
       <meta property="og:description" content="A JavaScript vanilla library to scroll based reveal animations" />
     </>
   ),
-  darkMode: true
+  nextThemes: {
+    defaultTheme: 'dark',
+  },
 }
 
 export default config 

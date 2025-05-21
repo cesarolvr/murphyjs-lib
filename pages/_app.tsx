@@ -25,6 +25,17 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <link rel="icon" href="/static/favicon.ico" />
       </Head>
+      <script
+        lang="javascript"
+        dangerouslySetInnerHTML={{
+          __html: `if (!window.localStorage.getItem("theme_default")) {
+      window.localStorage.setItem("theme", "dark");
+      window.localStorage.setItem("theme_default", "dark");
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    }`,
+        }}
+      />
       {process.env.NODE_ENV === "production" && (
         <Script
           src="https://unpkg.com/murphyjs@2.4.3/dist/index.js"
