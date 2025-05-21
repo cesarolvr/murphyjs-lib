@@ -27,6 +27,8 @@
 - 🏝 Plug and play solution to landing pages and simple projects
 - ❎ Native fallback to not supported browsers
 - 🛎️ Built-in event system for animation lifecycle (in, out, finish, cancel, reset, cleanup)
+- 🔄 Mirror animations for smooth scroll transitions
+- 📏 Viewport position control with predefined aliases
 
 ## Installation
 
@@ -114,9 +116,67 @@ You can configure the animation of each decorated element individually using the
 | data-murphy-animation-delay | Int | 300ms | Delay before animation starts |
 | data-murphy-element-threshold | Float | 1.0 | How much of the element needs to be visible to trigger (0-1) |
 | data-murphy-animation-duration | Int | 300ms | Duration of the animation |
-| data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
+| data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer. Use this to control when animations trigger based on viewport position. You can use predefined aliases: 'top', 'middle', 'bottom', 'quarter', 'three-quarters' |
 | data-murphy-group | String | undefined | Group identifier for controlling animations for specific groups of elements |
 | data-murphy-mirror | Boolean | false | Whether to play the animation in reverse when the element leaves the viewport |
+
+## Advanced Features
+
+### Mirror Animations
+
+Enable mirror animations to create smooth transitions when elements leave the viewport:
+
+```html
+<div data-murphy="bottom-to-top" data-murphy-mirror="true">
+  This element will animate in when scrolling down and animate out when scrolling up
+</div>
+```
+
+### Viewport Position Control
+
+Control when animations trigger based on the element's position in the viewport using the `data-murphy-root-margin` attribute. For convenience, we provide several aliases:
+
+```html
+<!-- Animate when element reaches middle of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="middle">
+  This will animate when it reaches the middle of the viewport
+</div>
+
+<!-- Animate when element reaches bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="bottom">
+  This will animate when it reaches the bottom of the viewport
+</div>
+
+<!-- Animate when element is 25% from bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="quarter">
+  This will animate when it's 25% from the bottom of the viewport
+</div>
+
+<!-- Animate when element is 75% from bottom of viewport -->
+<div data-murphy="bottom-to-top" data-murphy-root-margin="three-quarters">
+  This will animate when it's 75% from the bottom of the viewport
+</div>
+```
+
+You can also use raw CSS margin values if you need more precise control:
+
+```html
+<div data-murphy="bottom-to-top" data-murphy-root-margin="0px 0px -50% 0px">
+  This will animate when it reaches the middle of the viewport
+</div>
+```
+
+The root margin follows the CSS margin syntax: `top right bottom left`. Negative values create an inset margin, which means the animation will trigger when the element reaches that point in the viewport.
+
+### Available Viewport Position Aliases
+
+| Alias | Description | Raw Value |
+|-------|-------------|-----------|
+| `top` | Triggers at top of viewport | `'0px 0px 0px 0px'` |
+| `middle` | Triggers at middle of viewport | `'0px 0px -50% 0px'` |
+| `bottom` | Triggers at bottom of viewport | `'0px 0px 0px 0px'` |
+| `quarter` | Triggers at 25% from bottom | `'0px 0px -25% 0px'` |
+| `three-quarters` | Triggers at 75% from bottom | `'0px 0px -75% 0px'` |
 
 ## Group-based Animations
 
