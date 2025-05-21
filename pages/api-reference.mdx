@@ -18,7 +18,7 @@ murphy.js uses data attributes to configure animations. Here's a complete list o
 | `data-murphy-root-margin` | String | `'0px 0px -50px 0px'` | Custom root margin for the Intersection Observer. Use this to control when animations trigger based on viewport position. You can use predefined aliases: `'top'`, `'middle'`, `'bottom'`, `'quarter'`, `'three-quarters'` |
 | `data-murphy-group` | String | `undefined` | Group identifier for controlling animations for specific groups of elements |
 | `data-murphy-mirror` | Boolean | false | Whether to play the animation in reverse when the element leaves the viewport |
-| `data-murphy-disable-mobile` | Boolean | false | Whether to disable animations on mobile devices (screen width <= 768px or mobile user agent) |
+| `data-murphy-disable-mobile` | Boolean | false | Whether to disable animations on mobile devices (screen width < 769px or mobile user agent) |
 
 ## Methods
 
@@ -192,10 +192,6 @@ document.addEventListener('murphy:in', ({ detail }) => {
 <div data-murphy="bottom-to-top" data-murphy-mirror="true">
   This element will animate in when scrolling down and animate out when scrolling up
 </div>
-```
-
-### Custom Distance and Duration
-```
 ```
 
 ## Viewport Position Examples
