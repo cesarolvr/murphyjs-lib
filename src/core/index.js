@@ -154,7 +154,8 @@ const startAnimation = element => {
     animationDuration,
     elementDistance,
     ease: easeName,
-    delay
+    delay,
+    elementThreshold
   };
 
   generateIntersectionObserver({ elementOptions, observerOptions });
@@ -180,7 +181,16 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
       debounce(entries => {
         entries.forEach(entry => {
           const { intersectionRatio } = entry;
-          if (intersectionRatio > 0) {
+          const elementThreshold = Number(elementOptions.elementThreshold) || 0;
+          
+          // Add a small buffer to prevent rapid toggling
+          const buffer = 0.05;
+          const isFullyInView = intersectionRatio >= (elementThreshold - buffer);
+          const isFullyOutOfView = intersectionRatio <= buffer;
+          const isInBufferZone = intersectionRatio > buffer && intersectionRatio < (elementThreshold - buffer);
+          
+          // Only trigger animations when fully in or out of view, ignoring buffer zone
+          if (isFullyInView && !isInBufferZone) {
             const animate = generateAnimate(element, {
               delay: elementOptions.delay,
               duration: elementOptions.animationDuration,
@@ -193,8 +203,8 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
               observer.unobserve(entry.target);
             }
             dispatchEvent(element, 'in', { intersectionRatio });
-          } else if (shouldMirror) {
-            // Play animation in reverse when element leaves viewport
+          } else if (shouldMirror && isFullyOutOfView && !isInBufferZone) {
+            // Play animation in reverse only when fully out of view
             const reverseAnimate = generateAnimate(element, {
               delay: 0,
               duration: elementOptions.animationDuration,
@@ -206,6 +216,7 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
             reverseAnimate();
             dispatchEvent(element, 'out', { intersectionRatio });
           }
+          // Ignore intermediate states in buffer zone to prevent blinking
         });
       }, 100),
       observerOptions
