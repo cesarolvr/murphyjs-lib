@@ -5,7 +5,8 @@
   "license": "MIT",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "logo.png"
   ],
   "scripts": {
     "dev": "rm -rf .next && next dev",
