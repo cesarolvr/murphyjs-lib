@@ -115,50 +115,31 @@ You can configure the animation of each decorated element individually using the
 | data-murphy-element-threshold | Float | 1.0 | How much of the element needs to be visible to trigger (0-1) |
 | data-murphy-animation-duration | Int | 300ms | Duration of the animation |
 | data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
+| data-murphy-group | String | undefined | Group identifier for controlling animations for specific groups of elements |
+
+## Group-based Animations
+
+You can group elements using the `data-murphy-group` attribute. This allows you to control animations for specific groups of elements. For example, you can play or reset animations for only a subset of elements by specifying a group name:
+
+```html
+<div data-murphy="bottom-to-top" data-murphy-group="group1">Group 1</div>
+<div data-murphy="top-to-bottom" data-murphy-group="group1">Group 1</div>
+<div data-murphy="left-to-right" data-murphy-group="group2">Group 2</div>
+<div data-murphy="right-to-left" data-murphy-group="group2">Group 2</div>
+```
+
+You can then control animations for a specific group using the API:
+
+```js
+// Play animations for group1 only
+murphy.play('group1');
+
+// Reset animations for group2 only
+murphy.reset('group2');
+```
 
 ## API
 
 | Method | Description |
 |--------|-------------|
-| play() | Start monitoring elements in DOM tagged with `data-murphy` |
-| reset() | Resets all data-murphy elements to their initial state |
-| cleanup() | Disconnects all Intersection Observers and cleans up resources |
-
-## Events
-
-murphy.js provides a set of events for better control and integration:
-
-| Event           | Description                                 |
-|-----------------|---------------------------------------------|
-| murphy:in       | Fired when an element enters the viewport    |
-| murphy:out      | Fired when an element leaves the viewport    |
-| murphy:finish   | Fired when an animation completes            |
-| murphy:cancel   | Fired when an animation is cancelled         |
-| murphy:reset    | Fired when an element is reset               |
-| murphy:cleanup  | Fired when observers are cleaned up          |
-
-**Example:**
-
-```javascript
-document.addEventListener('murphy:in', ({ detail }) => {
-  console.log('Element entered viewport:', detail.element);
-});
-document.addEventListener('murphy:finish', ({ detail }) => {
-  console.log('Animation finished:', detail.element);
-});
-```
-
-## Browser Support
-
-| Chrome | Safari | Firefox | Opera | Edge |
-|--------|--------|---------|-------|------|
-| 58+ | 12.1+ | 55+ | 62+ | 79+ |
-
-## Documentation
-
-For detailed documentation and examples, visit our [documentation site](https://www.murphyjs.org/).
-
-## License
-
-MIT © [Cesar Oliveira](https://github.com/cesarolvr)
-
+| play() | Start monitoring elements in DOM tagged with `
