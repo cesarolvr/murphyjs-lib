@@ -7,10 +7,10 @@ import "../styles/globals.css";
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // Import Murphy.js only on the client side
-    if (process.env.NODE_ENV === 'development') {
-      require('../src/core/index.js');
+    if (process.env.NODE_ENV === "development") {
+      require("../src/core/index.js");
       // Call play() after the script is loaded
-      if (typeof window !== 'undefined' && window.murphy) {
+      if (typeof window !== "undefined" && window.murphy) {
         window.murphy.play();
       }
     }
@@ -25,13 +25,13 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <link rel="icon" href="/static/favicon.ico" />
       </Head>
-      {process.env.NODE_ENV === 'production' && (
+      {process.env.NODE_ENV === "production" && (
         <Script
           src="https://unpkg.com/murphyjs@2.4.0/dist/index.js"
           strategy="beforeInteractive"
           onLoad={() => {
             // Call play() after the script is loaded
-            if (typeof window !== 'undefined' && window.murphy) {
+            if (typeof window !== "undefined" && window.murphy) {
               window.murphy.play();
             }
           }}

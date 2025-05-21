@@ -56,6 +56,12 @@ const reset = (group) => {
   if (group) selector += `[data-murphy-group="${group}"]`;
   const elements = document.querySelectorAll(selector);
   elements.forEach(element => {
+    // Force element to final state before animating back
+    element.style.opacity = '1';
+    element.style.transform = 'none';
+    // Force reflow
+    void element.offsetWidth;
+
     // Get the current animation configuration
     const animationType = element.dataset.murphy || BOTTOM_TO_TOP;
     const elementDistance = element.dataset.murphyElementDistance || ELEMENT_DISTANCE_DEFAULT;
