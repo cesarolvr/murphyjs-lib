@@ -140,6 +140,123 @@ murphy.reset('group2');
 
 ## API
 
+### Global Methods
+
 | Method | Description |
 |--------|-------------|
-| play() | Start monitoring elements in DOM tagged with `
+| `play(group?: string)` | Start monitoring elements in DOM tagged with `data-murphy` attribute. Optionally specify a group to animate only elements in that group. |
+| `cancel()` | Cancel all animations and reset elements to their final state. |
+| `reset(group?: string)` | Reset all animations to their initial state. Optionally specify a group to reset only elements in that group. |
+| `cleanup()` | Disconnect all Intersection Observers and clean up resources. |
+
+### Murphy Class
+
+The `Murphy` class provides a programmatic way to create animations:
+
+```javascript
+import { Murphy } from 'murphyjs';
+
+// Create a new instance
+const murphy = new Murphy();
+
+// Animate elements
+murphy.animate('.box', {
+  opacity: [0, 1],
+  y: [20, 0],
+  duration: 1000
+});
+```
+
+#### `animate(selector, options)`
+
+Animates elements matching the selector with the specified options.
+
+##### Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `selector` | String | CSS selector for target elements |
+| `options` | Object | Animation configuration |
+
+##### Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `opacity` | Array | [0, 1] | Start and end opacity values |
+| `x` | Array | [0, 0] | Start and end x translation in pixels |
+| `y` | Array | [0, 0] | Start and end y translation in pixels |
+| `duration` | Number | 1000 | Animation duration in milliseconds |
+| `delay` | Number | 0 | Delay before animation starts in milliseconds |
+| `ease` | String | 'ease' | Easing function name |
+
+### Events
+
+MurphyJS provides a set of events that you can listen to for better control and integration:
+
+| Event | Description |
+|-------|-------------|
+| `murphy:in` | Fired when an element enters the viewport |
+| `murphy:out` | Fired when an element leaves the viewport |
+| `murphy:finish` | Fired when an animation completes |
+| `murphy:cancel` | Fired when an animation is cancelled |
+| `murphy:reset` | Fired when an element is reset |
+| `murphy:cleanup` | Fired when observers are cleaned up |
+
+#### Event Example
+
+```javascript
+document.addEventListener('murphy:in', (event) => {
+  const { element } = event.detail;
+  console.log('Element entered viewport:', element);
+});
+
+document.addEventListener('murphy:finish', (event) => {
+  const { element } = event.detail;
+  console.log('Animation finished:', element);
+});
+```
+
+### Available Animations
+
+MurphyJS comes with several built-in animations that you can use with the `data-murphy` attribute:
+
+#### Basic Animations
+- `bottom-to-top`
+- `top-to-bottom`
+- `left-to-right`
+- `right-to-left`
+
+#### Flip Animations
+- `flip-left`
+- `flip-right`
+- `flip-up`
+- `flip-down`
+
+#### Zoom Animations
+- `zoom-in`
+- `zoom-out`
+
+#### Fade Animations
+- `fade`
+- `fade-up`
+- `fade-down`
+- `fade-left`
+- `fade-right`
+
+#### Rotate Animations
+- `rotate-left`
+- `rotate-right`
+
+#### Scale Animations
+- `scale-up`
+- `scale-down`
+
+#### Slide Animations
+- `slide-up`
+- `slide-down`
+- `slide-left`
+- `slide-right`
+
+#### Bounce Animations
+- `bounce-in`
+- `bounce-out`
