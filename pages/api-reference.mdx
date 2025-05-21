@@ -17,6 +17,7 @@ murphy.js uses data attributes to configure animations. Here's a complete list o
 | `data-murphy-animation-duration` | Number | `300` | Duration of the animation in milliseconds |
 | `data-murphy-root-margin` | String | `'0px 0px -50px 0px'` | Custom root margin for the Intersection Observer |
 | `data-murphy-group` | String | `undefined` | Group identifier for controlling animations for specific groups of elements |
+| `data-murphy-mirror` | Boolean | false | Whether to play the animation in reverse when the element leaves the viewport |
 
 ## Methods
 
@@ -185,95 +186,12 @@ document.addEventListener('murphy:in', ({ detail }) => {
 </div>
 ```
 
+### Mirror Animation
+```html copy
+<div data-murphy="bottom-to-top" data-murphy-mirror="true">
+  This element will animate in when scrolling down and animate out when scrolling up
+</div>
+```
+
 ### Custom Distance and Duration
-```html copy
-<div 
-  data-murphy="left-to-right"
-  data-murphy-element-distance="100"
-  data-murphy-animation-duration="1000"
->
-  This element will move 100px over 1 second
-</div>
 ```
-
-### Custom Easing
-```html copy
-<div 
-  data-murphy="top-to-bottom"
-  data-murphy-ease="cubic-bezier(0.4, 0, 0.2, 1)"
->
-  This element uses a custom easing function
-</div>
-```
-
-### Sequential Animations
-```html copy
-<div data-murphy="bottom-to-top">First</div>
-<div data-murphy="bottom-to-top" data-murphy-animation-delay="200">Second</div>
-<div data-murphy="bottom-to-top" data-murphy-animation-delay="400">Third</div>
-```
-
-## Browser Support
-
-murphy.js uses modern web APIs and has the following browser support:
-
-| Browser | Version | Notes |
-|---------|---------|-------|
-| Chrome | 58+ | Full support |
-| Firefox | 55+ | Full support |
-| Safari | 12.1+ | Full support |
-| Opera | 62+ | Full support |
-| Edge | 79+ | Full support |
-| Edge (Legacy) | < 79 | Limited support |
-
-### Edge Support Details
-
-- **Edge 79+ (Chromium-based)**: Full support for all features
-  - Intersection Observer API
-  - Web Animations API
-  - Data Attributes
-
-- **Edge Legacy (pre-Chromium)**: Limited support
-  - Basic opacity transitions
-  - Immediate animations (no scroll-based triggers)
-  - No hardware acceleration
-
-### Fallback Behavior
-
-For browsers with limited support (like Edge Legacy), murphy.js provides graceful degradation:
-
-1. If Intersection Observer is not supported:
-   - Animations trigger immediately on page load
-   - No scroll-based triggering
-
-2. If Web Animations API is not supported:
-   - Uses CSS transitions for basic animations
-   - Limited animation capabilities
-
-## Technical Details
-
-murphy.js combines three modern web technologies:
-
-1. **Data Attributes**: For easy configuration
-2. **Web Animations API**: For smooth animations
-3. **Intersection Observer API**: For scroll-based triggers
-
-The library is lightweight (only 3.7KB) and has no dependencies.
-
-## Error Handling
-
-murphy.js includes fallbacks for browsers that don't support the required APIs:
-
-- If Intersection Observer is not supported, animations will trigger immediately
-- If Web Animations API is not supported, basic opacity transitions will be used
-
-## Performance Considerations
-
-- Animations are triggered only when elements enter the viewport
-- Resources are cleaned up when `cleanup()` is called
-- Intersection Observer is used efficiently with debouncing
-- Animations are hardware-accelerated when possible 
-
-## Documentation
-
-For detailed documentation and examples, visit our [documentation site](https://www.murphyjs.org/). 

@@ -150,7 +150,7 @@ You can configure the animation of each decorated element individually using the
 | data-murphy-element-threshold | Float | 1.0 | How much of the element needs to be visible to trigger (0-1) |
 | data-murphy-animation-duration | Int | 300 *(ms)* | Duration of the animation |
 | data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
-
+| data-murphy-mirror | Boolean | false | Whether to play the animation in reverse when the element leaves the viewport |
 
 ### Methods
 
@@ -159,6 +159,16 @@ You can configure the animation of each decorated element individually using the
 | play | Start monitoring elements in DOM tagged with `data-murphy` |
 | reset | Resets all data-murphy elements to their initial state |
 | cleanup | Disconnects all Intersection Observers and cleans up resources |
+
+## Advanced: Mirror Animations
+
+You can enable mirror animations to create smooth transitions when elements leave the viewport:
+
+```html copy
+<div data-murphy="bottom-to-top" data-murphy-mirror="true">
+  This element will animate in when scrolling down and animate out when scrolling up
+</div>
+```
 
 ## Browser Support
 
