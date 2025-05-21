@@ -174,6 +174,7 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
   try {
     const element = elementOptions.element;
     const animationType = elementOptions.animationType;
+    const shouldMirror = element.dataset.murphyMirror === 'true';
     
     const observer = new IntersectionObserver(
       debounce(entries => {
@@ -188,9 +189,21 @@ const generateIntersectionObserver = ({ elementOptions, observerOptions }) => {
               direction: animationType
             });
             animate();
-            observer.unobserve(entry.target);
+            if (!shouldMirror) {
+              observer.unobserve(entry.target);
+            }
             dispatchEvent(element, 'in', { intersectionRatio });
-          } else {
+          } else if (shouldMirror) {
+            // Play animation in reverse when element leaves viewport
+            const reverseAnimate = generateAnimate(element, {
+              delay: 0,
+              duration: elementOptions.animationDuration,
+              easing: elementOptions.ease,
+              distance: elementOptions.elementDistance,
+              direction: animationType,
+              reverse: true
+            });
+            reverseAnimate();
             dispatchEvent(element, 'out', { intersectionRatio });
           }
         });
@@ -221,7 +234,8 @@ function generateAnimate(element, options) {
     duration = config.ANIMATION_DURATION_DEFAULT,
     easing = config.EASE_DEFAULT,
     distance = config.ELEMENT_DISTANCE_DEFAULT,
-    direction = config.LEFT_TO_RIGHT
+    direction = config.LEFT_TO_RIGHT,
+    reverse = false
   } = options;
 
   // Validate animation parameters
@@ -239,9 +253,15 @@ function generateAnimate(element, options) {
         opacity: 0
       };
 
-      // Create animation
+      // Create animation with reversed keyframes if needed
       const animation = element.animate(
-        [
+        reverse ? [
+          {
+            transform: 'none',
+            opacity: 1
+          },
+          animationConfig
+        ] : [
           animationConfig,
           {
             transform: 'none',
@@ -259,8 +279,12 @@ function generateAnimate(element, options) {
       element._animation = animation;
 
       animation.onfinish = () => {
-        element.classList.add('murphy-animated');
-        dispatchEvent(element, 'finish');
+        if (!reverse) {
+          element.classList.add('murphy-animated');
+        } else {
+          element.classList.remove('murphy-animated');
+        }
+        dispatchEvent(element, 'finish', { reverse });
       };
     }, validDelay);
   };
@@ -332,14 +356,6 @@ class Murphy {
     } = options;
 
     elements.forEach(element => {
-      const elementOptions = {
-        element,
-        animationDuration: duration,
-        delay,
-        ease,
-        elementDistance: Math.max(Math.abs(y[1] - y[0]), Math.abs(x[1] - x[0]))
-      };
-
       // Set initial state
       element.style.opacity = opacity[0];
       element.style.transform = `translate(${x[0]}px, ${y[0]}px)`;

@@ -116,6 +116,7 @@ You can configure the animation of each decorated element individually using the
 | data-murphy-animation-duration | Int | 300ms | Duration of the animation |
 | data-murphy-root-margin | String | '0px 0px -50px 0px' | Custom root margin for the Intersection Observer |
 | data-murphy-group | String | undefined | Group identifier for controlling animations for specific groups of elements |
+| data-murphy-mirror | Boolean | false | Whether to play the animation in reverse when the element leaves the viewport |
 
 ## Group-based Animations
 

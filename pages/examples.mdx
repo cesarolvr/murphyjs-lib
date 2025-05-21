@@ -447,3 +447,31 @@ This allows you to trigger any effect you want based on the animation lifecycle!
   </div>
 </div>
 <DemoControls containerId="bounce-animations" group="bounce-animations" />
+
+## Mirror Animations
+
+Mirror animations play in reverse when elements leave the viewport. This creates a smooth effect when scrolling up and down:
+
+```html copy
+<div data-murphy="bottom-to-top" data-murphy-mirror="true">
+  This will animate in when scrolling down and animate out when scrolling up
+</div>
+```
+
+<div id="mirror-demo">
+  <DemoContainer>
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-mirror="true" data-murphy-group="mirror-demo">
+      Bottom to Top (Mirrored)
+    </div>
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-mirror="true" data-murphy-group="mirror-demo">
+      Left to Right (Mirrored)
+    </div>
+    <div className="demo-box" data-murphy="fade" data-murphy-mirror="true" data-murphy-group="mirror-demo">
+      Fade (Mirrored)
+    </div>
+    <div className="demo-box" data-murphy="zoom-in" data-murphy-mirror="true" data-murphy-group="mirror-demo">
+      Zoom In (Mirrored)
+    </div>
+  </DemoContainer>
+  <DemoControls containerId="mirror-demo" group="mirror-demo" />
+</div>
