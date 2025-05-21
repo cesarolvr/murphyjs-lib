@@ -1,7 +1,9 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
 
-html, html[class~="dark"], .dark {
+html,
+html[class~="dark"],
+.dark {
   color-scheme: dark !important;
 }
 
@@ -70,7 +72,9 @@ input:focus-visible {
   background-color: #ffffff17 !important;
 }
 
-:is(html[class~="dark"] .dark\:nx-text-primary-600) {
+:is(html[class~="dark"] .dark\:nx-text-primary-600),
+.nextra-content,
+:is(html[class~="dark"] .dark\:nx-text-slate-100) {
   color: #ffffff !important;
 }
 

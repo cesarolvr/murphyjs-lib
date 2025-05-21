@@ -125,6 +125,17 @@ To create sequential animations like murphy.js's logo:
 <p data-murphy="bottom-to-top" data-murphy-animation-delay="1100">s</p>
 ```
 
+## Group-based Animations
+
+You can group elements using the `data-murphy-group` attribute. This allows you to control animations for specific groups of elements.
+
+```html copy
+<div data-murphy="bottom-to-top" data-murphy-group="group1">Group 1</div>
+<div data-murphy="top-to-bottom" data-murphy-group="group1">Group 1</div>
+<div data-murphy="left-to-right" data-murphy-group="group2">Group 2</div>
+<div data-murphy="right-to-left" data-murphy-group="group2">Group 2</div>
+```
+
 ## Configuration Options
 
 You can configure the animation of each decorated element individually using these attributes:

@@ -27,6 +27,29 @@ Here are some examples of murphy.js in action. Each example demonstrates differe
   <DemoControls containerId="basic-animations" group="basic-animations" />
 </div>
 
+## Group-based Animations
+
+You can group elements using the `data-murphy-group` attribute. This allows you to control animations for specific groups of elements.
+
+<div id="group-animations">
+  <div className="demo-container">
+    <div className="demo-box" data-murphy="bottom-to-top" data-murphy-group="group1">
+      <strong>Group 1</strong>
+    </div>
+    <div className="demo-box" data-murphy="top-to-bottom" data-murphy-group="group1">
+      <strong>Group 1</strong>
+    </div>
+    <div className="demo-box" data-murphy="left-to-right" data-murphy-group="group2">
+      <strong>Group 2</strong>
+    </div>
+    <div className="demo-box" data-murphy="right-to-left" data-murphy-group="group2">
+      <strong>Group 2</strong>
+    </div>
+  </div>
+  <DemoControls containerId="group-animations" group="group1" />
+  <DemoControls containerId="group-animations" group="group2" />
+</div>
+
 ## Class-based Animations
 
 You can also create animations programmatically using the `Murphy` class:

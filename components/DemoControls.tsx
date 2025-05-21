@@ -4,9 +4,13 @@ interface DemoControlsProps {
   containerId: string;
   isFixed?: boolean;
   group?: string;
+  controlLabels?: {
+    reset?: string;
+    play?: string;
+  };
 }
 
-export function DemoControls({ containerId, isFixed = false, group }: DemoControlsProps) {
+export function DemoControls({ containerId, isFixed = false, group, controlLabels }: DemoControlsProps) {
   const handleReset = useCallback(() => {
     if (typeof window !== "undefined" && window.murphy) {
       window.murphy.reset(group);
@@ -22,10 +26,10 @@ export function DemoControls({ containerId, isFixed = false, group }: DemoContro
   return (
     <div className={`demo-controls ${isFixed ? 'demo-controls-fixed' : ''}`}>
       <button onClick={handleReset} className="demo-button reset-button">
-        Reset
+        {controlLabels?.reset || 'Reset'}
       </button>
       <button onClick={handlePlay} className="demo-button">
-        Play
+        {controlLabels?.play || 'Play'}
       </button>
     </div>
   );
