@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/core/index.js',
@@ -28,6 +29,13 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'logo.png', to: 'logo.png' }
+      ],
+    }),
+  ],
   resolve: {
     extensions: ['.js'],
   },

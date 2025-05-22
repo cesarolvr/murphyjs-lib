@@ -43,6 +43,17 @@ Using yarn:
 yarn add murphyjs
 ```
 
+Using CDN:
+```html
+<script src="https://unpkg.com/murphyjs@2.5.1/dist/index.js"></script>
+<script>
+  // Call play() after the script is loaded
+  if (typeof window !== "undefined" && window.murphy) {
+    window.murphy.play();
+  }
+</script>
+```
+
 For detailed documentation and examples, visit our [documentation site](https://www.murphyjs.org/).
 
 ## Quick Start

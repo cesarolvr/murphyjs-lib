@@ -26,6 +26,17 @@ The <strong>murphy.js</strong> is a lightweight JavaScript animation library wit
 npm install murphyjs
 ```
 
+Or via CDN:
+```html copy copy
+<script src="https://unpkg.com/murphyjs@2.5.1/dist/index.js"></script>
+<script>
+  // Call play() after the script is loaded
+  if (typeof window !== "undefined" && window.murphy) {
+    window.murphy.play();
+  }
+</script>
+```
+
 ### Basic Usage
 
 Just do three steps:
@@ -35,7 +46,7 @@ Just do three steps:
 <div data-murphy="left-to-right">Any content here</div>
 ```
 
-2. Reset your CSS:
+2. (Optional) Reset your CSS to prevent initial visibility:
 ```css copy copy
 *[data-murphy] {
   opacity: 0;
@@ -43,25 +54,4 @@ Just do three steps:
 ```
 
 3. Start murphy.js:
-```javascript copy copy
-import murphy from "murphyjs";
-murphy.play()
 ```
-
-That's it! 🤟🏿
-
-## Features
-
-- ⚡️ Lightweight library (only 3.7KB)
-- 🍎 Easy and fast implementation
-- 🎮 Total control of IntersectionObserver parameters
-- 🎨 Full customization of time, duration, ease, delay and distance of each element individually
-- 🎁 Some animations implemented by default
-- 🏝 Plug and play solution to landing pages and simple projects
-- ❎ Native fallback to not supported browsers
-- 🛎️ Built-in event system for animation lifecycle (in, out, finish, cancel, reset, cleanup)
-- 🔄 Mirror animations for smooth scroll transitions
-
-## Documentation
-
-Check out our [Getting Started](/getting-started) guide to learn more about murphy.js. 

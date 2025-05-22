@@ -14,6 +14,18 @@ npm install murphyjs
 yarn add murphyjs
 ```
 
+### Via CDN
+
+```html copy
+<script src="https://unpkg.com/murphyjs@2.5.1/dist/index.js"></script>
+<script>
+  // Call play() after the script is loaded
+  if (typeof window !== "undefined" && window.murphy) {
+    window.murphy.play();
+  }
+</script>
+```
+
 ### Via file include
 
 Download file [here](https://www.murphyjs.org/dist/index.js) and link in your HTML:
@@ -37,15 +49,17 @@ The default effect of murphy.js is `bottom-to-top`, but it's possible to use:
 - `left-to-right`
 - `right-to-left`
 
-### 2. Reset your CSS
+### 2. Reset your CSS (Optional)
 
-In your CSS, reset all the tagged elements:
+If you want to prevent elements from being visible before their animation starts, you can add this CSS:
 
 ```css copy
 *[data-murphy] {
   opacity: 0;
 }
 ```
+
+> Note: This step is optional. The library will work without it, and your elements will be visible immediately before their animation starts. This can provide a better user experience by avoiding the initial "invisible" state.
 
 ### 3. Start murphy.js
 
