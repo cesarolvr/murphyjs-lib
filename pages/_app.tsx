@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
       />
       {process.env.NODE_ENV === "production" && (
         <Script
-          src="https://unpkg.com/murphyjs@2.5.1/dist/index.js"
+          src="https://unpkg.com/murphyjs@2.5.2/dist/index.js"
           strategy="beforeInteractive"
           onLoad={() => {
             // Call play() after the script is loaded
